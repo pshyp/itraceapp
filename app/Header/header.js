@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import "./header.css";
 import {
@@ -13,19 +13,35 @@ import {
 } from "react-icons/fa";
 
 const Header = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
   return (
     <header className="site-header">
       {/* Top Bar */}
       <div className="top-bar">
-        <div className="container">
-          <div className="contact-info">
+        <div className="container flex flex-col md:flex-row items-center justify-between">
+          <div className="contact-info flex-wrap md:flex-nowrap md:w-auto flex md:space-x-4">
             <FaPhone />
-            <a href="tel:+254704777100">(+254) 704 777 100</a>
-            <span>|</span>
-            <a href="tel:0722100506">0722 100 506</a>
-            <span>|</span>
-            <a href="tel:0751100506">0751 100 506</a>
-            <span>|</span>
+            <a href="tel:+254704777100" className="whitespace-nowrap">
+              (+254) 704 777 100
+            </a>
+            <span className="hidden md:inline">|</span>
+            <a
+              href="tel:0722100506"
+              className="whitespace-nowrap hidden md:inline"
+            >
+              0722 100 506
+            </a>
+            <span className="hidden md:inline">|</span>
+            <a href="tel:0751100506" className="whitespace-nowrap hidden md:inline">
+              0751 100 506
+            </a>
+            <span className="hidden md:inline">|</span>
             <a href="mailto:info@itraceservice.com" className="email-link">
               <FaEnvelope />
               <span>info@itraceservice.com</span>
@@ -33,10 +49,10 @@ const Header = () => {
           </div>
 
           <div className="social-icons">
-            <Link href="https://facebook.com/" passHref legacyBehavior>
+            <Link href="https://facebook.com/" passHref legacyBehavior >
               <a aria-label="Facebook">
                 <FaFacebookF />
-              </a>
+              </a>           
             </Link>
             <Link href="https://instagram.com/" passHref legacyBehavior>
               <a aria-label="Instagram">
@@ -68,39 +84,45 @@ const Header = () => {
       </div>
 
       {/* Main Navigation */}
-      <div className="main-nav bg-white py-3">
+      <div className="main-nav bg-white py-3 ">
         <div className="container mx-auto flex justify-between items-center px-4">
           {/* Logo */}
-          <Link href="/" passHref legacyBehavior>
-            <a className="flex items-center shrink-0 site-logo">
-              <img
-                src="/Logo.png"
-                alt="iTraceAfrica Logo - Home"
-                className="h-10 md:h-12"
-              />
-            </a>
-          </Link>
-
+            <Link href="/" passHref legacyBehavior>
+              <a className="flex items-center shrink-0 site-logo">
+                <img
+                  src="/Logo.png"
+                  alt="iTraceAfrica Logo - Home"
+                  className="h-10 md:h-12"
+                />
+              </a>
+            </Link>        
           {/* Navigation */}
-          <nav className="main-menu md:flex space-x-6 lg:space-x-8 items-center">
+          <nav
+            className={`main-menu md:flex space-x-6 lg:space-x-8 items-center ${
+              isMobileMenuOpen
+                ? "flex flex-col absolute top-full left-0 w-full bg-white z-10 p-4"
+                : "hidden"
+            } md:static md:w-auto md:flex-row`}
+          >
             <Link href="/fuel-monitoring" passHref legacyBehavior>
               <a className="nav-link hover:text-red-600 font-medium">
                 Fuel Monitoring
               </a>
             </Link>
 
-            <div className="nav-item-with-dropdown">
+
+            <div className="nav-item-with-dropdown ">
               <a className="nav-link hover:text-red-600 flex items-center font-medium">
                 Remote Access Systems
                 <svg
-                  className="nav-arrow w-4 h-4 ml-1 fill-current"
+                  className="nav-arrow w-4 h-4 ml-1 fill-current "
                   viewBox="0 0 20 20"
                 >
-                  <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
+                  <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/>
                 </svg>
               </a>
               <div className="dropdown-menu">
-                <h6 className="dropdown-section-header">
+                <h6 className="dropdown-section-header ">
                   iTrace Networks - Remote Access
                 </h6>
                 <Link
@@ -142,11 +164,11 @@ const Header = () => {
               <a className="nav-link hover:text-red-600 font-medium">
                 Alarm Systems
               </a>
-            </Link>
+            </Link>           
 
-            <div className="nav-item-with-dropdown">
+            <div className="nav-item-with-dropdown ">
               <a className="nav-link hover:text-red-600 flex items-center font-medium">
-                Other Services
+                Other Services                
                 <svg
                   className="nav-arrow w-4 h-4 ml-1 fill-current"
                   viewBox="0 0 20 20"
@@ -211,12 +233,16 @@ const Header = () => {
               <a className="nav-link hover:text-red-600 font-medium">Reviews</a>
             </Link>
             <Link href="/blog" passHref legacyBehavior>
-              <a className="nav-link hover:text-red-600 font-medium">Blog</a>
+              <a className="nav-link hover:text-red-600 font-medium ">Blog</a>
             </Link>
           </nav>
 
           <div className="md:hidden">
-            <button className="mobile-menu-button" aria-label="Open Menu">
+            <button
+              className="mobile-menu-button"
+              aria-label="Open Menu"
+              onClick={toggleMobileMenu}
+            >
               <svg
                 className="w-6 h-6"
                 fill="none"
@@ -232,7 +258,7 @@ const Header = () => {
               </svg>
             </button>
           </div>
-        </div>
+       </div>
       </div>
     </header>
   );

@@ -76,17 +76,30 @@
   position: relative;
 }
 
+.main-nav .container {
+  display: grid;
+  grid-template-columns: auto 1fr; 
+  align-items: center;
+  gap: 1rem; 
+}
+
 /* Logo */
 .site-logo img {
   height: 4.5rem;
   width: auto;
   margin-right: 1rem;
 }
-
+.site-logo {
+  margin-right: 0;
+}
 /* Nav Menu (Desktop) */
 .main-menu {
-  display: none;
+  display: grid;
+  gap: 1.5rem;
+  align-items: center;
+  grid-template-columns: 1fr;
 }
+
 
 @media (min-width: 768px) {
   .main-menu {
