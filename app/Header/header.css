@@ -1,0 +1,230 @@
+/* ============ Color Variables ============ */
+:root {
+  --primary-color: #311cb9;
+  --secondary-color: #311cb9;
+  --text-color-primary: #333;
+  --text-color-secondary: #999;
+  --background-light: white;
+  --box-shadow-color: rgba(0, 0, 0, 0.05);
+  --red-color: #dc2626;
+}
+
+/* ============ Top Bar ============ */
+.top-bar {
+  background-color: var(--primary-color);
+  color: var(--background-light);
+  font-size: 0.875rem;
+  padding: 0.25rem 0;
+}
+
+.top-bar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* Contact section */
+.contact-info {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.contact-info a,
+.contact-info span {
+  color: var(--background-light);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* Social icons section */
+.social-icons {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.social-icons a {
+  display: inline-flex;
+  color: var(--background-light);
+  font-size: 1rem;
+  transition: opacity 0.3s ease;
+}
+
+.social-icons a:hover {
+  opacity: 0.75;
+}
+
+/* ============ Main Nav Bar ============ */
+.main-nav {
+  background-color: var(--background-light);
+  box-shadow: 0 1px 3px var(--box-shadow-color);
+  padding: 1rem 0;
+  position: relative;
+  z-index: 100;
+}
+
+.main-nav .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+/* Logo */
+.site-logo img {
+  height: 4.5rem;
+  width: auto;
+  margin-right: 1rem;
+}
+
+/* Nav Menu (Desktop) */
+.main-menu {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .main-menu {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+}
+
+.nav-link {
+  color: var(--text-color-primary);
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+.nav-link:hover {
+  color: var(--red-color);
+}
+
+/* Dropdown styling */
+.nav-item-with-dropdown {
+  position: relative;
+}
+
+.nav-item-with-dropdown .dropdown-menu {
+  display: none;
+}
+
+.nav-item-with-dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.nav-arrow {
+  width: 0.85rem;
+  height: 0.85rem;
+  margin-left: 0.25rem;
+  fill: var(--text-color-primary);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: var(--background-light);
+  padding: 0.75rem 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  white-space: nowrap;
+  border-radius: 0.375rem;
+}
+
+.dropdown-link {
+  display: block;
+  padding: 0.35rem 0;
+  color: var(--text-color-primary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s ease;
+}
+
+.dropdown-link:hover {
+  color: var(--secondary-color);
+}
+
+/* Mobile menu button */
+.mobile-menu-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-color-primary);
+  display: flex;
+  align-items: center;
+}
+
+.mobile-menu-button svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+/* Mobile Menu Container */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 999;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.mobile-menu.active {
+  display: flex;
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-nav-items {
+  background-color: var(--background-light);
+  padding: 2rem;
+  border-radius: 0.375rem;
+  width: 90%;
+  max-width: 400px;
+  transform: translateY(-20px);
+  transition: transform 0.3s ease;
+}
+
+.mobile-menu.active .mobile-nav-items {
+  transform: translateY(0);
+}
+
+.mobile-nav-items .nav-link {
+  display: block;
+  padding: 0.75rem 0;
+  color: var(--text-color-primary);
+  text-decoration: none;
+  font-size: 1.2rem;
+  border-bottom: 1px solid #eee;
+}
+
+.mobile-nav-items .nav-link:last-child {
+  border-bottom: none;
+}
+
+/* Ensure dropdown in mobile works */
+.mobile-nav-items .nav-item-with-dropdown .dropdown-menu {
+  display: block;
+  margin-top: 0.5rem;
+  position: static;
+  box-shadow: none;
+  background: transparent;
+  padding: 0;
+}
