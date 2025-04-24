@@ -160,7 +160,7 @@ const Header = () => {
               onClick={handleLinkClick}
             >
               <img
-                src="/Logo.png"
+                src="/LogoMobi.jpeg.png"
                 alt="iTraceAfrica Logo - Home"
                 className="h-10"
               />
