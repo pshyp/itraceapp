@@ -29,6 +29,10 @@ export default function Home() {
       
 
       <main className="main-content no-padding">
+       
+
+        <h2 className="product-title">Fuel Monitors</h2>
+        <p className="product-subtitle">Built for smart vehicle tracking.</p>
         <div className="image-wrapper">
           <Image
             src={monitors[index]}
@@ -38,13 +42,9 @@ export default function Home() {
             priority
           />
         </div>
-
-        <h2 className="product-title">Fuel Monitors</h2>
-        <p className="product-subtitle">Built for smart vehicle tracking.</p>
-
         <div className="button-group">
           <button className="primary-button">Learn more</button>
-          <button className="secondary-button">Buy</button>
+     
         </div>
       </main>
     </>
