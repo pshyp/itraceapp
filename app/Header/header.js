@@ -184,17 +184,16 @@ const Header = () => {
             } md:static md:w-auto md:flex-row md:bg-transparent md:shadow-none md:p-0 md:top-auto md:left-auto md:z-auto`} // Ensure desktop overrides mobile styles
           >
             {/* Fuel Monitoring Link */}
-            <span className="hidden md:inline"
-            >
-              Fuel Monitors Built for smart vehicle tracking.
-            </span>
-
             <Link href="/fuel-monitoring" passHref legacyBehavior>
               <a
                 className="nav-link hover:text-red-600 font-medium"
                 onClick={handleLinkClick}
               >
                 Fuel Monitoring
+                <span className="hidden md:inline"
+                >
+                  Fuel Monitors Built for smart vehicle tracking.
+                </span>
               </a>
             </Link>
 
@@ -265,17 +264,7 @@ const Header = () => {
               </div>
             </div>
 
-            {/* Alarm Systems Link */}
-            <Link href="/alarm-systems" passHref legacyBehavior>
-              <a
-                className="nav-link hover:text-red-600 font-medium"
-                onClick={handleLinkClick}
-              >
-                Alarm Systems
-              </a>
-            </Link>
-
-            {/* Other Services Dropdown */}
+            {/* Services Dropdown */}
             <div className="nav-item-with-dropdown">
               <a
                 className="nav-link hover:text-red-600 flex items-center font-medium cursor-pointer"
@@ -283,7 +272,7 @@ const Header = () => {
                 aria-haspopup="true" // Accessibility
                 aria-expanded={isServicesDropdownOpen} // Accessibility
               >
-                Other Services
+                Services
                 <svg
                   className={`nav-arrow w-4 h-4 ml-1 fill-current transition-transform duration-200 ${
                     isServicesDropdownOpen ? "rotate-180" : ""
@@ -294,124 +283,58 @@ const Header = () => {
                 </svg>
               </a>
               <div
-                className={`dropdown-menu services-dropdown ${
+                className={`dropdown-menu ${
                   isServicesDropdownOpen ? "show" : ""
                 }`}
               >
                 {" "}
                 {/* Conditionally add 'show' class */}
-                <Link
-                  href="/other-services#gps-tracking"
-                  passHref
-                  legacyBehavior
-                >
+                <h6 className="dropdown-section-header">
+                  iTrace Services - Industry Leader
+                </h6>
+                <Link href="/services#fuel-monitoring" passHref legacyBehavior>
                   <a className="dropdown-link" onClick={handleLinkClick}>
-                    GPS Tracking and Fleet Management{" "}
-                    <span className="dropdown-annotation">
-                      (techbarn & autotronix)
-                    </span>
+                    Fuel Monitoring
                   </a>
                 </Link>
-                <Link
-                  href="/other-services#ai-dashcams"
-                  passHref
-                  legacyBehavior
-                >
+                <Link href="/services#remote-access" passHref legacyBehavior>
                   <a className="dropdown-link" onClick={handleLinkClick}>
-                    AI Dashcams and MDVR{" "}
-                    <span className="dropdown-annotation">
-                      (techbarn & autotronix)
-                    </span>
+                    Remote Access Systems
                   </a>
                 </Link>
-                <Link
-                  href="/other-services#vehicle-audio"
-                  passHref
-                  legacyBehavior
-                >
+                <Link href="/services#asset-tracking" passHref legacyBehavior>
                   <a className="dropdown-link" onClick={handleLinkClick}>
-                    Vehicle Audio & Multimedia Systems
+                    Asset Tracking Solutions
                   </a>
                 </Link>
-                <Link
-                  href="/other-services#autolocksmith"
-                  passHref
-                  legacyBehavior
-                >
+                <Link href="/services#fleet-management" passHref legacyBehavior>
                   <a className="dropdown-link" onClick={handleLinkClick}>
-                    Autolocksmith Services{" "}
-                    <span className="dropdown-annotation">(autotronix)</span>
+                    Fleet Management
                   </a>
                 </Link>
               </div>
             </div>
 
-            {/* About Us Link */}
-            <Link href="/about" passHref legacyBehavior>
+            {/* Contact Link */}
+            <Link href="/contact" passHref legacyBehavior>
               <a
                 className="nav-link hover:text-red-600 font-medium"
                 onClick={handleLinkClick}
               >
-                About Us
-              </a>
-            </Link>
-
-            {/* Reviews Link */}
-            <Link href="/reviews" passHref legacyBehavior>
-              <a
-                className="nav-link hover:text-red-600 font-medium"
-                onClick={handleLinkClick}
-              >
-                Reviews
-              </a>
-            </Link>
-
-            {/* Blog Link */}
-            <Link href="/blog" passHref legacyBehavior>
-              <a
-                className="nav-link hover:text-red-600 font-medium"
-                onClick={handleLinkClick}
-              >
-                Blog
+                Contact
               </a>
             </Link>
           </nav>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden">
-            <button
-              ref={menuButtonRef} // Add ref for outside click detection
-              className="mobile-menu-button"
-              aria-label={isMobileMenuOpen ? "Close Menu" : "Open Menu"} // Dynamic label
-              aria-expanded={isMobileMenuOpen} // Accessibility state
-              aria-controls="main-menu-nav" // Points to the element it controls (add id="main-menu-nav" to the nav element if needed, though ref is used here)
-              onClick={toggleMobileMenu}
-            >
-              {/* Animated Hamburger/Close Icon */}
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                {isMobileMenuOpen ? (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M6 18L18 6M6 6l12 12"
-                  /> // Close (X) icon
-                ) : (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 6h16M4 12h16m-7 6h7"
-                  /> // Hamburger icon
-                )}
-              </svg>
-            </button>
-          </div>
+          <button
+            ref={menuButtonRef}
+            onClick={toggleMobileMenu}
+            className="menu-button md:hidden text-xl p-2"
+            aria-label="Toggle mobile menu"
+          >
+            <span className="text-black">☰</span> {/* Hamburger icon */}
+          </button>
         </div>
       </div>
     </header>
