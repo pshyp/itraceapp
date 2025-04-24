@@ -73,14 +73,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: relative;
-}
-
-.main-nav .container {
-  display: grid;
-  grid-template-columns: auto 1fr; 
-  align-items: center;
-  gap: 1rem; 
+  gap: 1rem;
 }
 
 /* Logo */
@@ -92,6 +85,7 @@
 .site-logo {
   margin-right: 0;
 }
+
 /* Nav Menu (Desktop) */
 .main-menu {
   display: grid;
@@ -100,12 +94,16 @@
   grid-template-columns: 1fr;
 }
 
-
 @media (min-width: 768px) {
   .main-menu {
     display: flex;
     align-items: center;
     gap: 1.5rem;
+  }
+
+  /* Hide mobile menu button on desktop */
+  .mobile-menu-button {
+    display: none;
   }
 }
 
