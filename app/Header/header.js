@@ -1,7 +1,8 @@
-'use client'
-import React, { useState } from "react";
+"use client";
+
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import "./header.css";
+import "./header.css"; // Make sure to import the CSS
 import {
   FaInstagram,
   FaPinterest,
@@ -15,15 +16,67 @@ import {
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isRemoteDropdownOpen, setIsRemoteDropdownOpen] = useState(false);
+  const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false);
+
+  const menuButtonRef = useRef(null);
+  const navRef = useRef(null);
 
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
   const closeMobileMenu = () => {
     setIsMobileMenuOpen(false);
+    setIsRemoteDropdownOpen(false); // Close dropdowns when menu closes
+    setIsServicesDropdownOpen(false);
   };
+
+  const toggleRemoteDropdown = (e) => {
+    e.preventDefault(); // Prevent navigation if it were a real link
+    setIsRemoteDropdownOpen(!isRemoteDropdownOpen);
+    setIsServicesDropdownOpen(false); // Close other dropdown
+  };
+
+  const toggleServicesDropdown = (e) => {
+    e.preventDefault(); // Prevent navigation if it were a real link
+    setIsServicesDropdownOpen(!isServicesDropdownOpen);
+    setIsRemoteDropdownOpen(false); // Close other dropdown
+  };
+
+  // Effect for handling clicks outside the menu
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      // If menu is open and click is outside the nav and outside the button
+      if (
+        isMobileMenuOpen &&
+        navRef.current &&
+        !navRef.current.contains(event.target) &&
+        menuButtonRef.current &&
+        !menuButtonRef.current.contains(event.target)
+      ) {
+        closeMobileMenu();
+      }
+    };
+
+    // Add listener if menu is open
+    if (isMobileMenuOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    // Cleanup: remove listener when component unmounts or menu closes
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isMobileMenuOpen]); // Re-run effect when isMobileMenuOpen changes
+
+  // Helper function for link clicks
+  const handleLinkClick = () => {
+    closeMobileMenu();
+    // Add any other logic needed on link click
+  };
+
   return (
     <header className="site-header">
-      {/* Top Bar */}
+      {/* Top Bar (no changes needed here) */}
       <div className="top-bar">
         <div className="container flex flex-col md:flex-row items-center justify-between">
           <div className="contact-info flex-wrap md:flex-nowrap md:w-auto flex md:space-x-4">
@@ -39,7 +92,10 @@ const Header = () => {
               0722 100 506
             </a>
             <span className="hidden md:inline">|</span>
-            <a href="tel:0751100506" className="whitespace-nowrap hidden md:inline">
+            <a
+              href="tel:0751100506"
+              className="whitespace-nowrap hidden md:inline"
+            >
               0751 100 506
             </a>
             <span className="hidden md:inline">|</span>
@@ -50,33 +106,50 @@ const Header = () => {
           </div>
 
           <div className="social-icons">
-            <Link href="https://facebook.com/" passHref legacyBehavior >
-              <a aria-label="Facebook">
+            {/* Social Icons Links (no changes needed) */}
+            <Link href="https://facebook.com/" passHref legacyBehavior>
+              <a
+                aria-label="Facebook"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <FaFacebookF />
-              </a>           
+              </a>
             </Link>
             <Link href="https://instagram.com/" passHref legacyBehavior>
-              <a aria-label="Instagram">
+              <a
+                aria-label="Instagram"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <FaInstagram />
               </a>
             </Link>
             <Link href="https://twitter.com/" passHref legacyBehavior>
-              <a aria-label="Twitter">
+              <a aria-label="Twitter" target="_blank" rel="noopener noreferrer">
                 <FaTwitter />
               </a>
             </Link>
             <Link href="https://linkedin.com/" passHref legacyBehavior>
-              <a aria-label="LinkedIn">
+              <a
+                aria-label="LinkedIn"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <FaLinkedinIn />
               </a>
             </Link>
             <Link href="https://pinterest.com/" passHref legacyBehavior>
-              <a aria-label="Pinterest">
+              <a
+                aria-label="Pinterest"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <FaPinterest />
               </a>
             </Link>
             <Link href="https://tiktok.com/" passHref legacyBehavior>
-              <a aria-label="TikTok">
+              <a aria-label="TikTok" target="_blank" rel="noopener noreferrer">
                 <FaTiktok />
               </a>
             </Link>
@@ -85,45 +158,67 @@ const Header = () => {
       </div>
 
       {/* Main Navigation */}
-      <div className="main-nav bg-white py-3 ">
+      <div className="main-nav bg-white py-3">
         <div className="container mx-auto flex justify-between items-center px-4">
-          {/* Logo */}
-            <Link href="/" passHref legacyBehavior>
-              <a className="flex items-center shrink-0 site-logo">
-                <img
-                  src="/Logo.png"
-                  alt="iTraceAfrica Logo - Home"
-                  className="h-10 md:h-12"
-                />
-              </a>
-            </Link>        
-          {/* Navigation */}
+          {/* Logo (no changes needed) */}
+          <Link href="/" passHref legacyBehavior>
+            <a
+              className="flex items-center shrink-0 site-logo"
+              onClick={handleLinkClick}
+            >
+              <img
+                src="/Logo.png"
+                alt="iTraceAfrica Logo - Home"
+                className="h-10 md:h-12"
+              />
+            </a>
+          </Link>
+
+          {/* Main Menu Nav */}
           <nav
+            ref={navRef} // Add ref for outside click detection
             className={`main-menu md:flex space-x-6 lg:space-x-8 items-center ${
               isMobileMenuOpen
-                ? "flex flex-col absolute top-full left-0 w-full bg-white z-10 p-4"
+                ? "mobile-menu-active flex flex-col absolute top-full left-0 w-full bg-white z-50 p-4 shadow-lg" // Added z-50, shadow, mobile-menu-active class
                 : "hidden"
-            } md:static md:w-auto md:flex-row`}
+            } md:static md:w-auto md:flex-row md:bg-transparent md:shadow-none md:p-0 md:top-auto md:left-auto md:z-auto`} // Ensure desktop overrides mobile styles
           >
+            {/* Fuel Monitoring Link */}
             <Link href="/fuel-monitoring" passHref legacyBehavior>
-              <a className="nav-link hover:text-red-600 font-medium">
+              <a
+                className="nav-link hover:text-red-600 font-medium"
+                onClick={handleLinkClick}
+              >
                 Fuel Monitoring
               </a>
             </Link>
 
-
-            <div className="nav-item-with-dropdown ">
-              <a className="nav-link hover:text-red-600 flex items-center font-medium">
+            {/* Remote Access Dropdown */}
+            <div className="nav-item-with-dropdown">
+              <a
+                className="nav-link hover:text-red-600 flex items-center font-medium cursor-pointer"
+                onClick={toggleRemoteDropdown} // Click handler for dropdown toggle
+                aria-haspopup="true" // Accessibility
+                aria-expanded={isRemoteDropdownOpen} // Accessibility
+              >
                 Remote Access Systems
                 <svg
-                  className="nav-arrow w-4 h-4 ml-1 fill-current "
+                  className={`nav-arrow w-4 h-4 ml-1 fill-current transition-transform duration-200 ${
+                    isRemoteDropdownOpen ? "rotate-180" : ""
+                  }`} // Rotate arrow when open
                   viewBox="0 0 20 20"
                 >
-                  <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/>
+                  <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
                 </svg>
               </a>
-              <div className="dropdown-menu">
-                <h6 className="dropdown-section-header ">
+              <div
+                className={`dropdown-menu ${
+                  isRemoteDropdownOpen ? "show" : ""
+                }`}
+              >
+                {" "}
+                {/* Conditionally add 'show' class */}
+                <h6 className="dropdown-section-header">
                   iTrace Networks - Remote Access
                 </h6>
                 <Link
@@ -131,14 +226,16 @@ const Header = () => {
                   passHref
                   legacyBehavior
                 >
-                  <a className="dropdown-link">Genset Solutions</a>
+                  <a className="dropdown-link" onClick={handleLinkClick}>
+                    Genset Solutions
+                  </a>
                 </Link>
                 <Link
                   href="/remote-access-systems#solar"
                   passHref
                   legacyBehavior
                 >
-                  <a className="dropdown-link">
+                  <a className="dropdown-link" onClick={handleLinkClick}>
                     Solar Installations Remote Monitoring
                   </a>
                 </Link>
@@ -147,43 +244,63 @@ const Header = () => {
                   passHref
                   legacyBehavior
                 >
-                  <a className="dropdown-link">Smart Farm Solutions</a>
+                  <a className="dropdown-link" onClick={handleLinkClick}>
+                    Smart Farm Solutions
+                  </a>
                 </Link>
                 <Link
                   href="/remote-access-systems#cold-storage"
                   passHref
                   legacyBehavior
                 >
-                  <a className="dropdown-link">
+                  <a className="dropdown-link" onClick={handleLinkClick}>
                     Cold Storage Remote Monitoring (IOT)
                   </a>
                 </Link>
               </div>
             </div>
 
+            {/* Alarm Systems Link */}
             <Link href="/alarm-systems" passHref legacyBehavior>
-              <a className="nav-link hover:text-red-600 font-medium">
+              <a
+                className="nav-link hover:text-red-600 font-medium"
+                onClick={handleLinkClick}
+              >
                 Alarm Systems
               </a>
-            </Link>           
+            </Link>
 
-            <div className="nav-item-with-dropdown ">
-              <a className="nav-link hover:text-red-600 flex items-center font-medium">
-                Other Services                
+            {/* Other Services Dropdown */}
+            <div className="nav-item-with-dropdown">
+              <a
+                className="nav-link hover:text-red-600 flex items-center font-medium cursor-pointer"
+                onClick={toggleServicesDropdown} // Click handler for dropdown toggle
+                aria-haspopup="true" // Accessibility
+                aria-expanded={isServicesDropdownOpen} // Accessibility
+              >
+                Other Services
                 <svg
-                  className="nav-arrow w-4 h-4 ml-1 fill-current"
+                  className={`nav-arrow w-4 h-4 ml-1 fill-current transition-transform duration-200 ${
+                    isServicesDropdownOpen ? "rotate-180" : ""
+                  }`} // Rotate arrow when open
                   viewBox="0 0 20 20"
                 >
                   <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
                 </svg>
               </a>
-              <div className="dropdown-menu services-dropdown">
+              <div
+                className={`dropdown-menu services-dropdown ${
+                  isServicesDropdownOpen ? "show" : ""
+                }`}
+              >
+                {" "}
+                {/* Conditionally add 'show' class */}
                 <Link
                   href="/other-services#gps-tracking"
                   passHref
                   legacyBehavior
                 >
-                  <a className="dropdown-link">
+                  <a className="dropdown-link" onClick={handleLinkClick}>
                     GPS Tracking and Fleet Management{" "}
                     <span className="dropdown-annotation">
                       (techbarn & autotronix)
@@ -195,7 +312,7 @@ const Header = () => {
                   passHref
                   legacyBehavior
                 >
-                  <a className="dropdown-link">
+                  <a className="dropdown-link" onClick={handleLinkClick}>
                     AI Dashcams and MDVR{" "}
                     <span className="dropdown-annotation">
                       (techbarn & autotronix)
@@ -207,7 +324,7 @@ const Header = () => {
                   passHref
                   legacyBehavior
                 >
-                  <a className="dropdown-link">
+                  <a className="dropdown-link" onClick={handleLinkClick}>
                     Vehicle Audio & Multimedia Systems
                   </a>
                 </Link>
@@ -216,7 +333,7 @@ const Header = () => {
                   passHref
                   legacyBehavior
                 >
-                  <a className="dropdown-link">
+                  <a className="dropdown-link" onClick={handleLinkClick}>
                     Autolocksmith Services{" "}
                     <span className="dropdown-annotation">(autotronix)</span>
                   </a>
@@ -224,42 +341,73 @@ const Header = () => {
               </div>
             </div>
 
+            {/* About Us Link */}
             <Link href="/about" passHref legacyBehavior>
-              <a className="nav-link hover:text-red-600 font-medium">
+              <a
+                className="nav-link hover:text-red-600 font-medium"
+                onClick={handleLinkClick}
+              >
                 About Us
               </a>
             </Link>
 
+            {/* Reviews Link */}
             <Link href="/reviews" passHref legacyBehavior>
-              <a className="nav-link hover:text-red-600 font-medium">Reviews</a>
+              <a
+                className="nav-link hover:text-red-600 font-medium"
+                onClick={handleLinkClick}
+              >
+                Reviews
+              </a>
             </Link>
+
+            {/* Blog Link */}
             <Link href="/blog" passHref legacyBehavior>
-              <a className="nav-link hover:text-red-600 font-medium ">Blog</a>
+              <a
+                className="nav-link hover:text-red-600 font-medium"
+                onClick={handleLinkClick}
+              >
+                Blog
+              </a>
             </Link>
           </nav>
 
+          {/* Mobile Menu Button */}
           <div className="md:hidden">
             <button
+              ref={menuButtonRef} // Add ref for outside click detection
               className="mobile-menu-button"
-              aria-label="Open Menu"
+              aria-label={isMobileMenuOpen ? "Close Menu" : "Open Menu"} // Dynamic label
+              aria-expanded={isMobileMenuOpen} // Accessibility state
+              aria-controls="main-menu-nav" // Points to the element it controls (add id="main-menu-nav" to the nav element if needed, though ref is used here)
               onClick={toggleMobileMenu}
             >
+              {/* Animated Hamburger/Close Icon */}
               <svg
                 className="w-6 h-6"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16m-7 6h7"
-                />
+                {isMobileMenuOpen ? (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M6 18L18 6M6 6l12 12"
+                  /> // Close (X) icon
+                ) : (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M4 6h16M4 12h16m-7 6h7"
+                  /> // Hamburger icon
+                )}
               </svg>
             </button>
           </div>
-       </div>
+        </div>
       </div>
     </header>
   );

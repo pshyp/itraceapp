@@ -1,27 +1,52 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Image from "next/image";
+import ftc921 from "../public/FTC921.webp";
+import ftc961 from "../public/FTC961.png";
+import ftc881 from "../public/FTC881.jpg";
 import "./globals.css";
 
-export default function Home() {
-  return (
-    <div className="fuel-home-container">
-      <div className="fuel-home-content">
-        <h1>Fuel Monitor FTC 921</h1>
-        <p>Built for Precision Fuel Intelligence.</p>
 
+export default function Home() {
+  const monitors = [ftc921, ftc961, ftc881];
+  const [index, setIndex] = useState(0);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prevIndex) => (prevIndex + 1) % monitors.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
+  return (
+    <>
+      
+
+      <main className="main-content no-padding">
         <div className="image-wrapper">
           <Image
-            src="/FTC921.webp"
-            alt="Fuel Monitor FTC 921"
+            src={monitors[index]}
+            alt="Fuel Monitor Device"
             fill
-            style={{ objectFit: "cover" }}
+            className="monitor-image"
+            priority
           />
         </div>
 
-        <div className="buttons">
-          <button className="primary">Learn more</button>
-          <button className="secondary">Buy</button>
+        <h2 className="product-title">Fuel Monitors</h2>
+        <p className="product-subtitle">Built for smart vehicle tracking.</p>
+
+        <div className="button-group">
+          <button className="primary-button">Learn more</button>
+          <button className="secondary-button">Buy</button>
         </div>
-      </div>
-    </div>
+      </main>
+    </>
   );
 }
