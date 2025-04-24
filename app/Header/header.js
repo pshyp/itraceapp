@@ -78,27 +78,21 @@ const Header = () => {
     <header className="site-header">
       {/* Top Bar (no changes needed here) */}
       <div className="top-bar">
-        <div className="container flex flex-col md:flex-row items-center justify-between">
-          <div className="contact-info flex-wrap md:flex-nowrap md:w-auto flex md:space-x-4">
+        <div className="container">
+          <div className="contact-info">
             <FaPhone />
             <a href="tel:+254704777100" className="whitespace-nowrap">
               (+254) 704 777 100
             </a>
-            <span className="hidden md:inline">|</span>
-            <a
-              href="tel:0722100506"
-              className="whitespace-nowrap hidden md:inline"
-            >
+            <span className="hidden">|</span>
+            <a href="tel:0722100506" className="whitespace-nowrap hidden">
               0722 100 506
             </a>
-            <span className="hidden md:inline">|</span>
-            <a
-              href="tel:0751100506"
-              className="whitespace-nowrap hidden md:inline"
-            >
+            <span className="hidden">|</span>
+            <a href="tel:0751100506" className="whitespace-nowrap hidden">
               0751 100 506
             </a>
-            <span className="hidden md:inline">|</span>
+            <span className="hidden">|</span>
             <a href="mailto:info@itraceservice.com" className="email-link">
               <FaEnvelope />
               <span>info@itraceservice.com</span>
@@ -106,7 +100,6 @@ const Header = () => {
           </div>
 
           <div className="social-icons">
-            {/* Social Icons Links (no changes needed) */}
             <Link href="https://facebook.com/" passHref legacyBehavior>
               <a
                 aria-label="Facebook"
@@ -158,18 +151,18 @@ const Header = () => {
       </div>
 
       {/* Main Navigation */}
-      <div className="main-nav bg-white py-3">
-        <div className="container mx-auto flex justify-between items-center px-4">
+      <div className="main-nav">
+        <div className="container">
           {/* Logo (no changes needed) */}
           <Link href="/" passHref legacyBehavior>
             <a
-              className="flex items-center shrink-0 site-logo"
+              className="flex items-center site-logo"
               onClick={handleLinkClick}
             >
               <img
                 src="/Logo.png"
                 alt="iTraceAfrica Logo - Home"
-                className="h-10 md:h-12"
+                className="h-10"
               />
             </a>
           </Link>
@@ -177,38 +170,31 @@ const Header = () => {
           {/* Main Menu Nav */}
           <nav
             ref={navRef} // Add ref for outside click detection
-            className={`main-menu md:flex space-x-6 lg:space-x-8 items-center ${
-              isMobileMenuOpen
-                ? "mobile-menu-active flex flex-col absolute top-full left-0 w-full bg-white z-50 p-4 shadow-lg" // Added z-50, shadow, mobile-menu-active class
-                : "hidden"
-            } md:static md:w-auto md:flex-row md:bg-transparent md:shadow-none md:p-0 md:top-auto md:left-auto md:z-auto`} // Ensure desktop overrides mobile styles
+            className={`main-menu ${
+              isMobileMenuOpen ? "mobile-menu-active" : "hidden"
+            }`}
           >
             {/* Fuel Monitoring Link */}
             <Link href="/fuel-monitoring" passHref legacyBehavior>
-              <a
-                className="nav-link hover:text-red-600 font-medium"
-                onClick={handleLinkClick}
-              >
+              <a className="nav-link" onClick={handleLinkClick}>
                 Fuel Monitoring
-                <span className="hidden md:inline">
-                  Fuel Monitors Built for smart vehicle tracking.
-                </span>
+                
               </a>
             </Link>
 
             {/* Remote Access Dropdown */}
             <div className="nav-item-with-dropdown">
               <a
-                className="nav-link hover:text-red-600 flex items-center font-medium cursor-pointer"
+                className="nav-link"
                 onClick={toggleRemoteDropdown} // Click handler for dropdown toggle
                 aria-haspopup="true" // Accessibility
                 aria-expanded={isRemoteDropdownOpen} // Accessibility
               >
                 Remote Access Systems
                 <svg
-                  className={`nav-arrow w-4 h-4 ml-1 fill-current transition-transform duration-200 ${
+                  className={`nav-arrow ${
                     isRemoteDropdownOpen ? "rotate-180" : ""
-                  }`} // Rotate arrow when open
+                  }`}
                   viewBox="0 0 20 20"
                 >
                   <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
@@ -219,8 +205,6 @@ const Header = () => {
                   isRemoteDropdownOpen ? "show" : ""
                 }`}
               >
-                {" "}
-                {/* Conditionally add 'show' class */}
                 <h6 className="dropdown-section-header">
                   iTrace Networks - Remote Access
                 </h6>
@@ -266,16 +250,16 @@ const Header = () => {
             {/* Services Dropdown */}
             <div className="nav-item-with-dropdown">
               <a
-                className="nav-link hover:text-red-600 flex items-center font-medium cursor-pointer"
+                className="nav-link"
                 onClick={toggleServicesDropdown} // Click handler for dropdown toggle
                 aria-haspopup="true" // Accessibility
                 aria-expanded={isServicesDropdownOpen} // Accessibility
               >
                 Services
                 <svg
-                  className={`nav-arrow w-4 h-4 ml-1 fill-current transition-transform duration-200 ${
+                  className={`nav-arrow ${
                     isServicesDropdownOpen ? "rotate-180" : ""
-                  }`} // Rotate arrow when open
+                  }`}
                   viewBox="0 0 20 20"
                 >
                   <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
@@ -286,8 +270,6 @@ const Header = () => {
                   isServicesDropdownOpen ? "show" : ""
                 }`}
               >
-                {" "}
-                {/* Conditionally add 'show' class */}
                 <h6 className="dropdown-section-header">
                   iTrace Services - Industry Leader
                 </h6>
@@ -316,10 +298,7 @@ const Header = () => {
 
             {/* Contact Link */}
             <Link href="/contact" passHref legacyBehavior>
-              <a
-                className="nav-link hover:text-red-600 font-medium"
-                onClick={handleLinkClick}
-              >
+              <a className="nav-link" onClick={handleLinkClick}>
                 Contact
               </a>
             </Link>
@@ -329,7 +308,7 @@ const Header = () => {
           <button
             ref={menuButtonRef}
             onClick={toggleMobileMenu}
-            className="menu-button md:hidden text-xl p-2"
+            className="menu-button"
             aria-label="Toggle mobile menu"
           >
             <span className="text-black">☰</span> {/* Hamburger icon */}
