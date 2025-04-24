@@ -190,8 +190,7 @@ const Header = () => {
                 onClick={handleLinkClick}
               >
                 Fuel Monitoring
-                <span className="hidden md:inline"
-                >
+                <span className="hidden md:inline">
                   Fuel Monitors Built for smart vehicle tracking.
                 </span>
               </a>
