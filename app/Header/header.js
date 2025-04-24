@@ -184,6 +184,11 @@ const Header = () => {
             } md:static md:w-auto md:flex-row md:bg-transparent md:shadow-none md:p-0 md:top-auto md:left-auto md:z-auto`} // Ensure desktop overrides mobile styles
           >
             {/* Fuel Monitoring Link */}
+            <span className="hidden md:inline"
+            >
+              Fuel Monitors Built for smart vehicle tracking.
+            </span>
+
             <Link href="/fuel-monitoring" passHref legacyBehavior>
               <a
                 className="nav-link hover:text-red-600 font-medium"
