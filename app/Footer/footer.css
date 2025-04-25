@@ -1,0 +1,72 @@
+/* footer.css */
+.site-footer {
+    background-color: var(--primary-color);
+    color: white; /* Adjust text color for better contrast */
+    padding: 40px 0; /* Adjust padding as needed */
+  }
+  
+  .site-footer .container {
+    max-width: 1200px; /* Adjust container width as needed */
+    margin: 0 auto;
+    padding: 0 20px; /* Adjust container padding */
+  }
+  
+  .footer-widgets {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive columns */
+    gap: 30px; /* Adjust gap between widgets */
+    margin-bottom: 30px;
+  }
+  
+  .widget h3 {
+    color: white;
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--secondary-color); /* Use secondary color for accent */
+    padding-bottom: 5px;
+  }
+  
+  .widget p,
+  .widget ul,
+  .widget li,
+  .widget a {
+    color: #ddd; /* Slightly lighter text for content */
+    line-height: 1.6;
+  }
+  
+  .widget ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .widget li {
+    margin-bottom: 8px;
+  }
+  
+  .widget a {
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .widget a:hover {
+    color: var(--secondary-color);
+  }
+  
+  .logo-widget {
+    text-align: center; /* Center the logo */
+  }
+  
+  .partner-logo {
+    max-width: 150px; /* Adjust maximum width of the logo */
+    height: auto;
+  }
+  
+  .footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #333; /* Subtle top border */
+    font-size: 0.9rem;
+  }
+  
+  .footer-bottom p {
+    margin: 0;
+  }
