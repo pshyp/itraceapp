@@ -4,6 +4,7 @@
 import React from "react";
 import Link from "next/link";
 import "./footer.css"; // Import your footer CSS
+import { FaHome, FaMapMarkerAlt, FaPhone, FaMobileAlt, FaEnvelope } from "react-icons/fa"; // Import relevant icons
 
 const Footer = () => {
   return (
@@ -11,12 +12,19 @@ const Footer = () => {
       <div className="container">
         <div className="footer-widgets">
           <div className="widget">
-            <h3>About Us</h3>
+            <h3>Head Office</h3>
             <p>
-              Your company description goes here. Tell your visitors about your
-              mission, values, and what makes you unique.
+              <FaHome className="icon" /> Itrace Africa
+              <br />
+              <FaMapMarkerAlt className="icon" /> Limuru Rd, Opp. Jamhuri High
+              School, Nairobi
+              <br />
+              <FaPhone className="icon" /> (+254) 704 777 100
+              <br />
+              <FaMobileAlt className="icon" /> 0722 100 506, 0751 100 506
+              <br />
+              <FaEnvelope className="icon" /> info@itraceafrica.com
             </p>
-            {/* You can add more about us details here */}
           </div>
           <div className="widget">
             <h3>Quick Links</h3>
@@ -24,6 +32,16 @@ const Footer = () => {
               <li>
                 <Link href="/" passHref legacyBehavior>
                   <a>Home</a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/fuel-monitoring" passHref legacyBehavior>
+                  <a>Fuel Monitoring</a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/remote-access-systems" passHref legacyBehavior>
+                  <a>Remote Access Systems</a>
                 </Link>
               </li>
               <li>
@@ -39,17 +57,6 @@ const Footer = () => {
               {/* Add more quick links as needed */}
             </ul>
           </div>
-          <div className="widget">
-            <h3>Contact Information</h3>
-            <p>
-              Address: 123 Main Street, Anytown, Country
-              <br />
-              Phone: +1 (555) 123-4567
-              <br />
-              Email: info@example.com
-            </p>
-            {/* Add social media links or other contact info */}
-          </div>
           <div className="widget logo-widget">
             <h3>Our Partners</h3>
             <img
@@ -61,7 +68,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="footer-bottom">
-          <p>&copy; {new Date().getFullYear()} Your Company Name. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Itrace Africa. All rights reserved.</p>
           {/* Add any copyright information or additional links here */}
         </div>
       </div>
