@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import Image from "next/image";
 import ftc921 from "../public/FTC921.webp";
 import ftc961 from "../public/FTC961.png";
@@ -43,7 +44,9 @@ export default function Home() {
           />
         </div>
         <div className="button-group">
-          <button className="primary-button">Learn more</button>
+          <Link href="/fuel-monitoring">
+            <button className="primary-button">Learn more</button>
+          </Link>
      
         </div>
       </main>

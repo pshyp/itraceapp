@@ -79,7 +79,7 @@ const Header = () => {
       {/* Top Bar (no changes needed here) */}
       <div className="top-bar">
         <div className="container">
-          a<div className="contact-info">
+          <div className="contact-info">
             <FaPhone />
             <a href="tel:+254704777100" className="whitespace-nowrap">
               (+254) 704 777 100
