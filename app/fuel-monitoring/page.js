@@ -18,15 +18,15 @@ const FuelMonitoringPage = () => {
   return (
     <div className={styles.fuelMonitoringContainer}>
       <h1 className={styles.fuelMonitoringTitle}>Fuel Monitoring</h1>
-      <div className={styles.imageGrid}>
+      <div className={styles.responsiveImageGrid}>
         {imageFiles.map((image, index) => {
           const imageName = path.basename(image, path.extname(image)); // Remove the extension
           return (
             <div key={index} className={styles.imageItem}>
               <img
                 src={`/${image}`} // The path to the image in the public directory
-                alt={imageName}
-                className={styles.fuelImage}
+                alt={imageName} 
+                className={styles.responsiveImage}
               />
               <p className={styles.imageName}>{imageName}</p>
             </div>
