@@ -1,1 +1,70 @@
 
+.fuelMonitoringContainer {
+    padding: 20px;
+  }
+  
+  .fuelMonitoringTitle {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+  
+  .responsiveImageGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+  
+  .imageItem {
+    background: #1e1e1e;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    color: white;
+    transition: transform 0.3s ease;
+  }
+  
+  .imageItem:hover {
+    transform: translateY(-5px);
+  }
+  
+  .responsiveImage {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    margin-bottom: 10px;
+  }
+  
+  .imageName {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin: 10px 0;
+  }
+  
+  .descriptionList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+  }
+  
+  .descriptionItem {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+  }
+  
+  /* Responsive text adjustments */
+  @media (max-width: 600px) {
+    .fuelMonitoringTitle {
+      font-size: 1.5rem;
+    }
+  
+    .imageName {
+      font-size: 1rem;
+    }
+  
+    .descriptionItem {
+      font-size: 0.85rem;
+    }
+  }
+  
