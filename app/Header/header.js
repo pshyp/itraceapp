@@ -77,30 +77,32 @@ const Header = () => {
   return (
     <header className="site-header">
       {/* Top Bar (no changes needed here) */}
-      <div className="top-bar">
-        <div className="container">
-          <div className="contact-info">
+      <div className="top-bar ">
+        <div className="container flex items-center justify-between">
+          <div className="contact-info flex items-center justify-center ">
             <FaPhone />
             <a href="tel:+254704777100" className="whitespace-nowrap">
               (+254) 704 777 100
             </a>
-            <span className="hidden">|</span>
-            <a href="tel:0722100506" className="whitespace-nowrap hidden">
+            <span className="hidden px-2">|</span>
+            <a href="tel:0722100506" className="whitespace-nowrap hidden ">
               0722 100 506
             </a>
-            <span className="hidden">|</span>
-            <a href="tel:0751100506" className="whitespace-nowrap hidden">
+            <span className="hidden px-2">|</span>
+            <a href="tel:0751100506" className="whitespace-nowrap hidden ">
               0751 100 506
             </a>
-            <span className="hidden">|</span>
-            <a href="mailto:info@itraceservice.com" className="email-link">
+            
+           
+            
+            <a href="mailto:info@itraceservice.com" className="email-link px-2">
               <FaEnvelope />
               <span>info@itraceservice.com</span>
             </a>
           </div>
 
           <div className="social-icons">
-            <Link href="https://facebook.com/" passHref legacyBehavior>
+            <Link href="https://www.facebook.com/itrace.africa" passHref legacyBehavior>
               <a
                 aria-label="Facebook"
                 target="_blank"
@@ -108,40 +110,8 @@ const Header = () => {
               >
                 <FaFacebookF />
               </a>
-            </Link>
-            <Link href="https://instagram.com/" passHref legacyBehavior>
-              <a
-                aria-label="Instagram"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaInstagram />
-              </a>
-            </Link>
-            <Link href="https://twitter.com/" passHref legacyBehavior>
-              <a aria-label="Twitter" target="_blank" rel="noopener noreferrer">
-                <FaTwitter />
-              </a>
-            </Link>
-            <Link href="https://linkedin.com/" passHref legacyBehavior>
-              <a
-                aria-label="LinkedIn"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaLinkedinIn />
-              </a>
-            </Link>
-            <Link href="https://pinterest.com/" passHref legacyBehavior>
-              <a
-                aria-label="Pinterest"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaPinterest />
-              </a>
-            </Link>
-            <Link href="https://tiktok.com/" passHref legacyBehavior>
+             
+            <Link href="http://tiktok.com/@itraceafricatelematics" passHref legacyBehavior>
               <a aria-label="TikTok" target="_blank" rel="noopener noreferrer">
                 <FaTiktok />
               </a>
