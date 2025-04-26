@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import styles from './fuel-monitoring.css'; // Import the CSS module
+import styles from './fuel-monitoring.module.css'; // Import the CSS module
 
 const FuelMonitoringPage = () => {
   const imagesDirectory = path.join(process.cwd(), 'public');
