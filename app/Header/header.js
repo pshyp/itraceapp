@@ -102,7 +102,7 @@ const Header = () => {
           </div>
 
           <div className="social-icons">
-            <Link href="https://www.facebook.com/itrace.africa" passHref legacyBehavior>
+            <Link href="https://www.facebook.com/itrace.africa"  target="_blank" rel="noopener noreferrer">
               <a
                 aria-label="Facebook"
                 target="_blank"
@@ -110,8 +110,8 @@ const Header = () => {
               >
                 <FaFacebookF />
               </a>
-             
-            <Link href="http://tiktok.com/@itraceafricatelematics" passHref legacyBehavior>
+            </Link>
+            <Link href="http://tiktok.com/@itraceafricatelematics"  target="_blank" rel="noopener noreferrer">
               <a aria-label="TikTok" target="_blank" rel="noopener noreferrer">
                 <FaTiktok />
               </a>
@@ -123,7 +123,7 @@ const Header = () => {
       {/* Main Navigation */}
       <div className="main-nav">
         <div className="container">
-          {/* Logo (no changes needed) */}
+        {/* Logo (no changes needed) */}
           <Link href="/" passHref legacyBehavior>
             <a
               className="flex items-center site-logo"
@@ -144,13 +144,13 @@ const Header = () => {
               isMobileMenuOpen ? "mobile-menu-active" : "hidden"
             }`}
           >
-            {/* Fuel Monitoring Link */}
-            <Link href="/fuel-monitoring" passHref legacyBehavior>
-              <a className="nav-link" onClick={handleLinkClick}>
-                Fuel Monitoring
-                
-              </a>
-            </Link>
+          {/* Fuel Monitoring Link */}
+          <Link href="/fuel-monitoring" className="nav-link" onClick={handleLinkClick}>
+            Fuel Monitoring
+           
+          </Link>
+
+          
 
             {/* Remote Access Dropdown */}
             <div className="nav-item-with-dropdown">
@@ -178,41 +178,23 @@ const Header = () => {
                 <h6 className="dropdown-section-header">
                   iTrace Networks - Remote Access
                 </h6>
-                <Link
-                  href="/remote-access-systems#genset"
-                  passHref
-                  legacyBehavior
-                >
-                  <a className="dropdown-link" onClick={handleLinkClick}>
-                    Genset Solutions
-                  </a>
+                <Link href="/remote-access-systems#genset" className="dropdown-link" onClick={handleLinkClick}>
+                  
+                  Genset Solutions
+                
                 </Link>
-                <Link
-                  href="/remote-access-systems#solar"
-                  passHref
-                  legacyBehavior
-                >
-                  <a className="dropdown-link" onClick={handleLinkClick}>
-                    Solar Installations Remote Monitoring
-                  </a>
+                <Link href="/remote-access-systems#solar" className="dropdown-link" onClick={handleLinkClick}>
+                  
+                  Solar Installations Remote Monitoring
+               
                 </Link>
-                <Link
-                  href="/remote-access-systems#smart-farm"
-                  passHref
-                  legacyBehavior
-                >
-                  <a className="dropdown-link" onClick={handleLinkClick}>
-                    Smart Farm Solutions
-                  </a>
+                <Link href="/remote-access-systems#smart-farm" className="dropdown-link" onClick={handleLinkClick}>
+                  
+                  Smart Farm Solutions
+                
                 </Link>
-                <Link
-                  href="/remote-access-systems#cold-storage"
-                  passHref
-                  legacyBehavior
-                >
-                  <a className="dropdown-link" onClick={handleLinkClick}>
-                    Cold Storage Remote Monitoring (IOT)
-                  </a>
+                <Link href="/remote-access-systems#cold-storage" className="dropdown-link" onClick={handleLinkClick}>
+                  Cold Storage Remote Monitoring (IOT)
                 </Link>
               </div>
             </div>
@@ -243,35 +225,25 @@ const Header = () => {
                 <h6 className="dropdown-section-header">
                   iTrace Services - Industry Leader
                 </h6>
-                <Link href="/services#fuel-monitoring" passHref legacyBehavior>
-                  <a className="dropdown-link" onClick={handleLinkClick}>
-                    Fuel Monitoring
-                  </a>
+                <Link href="/services#fuel-monitoring" className="dropdown-link" onClick={handleLinkClick}>
+                  
+                  Fuel Monitoring
+                
                 </Link>
-                <Link href="/services#remote-access" passHref legacyBehavior>
-                  <a className="dropdown-link" onClick={handleLinkClick}>
-                    Remote Access Systems
-                  </a>
+                <Link href="/services#remote-access" className="dropdown-link" onClick={handleLinkClick}>
+                 Remote Access Systems
                 </Link>
-                <Link href="/services#asset-tracking" passHref legacyBehavior>
-                  <a className="dropdown-link" onClick={handleLinkClick}>
-                    Asset Tracking Solutions
-                  </a>
+                <Link href="/services#asset-tracking" className="dropdown-link" onClick={handleLinkClick}>
+                 Asset Tracking Solutions
                 </Link>
-                <Link href="/services#fleet-management" passHref legacyBehavior>
-                  <a className="dropdown-link" onClick={handleLinkClick}>
-                    Fleet Management
-                  </a>
+                <Link href="/services#fleet-management" className="dropdown-link" onClick={handleLinkClick}>
+                  Fleet Management
                 </Link>
               </div>
             </div>
 
             {/* Contact Link */}
-            <Link href="/contact" passHref legacyBehavior>
-              <a className="nav-link" onClick={handleLinkClick}>
-                Contact
-              </a>
-            </Link>
+            <Link href="/contact" className="nav-link" onClick={handleLinkClick}>Contact</Link>
           </nav>
 
           {/* Mobile Menu Button */}
