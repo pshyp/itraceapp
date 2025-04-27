@@ -125,3 +125,9 @@
   color: #555;
   margin-bottom: 0.75rem;
 }
+.deviceIntro {
+  font-size: 1rem;
+  color: #aaa;
+  margin-bottom: 5px;
+  text-align: center;
+}

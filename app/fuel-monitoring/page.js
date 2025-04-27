@@ -11,10 +11,11 @@ const FuelMonitoringPage = () => {
     return ['.jpg', '.jpeg', '.png', '.gif', '.webp'].includes(extname) && !file.startsWith('Logo');
   });
 
-  // Define a map of image names to their details
+  // Define a map of image names to their details, including the introductory phrase
   const deviceDetails = {
     FMC125: {
       name: 'FMC125',
+      intro: 'Advanced Fuel Monitoring',
       features: [
         'Fuel monitoring and more',
         'Significantly lower roaming costs',
@@ -23,6 +24,7 @@ const FuelMonitoringPage = () => {
     },
     TAT140: {
       name: 'TAT140',
+      intro: 'Simple & Reliable Tracking',
       features: [
         'Periodic location reports',
         'Backup tracking the easy way',
@@ -31,6 +33,7 @@ const FuelMonitoringPage = () => {
     },
     GH5200: {
       name: 'GH5200',
+      intro: 'Personal Safety & Communication',
       features: [
         'Two-way voice communication',
         'Programmable buttons',
@@ -39,6 +42,7 @@ const FuelMonitoringPage = () => {
     },
     FTC921: {
       name: 'FTC921',
+      intro: 'Robust Fleet Tracking',
       features: [
         'FT platform device',
         'High voltage power supply',
@@ -47,6 +51,7 @@ const FuelMonitoringPage = () => {
     },
     FTC961: {
       name: 'FTC961',
+      intro: 'Heavy-Duty Tracking',
       features: [
         'FT platform device',
         'IP69K waterproof casing',
@@ -55,6 +60,7 @@ const FuelMonitoringPage = () => {
     },
     FTC881: {
       name: 'FTC881',
+      intro: 'Easy Installation Tracking',
       features: [
         'FT platform device',
         'Fast installation',
@@ -63,6 +69,7 @@ const FuelMonitoringPage = () => {
     },
     FMC920: {
       name: 'FMC920',
+      intro: 'Smart & Efficient Tracking',
       features: [
         'Eco driving scenario for all-round better driving',
         'Slim design to fit the tightest spaces',
@@ -71,6 +78,7 @@ const FuelMonitoringPage = () => {
     },
     FMC650: {
       name: 'FMC650',
+      intro: 'Comprehensive Vehicle Data',
       features: [
         'Reliable global coverage and separate GNSS module',
         'Remote download of Tachograph files and live data',
@@ -79,6 +87,7 @@ const FuelMonitoringPage = () => {
     },
     FMM250: {
       name: 'FMM250',
+      intro: 'EV & CAN Bus Tracking',
       features: [
         'Protection against dust and water',
         'Built-in CAN bus data reading chip',
@@ -89,30 +98,27 @@ const FuelMonitoringPage = () => {
 
   return (
     <div className={styles.fuelMonitoringContainer}>
-      <h1 className={styles.fuelMonitoringTitle}>Fuel Monitoring</h1>
+      <h1 className={styles.fuelMonitoringTitle}>Fuel Monitoring Solutions</h1>
 
       {/* Introduction Section */}
       <div className={styles.introductionSection}>
-        <h2 className={styles.introductionTitle}>Why Fuel Monitoring Matters</h2>
+        <h2 className={styles.introductionTitle}>Unlock Efficiency with Advanced Fuel Monitoring</h2>
         <p className={styles.introductionText}>
-          Fuel is one of the largest operational costs for businesses managing fleets. Without accurate monitoring,
-          companies face issues like fuel theft, inefficient driving, and unexpected expenses. 
-        </p>
-        <p className={styles.introductionText}>
-          By using advanced fuel monitoring solutions, businesses gain real-time visibility into fuel consumption,
-          optimize routes, reduce wastage, and significantly improve profitability. It also helps in promoting
-          eco-friendly driving behaviors and extending the lifespan of vehicles.
+          Gain complete control over your fleet's fuel consumption and operational costs. Our cutting-edge
+          fuel monitoring devices provide real-time insights, prevent fuel theft, optimize routes, and promote
+          efficient driving habits. Explore our range of solutions designed to meet the diverse needs of your
+          business.
         </p>
       </div>
 
       {/* Key Features Section */}
       <div className={styles.keyFeaturesSection}>
-        <h2 className={styles.keyFeaturesTitle}>Key Features</h2>
+        <h2 className={styles.keyFeaturesTitle}>Key Benefits of Our Fuel Monitoring</h2>
         <ul className={styles.keyFeaturesList}>
-          <li className={styles.keyFeatureItem}><strong>Real-Time Tracking:</strong> Monitor vehicle movement and fuel usage instantly.</li>
-          <li className={styles.keyFeatureItem}><strong>Fuel Theft Prevention:</strong> Detect unusual fuel drops and leakages.</li>
-          <li className={styles.keyFeatureItem}><strong>Optimized Routes:</strong> Reduce fuel wastage by avoiding unnecessary detours.</li>
-          <li className={styles.keyFeatureItem}><strong>Driver Behavior Monitoring:</strong> Identify aggressive driving patterns to enhance safety.</li>
+          <li className={styles.keyFeatureItem}><strong>Reduce Fuel Costs:</strong> Minimize wastage and prevent unauthorized usage.</li>
+          <li className={styles.keyFeatureItem}><strong>Improve Efficiency:</strong> Optimize routes and monitor driver behavior.</li>
+          <li className={styles.keyFeatureItem}><strong>Enhance Security:</strong> Detect and prevent fuel theft with real-time alerts.</li>
+          <li className={styles.keyFeatureItem}><strong>Gain Insights:</strong> Access detailed reports on fuel consumption and vehicle performance.</li>
         </ul>
       </div>
 
@@ -124,11 +130,14 @@ const FuelMonitoringPage = () => {
 
           return (
             <div key={index} className={styles.imageItem}>
-              <img
-                src={`/${image}`}
-                alt={imageName}
-                className={styles.responsiveImage}
-              />
+              {details?.intro && <p className={styles.deviceIntro}>{details.intro}</p>} {/* Display the intro phrase */}
+              <div className={styles.imageContainer}>
+                <img
+                  src={`/${image}`}
+                  alt={details?.name || imageName}
+                  className={styles.responsiveImage}
+                />
+              </div>
               <p className={styles.imageName}>{details?.name || imageName}</p>
               <ul className={styles.descriptionList}>
                 {details?.features?.map((feature, idx) => (
