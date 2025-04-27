@@ -3,9 +3,9 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import ftc921 from "../public/FTC921.webp";
+import ftc921 from "../public/FTC921.png";
 import ftc961 from "../public/FTC961.png";
-import ftc881 from "../public/FTC881.jpg";
+import ftc881 from "../public/FTC881.png";
 import "./globals.css";
 
 
