@@ -123,3 +123,31 @@ body {
     padding: 1rem 1.5rem;  /* Larger button size */
   }
 }
+/* FEATURES SECTION */
+.features-section {
+  margin-top: 4rem;
+  text-align: left;
+  max-width: 600px;
+  width: 100%;
+}
+
+.features-title {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.features-list {
+  list-style: none;
+  padding: 0;
+}
+
+.features-list li {
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+.features-list li strong {
+  color: #0070f3;
+}
