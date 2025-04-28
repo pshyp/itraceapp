@@ -176,22 +176,22 @@ const Header = () => {
                 <h6 className="dropdown-section-header">
                   iTrace Networks - Remote Access
                 </h6>
-                <Link href="/remote-access-systems#genset" className="dropdown-link" onClick={handleLinkClick}>
+                <Link href="/remote-access-systems/genset-solutions" className="dropdown-link" onClick={handleLinkClick}>
                   
                   Genset Solutions
                 
                 </Link>
-                <Link href="/remote-access-systems#solar" className="dropdown-link" onClick={handleLinkClick}>
+                <Link href="/remote-access-systems/solar-installations-remote-monitoring" className="dropdown-link" onClick={handleLinkClick}>
                   
                   Solar Installations Remote Monitoring
                
                 </Link>
-                <Link href="/remote-access-systems#smart-farm" className="dropdown-link" onClick={handleLinkClick}>
+                <Link href="/remote-access-systems/smart-farm-solutions" className="dropdown-link" onClick={handleLinkClick}>
                   
                   Smart Farm Solutions
                 
                 </Link>
-                <Link href="/remote-access-systems#cold-storage" className="dropdown-link" onClick={handleLinkClick}>
+                <Link href="/remote-access-systems/cold-storage-remote-monitoring-iot" className="dropdown-link" onClick={handleLinkClick}>
                   Cold Storage Remote Monitoring (IOT)
                 </Link>
               </div>
