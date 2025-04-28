@@ -89,15 +89,13 @@ const Header = () => {
               0722 100 506
             </a>
             <span className="hidden px-2">|</span>
-            <a href="tel:0751100506" className="whitespace-nowrap hidden ">
-              0751 100 506
-            </a>
+            
             
            
             
             <a href="mailto:info@itraceservice.com" className="email-link px-2">
               <FaEnvelope />
-              <span>info@itraceservice.com</span>
+              <span>info@itraceafrica.com</span>
             </a>
           </div>
 
