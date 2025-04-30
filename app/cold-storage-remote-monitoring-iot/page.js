@@ -1,4 +1,4 @@
-aaa// app/cold-storage-remote-monitoring-iot/page.js
+// app/cold-storage-remote-monitoring-iot/page.js
 
 export default function ColdStorageRemoteMonitoringIOT() {
   return (
