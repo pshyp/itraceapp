@@ -223,16 +223,16 @@ const Header = () => {
                 <h6 className="dropdown-section-header">
                   iTrace Services - Industry Leader
                 </h6>
-                <Link href="/services#fuel-monitoring" className="dropdown-link" onClick={handleLinkClick}>
+                <Link href="/fuel-monitoring" className="dropdown-link" onClick={handleLinkClick}>
                   
                   Fuel Monitoring
                 
                 </Link>
-                <Link href="/services#remote-access" className="dropdown-link" onClick={handleLinkClick}>
+                <Link href="/remote-access-systems" className="dropdown-link" onClick={handleLinkClick}>
                  Remote Access Systems
                 </Link>
-                <Link href="/services#asset-tracking" className="dropdown-link" onClick={handleLinkClick}>
-                 Asset Tracking Solutions
+                <Link href="/other-services" className="dropdown-link" onClick={handleLinkClick}>
+                  Asset Tracking Solutions
                 </Link>
                 <Link href="/services#fleet-management" className="dropdown-link" onClick={handleLinkClick}>
                   Fleet Management
