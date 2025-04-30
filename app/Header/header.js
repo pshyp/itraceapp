@@ -225,7 +225,7 @@ const Header = () => {
                 </h6>
                 <Link href="/fuel-monitoring" className="dropdown-link" onClick={handleLinkClick}>
                   
-                  Fuel Monitoring
+                  Fuel Monitoring & Fleet Monitoring
                 
                 </Link>
                 <Link href="/remote-access-systems" className="dropdown-link" onClick={handleLinkClick}>
