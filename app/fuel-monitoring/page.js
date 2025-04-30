@@ -1,15 +1,26 @@
-import fs from 'fs';
-import path from 'path';
 import styles from './fuel-monitoring.module.css'; // Import the CSS module
 
 const FuelMonitoringPage = () => {
-  const imagesDirectory = path.join(process.cwd(), 'public');
-  const fileNames = fs.readdirSync(imagesDirectory);
+  const imageFiles = [
+    { src: '/fmc125.webp', name: 'FMC125' },
+    { src: '/tat140.webp', name: 'TAT140' },
+    { src: '/GH5200.png', name: 'GH5200' },
+    { src: '/FTC921.png', name: 'FTC921' },
+    { src: '/FTC961.png', name: 'FTC961' },
+    { src: '/FTC881.png', name: 'FTC881' },
+    { src: '/fmc920.webp', name: 'FMC920' },
+    { src: '/fmc650.webp', name: 'FMC650' },
+    { src: '/fmm250.webp', name: 'FMM250' },
+  ];
 
-  const imageFiles = fileNames.filter((file) => {
-    const extname = path.extname(file).toLowerCase();
-    return ['.jpg', '.jpeg', '.png', '.gif', '.webp'].includes(extname) && !file.startsWith('Logo');
-  });
+
+
+
+
+
+
+
+
 
   // Define a map of image names to their details, including the introductory phrase
   const deviceDetails = {
@@ -125,16 +136,15 @@ const FuelMonitoringPage = () => {
       {/* Devices Section */}
       <div className={styles.responsiveImageGrid}>
         {imageFiles.map((image, index) => {
-          const imageName = path.basename(image, path.extname(image)).toUpperCase(); // Remove extension and capitalize
-          const details = deviceDetails[imageName];
+          const details = deviceDetails[image.name];
 
           return (
             <div key={index} className={styles.imageItem}>
               {details?.intro && <p className={styles.deviceIntro}>{details.intro}</p>} {/* Display the intro phrase */}
               <div className={styles.imageContainer}>
                 <img
-                  src={`/${image}`}
-                  alt={details?.name || imageName}
+                  src={image.src}
+                  alt={details?.name || image.name}
                   className={styles.responsiveImage}
                 />
               </div>
