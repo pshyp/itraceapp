@@ -138,12 +138,12 @@ const FuelMonitoringPage = () => {
         {imageFiles.map((image, index) => {
           const details = deviceDetails[image.name];
 
+          const imageName = image.name
           return (
             <div key={index} className={styles.imageItem}>
               {details?.intro && <p className={`${styles.deviceIntro} ${styles.initialHidden}`}>{details.intro}</p>}
               <div className={styles.imageContainer}>
-                <img
-                  src={image.src}
+                <img                  src={image.src}
                   alt={details?.name || image.name}
                   className={styles.responsiveImage}
                 />
@@ -157,16 +157,17 @@ const FuelMonitoringPage = () => {
             </div>
           );
           
-        })}
+        })}      
+        </div>
           <div className={styles.benefitsSection}>
-        <h2 className={styles.keyFeaturesTitle}>Key Benefits of Our Fuel Monitoring</h2>          
+        <h2 className={styles.keyFeaturesTitle}>Key Benefits of Our Fuel Monitoring</h2>
         <ul className={styles.keyFeaturesList}>          
         {benefits.map((benefit, index) => (
               <li key={index} className={styles.keyFeatureItem}>{benefit}</li>
             ))}
-          </ul>          
+          </ul>
+          </div>          
         
-        })}
       </div>
     </div>
   );
