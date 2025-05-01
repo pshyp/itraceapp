@@ -131,3 +131,16 @@
   margin-bottom: 5px;
   text-align: center;
 }
+
+.deviceIntro {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  font-size: 1rem;
+  color: #aaa;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.deviceIntro.show {
+  opacity: 1;
+}

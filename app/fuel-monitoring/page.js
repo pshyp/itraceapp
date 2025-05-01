@@ -1,4 +1,5 @@
-import styles from './fuel-monitoring.module.css'; // Import the CSS module
+import styles from './fuel-monitoring.module.css';
+import { useEffect } from 'react';
 
 const FuelMonitoringPage = () => {
   const imageFiles = [
@@ -12,11 +13,6 @@ const FuelMonitoringPage = () => {
     { src: '/fmc650.webp', name: 'FMC650' },
     { src: '/fmm250.webp', name: 'FMM250' },
   ];
-
-
-
-
-
 
 
 
@@ -107,6 +103,15 @@ const FuelMonitoringPage = () => {
     },
   };
 
+  useEffect(() => {
+    const intros = document.querySelectorAll(".deviceIntro");
+    intros.forEach((intro, index) => {
+      setTimeout(() => {
+        intro.classList.add("show");
+      }, 1500 * index);
+    });
+  }, []);
+
   return (
     <div className={styles.fuelMonitoringContainer}>
       <h1 className={styles.fuelMonitoringTitle}>Fuel Monitoring Solutions</h1>
@@ -140,7 +145,7 @@ const FuelMonitoringPage = () => {
 
           return (
             <div key={index} className={styles.imageItem}>
-              {details?.intro && <p className={styles.deviceIntro}>{details.intro}</p>} {/* Display the intro phrase */}
+              {details?.intro && <p className={`${styles.deviceIntro} initial-hidden`}>{details.intro}</p>} {/* Display the intro phrase */}
               <div className={styles.imageContainer}>
                 <img
                   src={image.src}
