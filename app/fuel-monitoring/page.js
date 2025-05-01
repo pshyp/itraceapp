@@ -1,3 +1,5 @@
+"use client";
+
 import styles from './fuel-monitoring.module.css';
 import { useEffect } from 'react';
 
@@ -158,7 +160,7 @@ const FuelMonitoringPage = () => {
                 {details?.features?.map((feature, idx) => (
                   <li key={idx} className={styles.descriptionItem}>
                     {feature}
-                  </li>
+                  </li>              
                 ))}
               </ul>
             </div>
