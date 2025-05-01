@@ -144,3 +144,6 @@
 .deviceIntro.show {
   opacity: 1;
 }
+.initial-hidden {
+  opacity: 0;
+}

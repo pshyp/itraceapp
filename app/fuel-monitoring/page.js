@@ -147,7 +147,7 @@ const FuelMonitoringPage = () => {
 
           return (
             <div key={index} className={styles.imageItem}>
-              {details?.intro && <p className={`${styles.deviceIntro} initial-hidden`}>{details.intro}</p>} {/* Display the intro phrase */}
+              {details?.intro && <p className={`${styles.deviceIntro} ${styles.initialHidden}`}>{details.intro}</p>} {/* Display the intro phrase */}
               <div className={styles.imageContainer}>
                 <img
                   src={image.src}
