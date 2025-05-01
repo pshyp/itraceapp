@@ -1,6 +1,6 @@
 "use client";
 
-import styles from './fuel-monitoring.module.css';
+import styles from "./fuel-monitoring.module.css";
 import { useEffect, useState } from 'react';
 
 const FuelMonitoringPage = () => {
@@ -18,24 +18,12 @@ const FuelMonitoringPage = () => {
     { src: '/fmm250.webp', name: 'FMM250' },
   ];
 
-  const benefits = [
-    {
-      title: "Reduce Fuel Costs",
-      description: "Minimize wastage and prevent unauthorized usage.",
-    },
-    {
-      title: "Improve Efficiency",
-      description: "Optimize routes and monitor driver behavior.",
-    },
-    {
-      title: "Enhance Security",
-      description: "Detect and prevent fuel theft with real-time alerts.",
-    },
-    {
-      title: "Gain Insights",
-      description: "Access detailed reports on fuel consumption and vehicle performance.",
-    },
-  ];
+  const benefits = [    
+    "Reduced cost of fuel.",
+    "Optimize route and monitor driver.",
+    "Prevent fuel theft.",
+    "Detect and prevent fuel theft with real-time alerts.",
+    "Access detailed reports on fuel consumption and vehicle performance.",];
 
   const deviceDetails = {
     FMC125: {
@@ -139,23 +127,10 @@ const FuelMonitoringPage = () => {
   }, []);
 
   return (
-    <div className={styles.fuelMonitoringContainer}>
+    <div className={styles.fuelMonitoringContainer}>      
       <h1 className={styles.fuelMonitoringTitle}>Fuel Monitoring Solutions</h1>
-
-      <div className={styles.introductionSection}>
-        <h2 className={styles.introductionTitle}>Unlock Efficiency with Advanced Fuel Monitoring</h2>
-        <p className={styles.introductionText}>
-          Gain complete control over your fleet's fuel consumption and operational costs. Our cutting-edge
-          fuel monitoring devices provide real-time insights, prevent fuel theft, optimize routes, and promote
-          efficient driving habits. Explore our range of solutions designed to meet the diverse needs of your
-          business.
-        </p>
-      </div>
-
-      <div className={styles.keyFeaturesSection}>
-        <h2 className={styles.keyFeaturesTitle}>Key Benefits of Our Fuel Monitoring</h2>
-        <div className={styles.animatedBenefit}>
-          <strong>{benefits[visibleBenefitIndex].title}:</strong> {benefits[visibleBenefitIndex].description}
+      <div className={styles.mainSection}>
+      <div className={styles.responsiveImageGrid}>
         </div>
       </div>
 
@@ -181,6 +156,16 @@ const FuelMonitoringPage = () => {
               </ul>
             </div>
           );
+          
+        })}
+          <div className={styles.benefitsSection}>
+        <h2 className={styles.keyFeaturesTitle}>Key Benefits of Our Fuel Monitoring</h2>          
+        <ul className={styles.keyFeaturesList}>          
+        {benefits.map((benefit, index) => (
+              <li key={index} className={styles.keyFeatureItem}>{benefit}</li>
+            ))}
+          </ul>          
+        
         })}
       </div>
     </div>
