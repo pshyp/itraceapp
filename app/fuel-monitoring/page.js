@@ -1,9 +1,11 @@
 "use client";
 
 import styles from './fuel-monitoring.module.css';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const FuelMonitoringPage = () => {
+  const [visibleBenefitIndex, setVisibleBenefitIndex] = useState(0);
+
   const imageFiles = [
     { src: '/fmc125.webp', name: 'FMC125' },
     { src: '/tat140.webp', name: 'TAT140' },
@@ -16,11 +18,25 @@ const FuelMonitoringPage = () => {
     { src: '/fmm250.webp', name: 'FMM250' },
   ];
 
+  const benefits = [
+    {
+      title: "Reduce Fuel Costs",
+      description: "Minimize wastage and prevent unauthorized usage.",
+    },
+    {
+      title: "Improve Efficiency",
+      description: "Optimize routes and monitor driver behavior.",
+    },
+    {
+      title: "Enhance Security",
+      description: "Detect and prevent fuel theft with real-time alerts.",
+    },
+    {
+      title: "Gain Insights",
+      description: "Access detailed reports on fuel consumption and vehicle performance.",
+    },
+  ];
 
-
-
-
-  // Define a map of image names to their details, including the introductory phrase
   const deviceDetails = {
     FMC125: {
       name: 'FMC125',
@@ -106,10 +122,18 @@ const FuelMonitoringPage = () => {
   };
 
   useEffect(() => {
-    const intros = document.querySelectorAll(".deviceIntro");
+    const interval = setInterval(() => {
+      setVisibleBenefitIndex((prevIndex) => (prevIndex + 1) % benefits.length);
+    }, 3000); // 3 seconds per benefit
+
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const intros = document.querySelectorAll(`.${styles.deviceIntro}`);
     intros.forEach((intro, index) => {
       setTimeout(() => {
-        intro.classList.add("show");
+        intro.classList.add(styles.show);
       }, 1500 * index);
     });
   }, []);
@@ -118,7 +142,6 @@ const FuelMonitoringPage = () => {
     <div className={styles.fuelMonitoringContainer}>
       <h1 className={styles.fuelMonitoringTitle}>Fuel Monitoring Solutions</h1>
 
-      {/* Introduction Section */}
       <div className={styles.introductionSection}>
         <h2 className={styles.introductionTitle}>Unlock Efficiency with Advanced Fuel Monitoring</h2>
         <p className={styles.introductionText}>
@@ -129,25 +152,20 @@ const FuelMonitoringPage = () => {
         </p>
       </div>
 
-      {/* Key Features Section */}
       <div className={styles.keyFeaturesSection}>
         <h2 className={styles.keyFeaturesTitle}>Key Benefits of Our Fuel Monitoring</h2>
-        <ul className={styles.keyFeaturesList}>
-          <li className={styles.keyFeatureItem}><strong>Reduce Fuel Costs:</strong> Minimize wastage and prevent unauthorized usage.</li>
-          <li className={styles.keyFeatureItem}><strong>Improve Efficiency:</strong> Optimize routes and monitor driver behavior.</li>
-          <li className={styles.keyFeatureItem}><strong>Enhance Security:</strong> Detect and prevent fuel theft with real-time alerts.</li>
-          <li className={styles.keyFeatureItem}><strong>Gain Insights:</strong> Access detailed reports on fuel consumption and vehicle performance.</li>
-        </ul>
+        <div className={styles.animatedBenefit}>
+          <strong>{benefits[visibleBenefitIndex].title}:</strong> {benefits[visibleBenefitIndex].description}
+        </div>
       </div>
 
-      {/* Devices Section */}
       <div className={styles.responsiveImageGrid}>
         {imageFiles.map((image, index) => {
           const details = deviceDetails[image.name];
 
           return (
             <div key={index} className={styles.imageItem}>
-              {details?.intro && <p className={`${styles.deviceIntro} ${styles.initialHidden}`}>{details.intro}</p>} {/* Display the intro phrase */}
+              {details?.intro && <p className={`${styles.deviceIntro} ${styles.initialHidden}`}>{details.intro}</p>}
               <div className={styles.imageContainer}>
                 <img
                   src={image.src}
@@ -155,12 +173,10 @@ const FuelMonitoringPage = () => {
                   className={styles.responsiveImage}
                 />
               </div>
-              <p className={styles.imageName}>{details?.name || imageName}</p>
+              <p className={styles.imageName}>{details?.name || image.name}</p>
               <ul className={styles.descriptionList}>
                 {details?.features?.map((feature, idx) => (
-                  <li key={idx} className={styles.descriptionItem}>
-                    {feature}
-                  </li>              
+                  <li key={idx} className={styles.descriptionItem}>{feature}</li>
                 ))}
               </ul>
             </div>
