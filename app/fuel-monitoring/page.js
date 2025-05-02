@@ -130,47 +130,37 @@ const FuelMonitoringPage = () => {
     <div className={styles.fuelMonitoringContainer}>      
       <h1 className={styles.fuelMonitoringTitle}>Fuel Monitoring Solutions</h1>
       <div className={styles.mainSection}>
-      <div className={styles.responsiveImageGrid}>
-        </div>
-      </div>
-
-      <div className={styles.responsiveImageGrid}>
-        {imageFiles.map((image, index) => {
-          const details = deviceDetails[image.name];
-
-          const imageName = image.name
-          return (
-            <div key={index} className={styles.imageItem}>
-              {details?.intro && <p className={`${styles.deviceIntro} ${styles.initialHidden}`}>{details.intro}</p>}
-              <div className={styles.imageContainer}>
-                <img                  src={image.src}
-                  alt={details?.name || image.name}
-                  className={styles.responsiveImage}
-                />
+        <div className={styles.responsiveImageGrid}>
+          {imageFiles.map((image, index) => {
+            const details = deviceDetails[image.name];
+            const imageName = image.name;
+            return (
+              <div key={index} className={styles.imageItem}>
+                {details?.intro && <p className={`${styles.deviceIntro} ${styles.initialHidden}`}>{details.intro}</p>}
+                <div className={styles.imageContainer}>
+                  <img src={image.src} alt={details?.name || image.name} className={styles.responsiveImage} />
+                </div>
+                <p className={styles.imageName}>{details?.name || image.name}</p>
+                <ul className={styles.descriptionList}>
+                  {details?.features?.map((feature, idx) => (
+                    <li key={idx} className={styles.descriptionItem}>{feature}</li>
+                  ))}
+                </ul>
               </div>
-              <p className={styles.imageName}>{details?.name || image.name}</p>
-              <ul className={styles.descriptionList}>
-                {details?.features?.map((feature, idx) => (
-                  <li key={idx} className={styles.descriptionItem}>{feature}</li>
-                ))}
-              </ul>
-            </div>
-          );
-          
-        })}      
+            );
+          })}
         </div>
-          <div className={styles.benefitsSection}>
-        <h2 className={styles.keyFeaturesTitle}>Key Benefits of Our Fuel Monitoring</h2>
-        <ul className={styles.keyFeaturesList}>          
-        {benefits.map((benefit, index) => (
+        <div className={styles.benefitsSection}>
+          <h2 className={styles.keyFeaturesTitle}>Key Benefits of Our Fuel Monitoring</h2>
+          <ul className={styles.keyFeaturesList}>
+          {benefits.map((benefit, index) => (
               <li key={index} className={styles.keyFeatureItem}>{benefit}</li>
             ))}
           </ul>
-          </div>          
-        
+        </div>
       </div>
     </div>
   );
-};
+ };
 
 export default FuelMonitoringPage;
