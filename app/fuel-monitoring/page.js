@@ -23,7 +23,8 @@ const FuelMonitoringPage = () => {
     "Optimize route and monitor driver.",
     "Prevent fuel theft.",
     "Detect and prevent fuel theft with real-time alerts.",
-    "Access detailed reports on fuel consumption and vehicle performance.",];
+    "Access detailed reports on fuel consumption and vehicle performance.",
+  ];
 
   const deviceDetails = {
     FMC125: {
@@ -112,7 +113,7 @@ const FuelMonitoringPage = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setVisibleBenefitIndex((prevIndex) => (prevIndex + 1) % benefits.length);
-    }, 3000); // 3 seconds per benefit
+    }, 3000);
 
     return () => clearInterval(interval);
   }, []);
@@ -127,13 +128,25 @@ const FuelMonitoringPage = () => {
   }, []);
 
   return (
-    <div className={styles.fuelMonitoringContainer}>      
-      <h1 className={styles.fuelMonitoringTitle}>Fuel Monitoring Solutions</h1>
+    <div className={styles.fuelMonitoringContainer}>
+      <div className={styles.headerRow}>
+        <h1 className={styles.fuelMonitoringTitle}>Fuel Monitoring Solutions</h1>
+        <div className={styles.benefitsSection}>
+          <h2 className={styles.keyFeaturesTitle}>Key Benefits of Our Fuel Monitoring</h2>
+          <ul className={styles.keyFeaturesList}>
+            {benefits.map((benefit, index) => (
+              <li key={index} className={`${styles.keyFeatureItem} ${
+                index === visibleBenefitIndex ? styles.visible : styles.hidden
+              }`}>{benefit}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
       <div className={styles.mainSection}>
         <div className={styles.responsiveImageGrid}>
           {imageFiles.map((image, index) => {
             const details = deviceDetails[image.name];
-            const imageName = image.name;
             return (
               <div key={index} className={styles.imageItem}>
                 {details?.intro && <p className={`${styles.deviceIntro} ${styles.initialHidden}`}>{details.intro}</p>}
@@ -150,19 +163,9 @@ const FuelMonitoringPage = () => {
             );
           })}
         </div>
-        <div className={styles.benefitsSection}>
-          <h2 className={styles.keyFeaturesTitle}>Key Benefits of Our Fuel Monitoring</h2>
-          <ul className={styles.keyFeaturesList}>
-            {benefits.map((benefit, index) => (
-              <li key={index} className={`${styles.keyFeatureItem} ${
-                index === visibleBenefitIndex ? styles.visible : styles.hidden
-              }`}>{benefit}</li>
-            ))}
-          </ul>
-        </div>
       </div>
     </div>
   );
- };
+};
 
 export default FuelMonitoringPage;
