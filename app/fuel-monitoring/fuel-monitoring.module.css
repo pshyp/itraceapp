@@ -9,9 +9,11 @@
 }
 
 .mainSection {
-  display: grid;
-  grid-template-columns: 1fr 1fr; /* Two equal columns */
-  gap: 20px; /* Space between the columns */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; /* Distribute space between columns */
+  gap: 20px;
+
   align-items: start; /* Align items to the start */
 }
 .responsiveImageGrid {
@@ -86,15 +88,14 @@
     height: 120px;
   }
   .mainSection {
-    grid-template-columns: 1fr; /* Stack columns vertically */
+    flex-direction: column; /* Stack columns vertically */
   }
 }
-
+.mainSection {
+  display: flex;
+  flex-direction: row;
+}
 .introductionSection {
-  margin: 2rem 0;
-  padding: 1rem;
-  background-color: #f9f9f9;
-  border-radius: 8px;
 }
 
 .introductionTitle {
@@ -127,19 +128,35 @@
   opacity: 0;
 }
 
-.benefitsSection{
-  padding: 1rem;
-  background-color: #eef6f9;
+
+.benefitsSection {
+  flex: 1; /* Takes up remaining space */
+  padding: 20px;
+  background-color: #f8f8f8;
   border-radius: 8px;
-  display: flex; /* Enable flexbox */
-  flex-direction: column; /* Stack list items vertically */
-  justify-content: center; /* Center items vertically */
 }
 
 .keyFeaturesTitle {
+  text-align: center; /* Centers the title */
   font-size: 1.8rem;
   margin-bottom: 1rem;
   color: #2c3e50;
+}
+
+.keyFeaturesList {
+  list-style-type: none; /* Remove default list bullets */
+  padding: 0; /* Remove padding */
+  overflow: hidden; /* Hide items that are not active */
+}
+
+.keyFeatureItem {
+  opacity: 0; /* Default to hidden */
+  transition: opacity 0.5s ease-in-out; /* Smooth transition for opacity */
+  margin-bottom: 0.75rem;
+  font-size: 1.1rem;
+}
+.keyFeatureItem.active {
+  opacity: 1;
 }
 
 .keyFeaturesList {

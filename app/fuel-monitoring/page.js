@@ -153,8 +153,10 @@ const FuelMonitoringPage = () => {
         <div className={styles.benefitsSection}>
           <h2 className={styles.keyFeaturesTitle}>Key Benefits of Our Fuel Monitoring</h2>
           <ul className={styles.keyFeaturesList}>
-          {benefits.map((benefit, index) => (
-              <li key={index} className={styles.keyFeatureItem}>{benefit}</li>
+            {benefits.map((benefit, index) => (
+              <li key={index} className={`${styles.keyFeatureItem} ${
+                index === visibleBenefitIndex ? styles.visible : styles.hidden
+              }`}>{benefit}</li>
             ))}
           </ul>
         </div>
