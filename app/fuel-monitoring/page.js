@@ -130,7 +130,7 @@ const FuelMonitoringPage = () => {
   return (
     <div className={styles.fuelMonitoringContainer}>
       <div className={styles.headerRow}>
-        <h1 className={styles.fuelMonitoringTitle}>Fuel Monitoring Solutions</h1>
+        <h1 className={styles.fuelMonitoringTitle} style={{ color: 'white' }}>Fuel Monitoring Solutions</h1>
         <div className={styles.benefitsSection}>
           <h2 className={styles.keyFeaturesTitle}>Key Benefits of Our Fuel Monitoring</h2>
           <ul className={styles.keyFeaturesList}>
