@@ -6,6 +6,14 @@ import { useEffect, useState } from 'react';
 const FuelMonitoringPage = () => {
   const [visibleBenefitIndex, setVisibleBenefitIndex] = useState(0);
 
+  const benefits = [    
+    "Reduced cost of fuel.",
+    "Optimize route and monitor driver behavior.",
+    "Prevent fuel theft with advanced sensors.",
+    "Detect and prevent fuel theft with real-time alerts.",
+    "Access detailed reports on fuel consumption and vehicle performance.",
+  ];
+
   const imageFiles = [
     { src: '/fmc125.webp', name: 'FMC125' },
     { src: '/tat140.webp', name: 'TAT140' },
@@ -16,14 +24,6 @@ const FuelMonitoringPage = () => {
     { src: '/fmc920.webp', name: 'FMC920' },
     { src: '/fmc650.webp', name: 'FMC650' },
     { src: '/fmm250.webp', name: 'FMM250' },
-  ];
-
-  const benefits = [    
-    "Reduced cost of fuel.",
-    "Optimize route and monitor driver.",
-    "Prevent fuel theft.",
-    "Detect and prevent fuel theft with real-time alerts.",
-    "Access detailed reports on fuel consumption and vehicle performance.",
   ];
 
   const deviceDetails = {
@@ -113,7 +113,7 @@ const FuelMonitoringPage = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setVisibleBenefitIndex((prevIndex) => (prevIndex + 1) % benefits.length);
-    }, 3000);
+    }, 4000);
 
     return () => clearInterval(interval);
   }, []);
@@ -123,21 +123,26 @@ const FuelMonitoringPage = () => {
     intros.forEach((intro, index) => {
       setTimeout(() => {
         intro.classList.add(styles.show);
-      }, 1500 * index);
+      }, 800 * index);
     });
   }, []);
 
   return (
     <div className={styles.fuelMonitoringContainer}>
       <div className={styles.headerRow}>
-        <h1 className={styles.fuelMonitoringTitle} style={{ color: 'white' }}>Fuel Monitoring Solutions</h1>
+        <h1 className={styles.fuelMonitoringTitle}>Fuel Monitoring Solutions</h1>
         <div className={styles.benefitsSection}>
-          <h2 className={styles.keyFeaturesTitle}>Key Benefits of Our Fuel Monitoring</h2>
+          <h2 className={styles.keyFeaturesTitle}>Key Benefits</h2>
           <ul className={styles.keyFeaturesList}>
             {benefits.map((benefit, index) => (
-              <li key={index} className={`${styles.keyFeatureItem} ${
-                index === visibleBenefitIndex ? styles.visible : styles.hidden
-              }`}>{benefit}</li>
+              <li
+                key={index}
+                className={`${styles.keyFeatureItem} ${
+                  index === visibleBenefitIndex ? styles.visible : styles.hidden
+                }`}
+              >
+                {benefit}
+              </li>
             ))}
           </ul>
         </div>
@@ -149,14 +154,24 @@ const FuelMonitoringPage = () => {
             const details = deviceDetails[image.name];
             return (
               <div key={index} className={styles.imageItem}>
-                {details?.intro && <p className={`${styles.deviceIntro} ${styles.initialHidden}`}>{details.intro}</p>}
+                {details?.intro && (
+                  <p className={`${styles.deviceIntro} ${styles.initialHidden}`}>
+                    {details.intro}
+                  </p>
+                )}
                 <div className={styles.imageContainer}>
-                  <img src={image.src} alt={details?.name || image.name} className={styles.responsiveImage} />
+                  <img
+                    src={image.src}
+                    alt={details?.name || image.name}
+                    className={styles.responsiveImage}
+                  />
                 </div>
                 <p className={styles.imageName}>{details?.name || image.name}</p>
                 <ul className={styles.descriptionList}>
                   {details?.features?.map((feature, idx) => (
-                    <li key={idx} className={styles.descriptionItem}>{feature}</li>
+                    <li key={idx} className={styles.descriptionItem}>
+                      {feature}
+                    </li>
                   ))}
                 </ul>
               </div>
