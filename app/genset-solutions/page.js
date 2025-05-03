@@ -6,31 +6,108 @@ import { useEffect, useState } from 'react';
 const GensetSolutions = () => {
   const [visibleBenefitIndex, setVisibleBenefitIndex] = useState(0);
 
-  const benefits = [    
-    "Optimize genset performance.",
-    "Reduce downtime and maintenance costs.",
-    "Remote monitoring and control.",
-    "Ensure reliable power supply.",
-    "Real-time alerts and notifications.",
+  const benefits = [
+    'Reduce Fuel Consumption',
+    'Prevent Genset Malfunctions',
+    'Ensure Continuous Power Supply',
+    'Optimize Maintenance Schedules',
+    'Enhance Operational Efficiency',
   ];
 
   const imageFiles = [
-    // Add relevant image paths and descriptions
-    { src: '/GH5200.png', name: 'GH5200', description: "GH5200 Genset Monitoring Device" },
-    // Add more images as needed
+    { src: '/GMS125.webp', name: 'GMS125', description: "GMS125 advanced genset monitoring device" },
+    { src: '/GMS650.webp', name: 'GMS650', description: "GMS650 comprehensive genset monitoring device" },
+    { src: '/GMS920.webp', name: 'GMS920', description: "GMS920 smart genset monitoring device" },
+    { src: '/GMS250.webp', name: 'GMS250', description: "GMS250 EV & CAN Bus genset monitoring device" },
+    { src: '/GST140.webp', name: 'GST140', description: "GST140 reliable genset tracking device" },
+    { src: '/GHS200.png', name: 'GHS200', description: "GHS200 genset safety & communication device" },
+    { src: '/GST921.png', name: 'GST921', description: "GST921 robust genset tracking device" },
+    { src: '/GST961.png', name: 'GST961', description: "GST961 heavy-duty genset tracking device" },
+    { src: '/GST881.png', name: 'GST881', description: "GST881 easy installation genset tracking device" },
   ];
 
   const deviceDetails = {
-    GH5200: {
-      name: 'GH5200',
-      intro: 'Advanced Genset Monitoring',
+    GMS125: {
+      name: 'GMS125',
+      intro: 'Advanced Genset Monitoring and Control',
       features: [
-        'Remote monitoring of genset status',
-        'Fuel level monitoring',
-        'Real-time alerts for faults',
+        'Fuel usage optimization',
+        'Significantly lower operational costs',
+        'Precise fuel consumption control',
       ],
     },
-    // Add more device details as needed
+    GMS650: {
+      name: 'GMS650',
+      intro: 'Comprehensive Genset Data Analysis',
+      features: [
+        'Extensive global coverage and enhanced GNSS module',
+        'Remote tachograph file downloads and live data',
+        'CAN data reading from heavy machinery',
+      ],
+    },
+    GMS920: {
+      name: 'GMS920',
+      intro: 'Smart & Efficient Genset Management',
+      features: [
+        'Optimized eco-driving for improved efficiency',
+        'Compact design for versatile installation',
+        'Comprehensive remote monitoring capabilities',
+      ],
+    },
+    GMS250: {
+      name: 'GMS250',
+      intro: 'EV & CAN Bus Genset Tracking',
+      features: [
+        'Protection against dust and water ingress',
+        'Integrated CAN bus data reading chip',
+        'CAN data reading from electric vehicle gensets',
+      ],
+    },
+    GST140: {
+      name: 'GST140',
+      intro: 'Simple & Reliable Genset Tracking',
+      features: [
+        'Regular location reporting',
+        'Simplified backup tracking',
+        'Extended battery life',
+      ],
+    },
+    GHS200: {
+      name: 'GHS200',
+      intro: 'Genset Safety & Communication',
+      features: [
+        'Dual-way voice communication',
+        'Customizable button functions',
+        'Dedicated alarm button for emergencies',
+      ],
+    },
+    GST921: {
+      name: 'GST921',
+      intro: 'Robust Genset Fleet Tracking',
+      features: [
+        'Advanced FT platform integration',
+        'High-voltage power supply compatibility',
+        'Prolonged operational performance with reduced drainage',
+      ],
+    },
+    GST961: {
+      name: 'GST961',
+      intro: 'Heavy-Duty Genset Tracking',
+      features: [
+        'Robust FT platform integration',
+        'IP69K-rated waterproof casing',
+        'High-voltage power supply support',
+      ],
+    },
+    GST881: {
+      name: 'GST881',
+      intro: 'Easy Installation Genset Tracking',
+      features: [
+        'FT platform device',
+        'Streamlined installation process',
+        'High voltage power supply',
+      ],
+    },
   };
 
   useEffect(() => {
@@ -53,9 +130,9 @@ const GensetSolutions = () => {
   return (
     <div className={styles.fuelMonitoringContainer}>
       <div className={styles.headerRow}>
-        <h1 className={styles.fuelMonitoringTitle}>Advanced Genset Monitoring Solutions</h1>
+        <h1 className={styles.fuelMonitoringTitle}>Advanced Genset Monitoring and Remote Control Solutions</h1>
         <div className={styles.benefitsSection}>
-          <h2 className={styles.keyFeaturesTitle}>Key Benefits</h2>
+          <h2 className={styles.keyFeaturesTitle}>Explore the Key Benefits of Our Genset Solutions</h2>
           <ul className={styles.keyFeaturesList}>
             {benefits.map((benefit, index) => (
               <li
