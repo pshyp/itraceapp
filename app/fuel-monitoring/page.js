@@ -1,6 +1,6 @@
 "use client";
 
-import styles uelrom "./fuel-monitoring.module.css";
+import styles from "./fuel-monitoring.module.css";
 import { useEffect, useState } from 'react';
 
 const FuelMonitoringPage = () => {
