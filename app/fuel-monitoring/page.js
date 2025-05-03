@@ -9,15 +9,15 @@ const FuelMonitoringPage = () => {
   const benefits = [    
     "Reduced cost of fuel.",
     "Optimize route and monitor driver behavior.",
-    "Prevent fuel theft with advanced sensors.",
+    "Prevent fuel theft with advanced fuel sensors.",
     "Detect and prevent fuel theft with real-time alerts.",
     "Access detailed reports on fuel consumption and vehicle performance.",
   ];
 
   const imageFiles = [
-    { src: '/fmc125.webp', name: 'FMC125' },
-    { src: '/tat140.webp', name: 'TAT140' },
-    { src: '/GH5200.png', name: 'GH5200' },
+    { src: '/fmc125.webp', name: 'FMC125', description: "FMC125 fuel monitoring device" },
+    { src: '/tat140.webp', name: 'TAT140', description: "TAT140 fuel monitoring device" },
+    { src: '/GH5200.png', name: 'GH5200', description: "GH5200 fuel monitoring device" },
     { src: '/FTC921.png', name: 'FTC921' },
     { src: '/FTC961.png', name: 'FTC961' },
     { src: '/FTC881.png', name: 'FTC881' },
@@ -130,7 +130,7 @@ const FuelMonitoringPage = () => {
   return (
     <div className={styles.fuelMonitoringContainer}>
       <div className={styles.headerRow}>
-        <h1 className={styles.fuelMonitoringTitle}>Fuel Monitoring Solutions</h1>
+        <h1 className={styles.fuelMonitoringTitle}>Advanced Fuel Monitoring Solutions for Efficiency and Theft Prevention</h1>
         <div className={styles.benefitsSection}>
           <h2 className={styles.keyFeaturesTitle}>Key Benefits</h2>
           <ul className={styles.keyFeaturesList}>
@@ -162,7 +162,7 @@ const FuelMonitoringPage = () => {
                 <div className={styles.imageContainer}>
                   <img
                     src={image.src}
-                    alt={details?.name || image.name}
+                    alt={details?.name ? `Fuel monitoring device ${details.name} details and features` : `Fuel monitoring device ${image.description}`}
                     className={styles.responsiveImage}
                   />
                 </div>
