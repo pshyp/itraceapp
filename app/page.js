@@ -7,6 +7,7 @@ import Image from "next/image";
 import ftc921 from "../public/FTC921.png";
 import ftc961 from "../public/FTC961.png";
 import ftc881 from "../public/FTC881.png";
+import fmm250 from "../public/fmm250.webp";
 import twoWay from "../public/two_way_alarm.png";
 import keyless from "../public/keyless_entry.png";
 import remote from "../public/remote_start.png";
@@ -16,7 +17,7 @@ import glass from "../public/glass_break_sensor.png";
 import "./globals.css";
 
 export default function Home() {
-  const monitors = [ftc921, ftc961, ftc881];
+  const monitors = [fmm250];
   const alarmSystems = [
     { image: twoWay, title: "Two-Way Alarm", subtitle: "Real-time communication" },
     { image: keyless, title: "Keyless Entry", subtitle: "Advanced access protection" },
