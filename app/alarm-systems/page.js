@@ -7,75 +7,60 @@ const AlarmSystemsPage = () => {
   const [visibleBenefitIndex, setVisibleBenefitIndex] = useState(0);
 
   const benefits = [
-    "Deters crime and protects against break-ins",
-    "Provides 24/7 monitoring and emergency assistance",
-    "Reduces home insurance premiums",
-    "Offers remote access and control via smartphone apps",
-    "Integrates with smart home devices for enhanced automation",
-    "Increases property value",
+    "Receive real-time alerts on your remote control or smartphone.",
+    "Protect against key-less entry system hacking.",
+    "Remotely start and stop your car's engine securely.",
+    "Detect even the slightest impact on your vehicle.",
+    "Trigger the alarm immediately if a window is shattered.",
+    "Experience the reliability of two-way communication.",
+    "Enhance security with specialized key-less entry solutions.",
+    "Enjoy the convenience of remote engine control.",
+    "Get immediate alerts upon any physical impact.",
+    "Protect your car from window breakage with sound detection.",
   ];
 
   const alarmTypes = [
     {
-      name: 'Wired Systems',
-      intro: 'Reliable Connectivity',
+      name: 'Two-Way Alarm Systems',
+      intro: 'Real-Time Communication',
       description: [
-        'Reliable and stable connection',
-        'Less susceptible to interference',
-        'Suitable for larger facilities',
+        'Receive real-time alerts on your remote control or smartphone when your car is tampered with or breached, ensuring you are always informed.',
       ],
-      imageSrc: '/wired_alarm.png', // Replace with your actual image path
+      imageSrc: '/two_way_alarm.png', // Replace with your actual image path
     },
     {
-      name: 'Wireless Systems',
-      intro: 'Easy and Flexible',
+      name: 'Key-Less Entry Security',
+      intro: 'Advanced Access Protection',
       description: [
-        'Easy installation and flexible placement',
-        'Integration with smart home devices',
-        'Battery-powered for continued operation during power outages',
+        'Protect against key-less entry system hacking with specialized security solutions designed to safeguard your vehicle\'s access from modern theft techniques.',
       ],
-      imageSrc: '/wireless_alarm.png', // Replace with your actual image path
+      imageSrc: '/keyless_entry.png', // Replace with your actual image path
     },
     {
-      name: 'Monitored Systems',
-      intro: 'Professional Support',
+      name: 'Remote Start and Stop',
+      intro: 'Convenient Engine Control',
       description: [
-        '24/7 professional monitoring',
-        'Immediate response from emergency services',
-        'Enhanced security for high-risk areas',
+        'Enjoy the convenience of remotely starting and stopping your car\'s engine while keeping it secure, ideal for pre-heating or cooling your vehicle.',
       ],
-      imageSrc: '/monitored_alarm.png', // Replace with your actual image path
+      imageSrc: '/remote_start.png', // Replace with your actual image path
     },
     {
-      name: 'Smart Systems',
-      intro: 'Connected Security',
+      name: 'Shock Sensors',
+      intro: 'Impact Detection',
       description: [
-        'Integration with smart home devices',
-        'Remote monitoring and control',
-        'Real-time notifications and alerts',
+        'Detect even the slightest impact on your vehicle, triggering the alarm and alerting you to potential threats like bumps or attempted break-ins.',
       ],
-      imageSrc: '/smart_alarm.png', // Replace with your actual image path
+      imageSrc: '/shock_sensor.png', // Replace with your actual image path
     },
     {
-      name: 'Burglar Alarms',
-      intro: 'Intrusion Detection',
+      name: 'Glass Break Sensors',
+      intro: 'Window Security',
       description: [
-        'Motion detectors and door/window sensors',
-        'Deter unauthorized entry',
-        'May include smoke detectors for added safety',
+        'If a window is shattered, our alarms will immediately sound, deterring burglars and alerting you to the intrusion based on the sound of breaking glass.',
       ],
-      imageSrc: '/burglar_alarm.png', // Replace with your actual image path
+      imageSrc: '/glass_break_sensor.png', // Replace with your actual image path
     },
-    {
-      name: 'Fire Alarms',
-      intro: 'Safety First',
-      description: [
-        'Detects smoke, heat, and flames',
-        'Alerts occupants and emergency services',
-        'Essential for safety in all buildings',
-      ],
-      imageSrc: '/fire_alarm.png', // Replace with your actual image path
-    },
+    // You can add more product categories here
   ];
 
   useEffect(() => {
@@ -99,7 +84,7 @@ const AlarmSystemsPage = () => {
     <div className={styles.alarmSystemsContainer}>
       <div className={styles.headerRow}>
         <h1 className={styles.alarmSystemsTitle}>
-          Alarm Systems for Enhanced Security and Protection
+          Advanced Car Alarm Systems for Superior Security
         </h1>
         <div className={styles.benefitsSection}>
           <h2 className={styles.keyFeaturesTitle}>Key Benefits</h2>
