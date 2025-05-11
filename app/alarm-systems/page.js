@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "../styles/alarm-systems.module.css";
+import styles from "./alarm-systems.module.css";
 import { useEffect, useState } from 'react';
 
 const AlarmSystemsPage = () => {
