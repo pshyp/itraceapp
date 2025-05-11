@@ -15,7 +15,7 @@ import shock from "../public/shock_sensor.png";
 import glass from "../public/glass_break_sensor.png";
 
 import "./globals.css";
-
+// all these used in the animations
 export default function Home() {
   const monitors = [fmm250];
   const alarmSystems = [
