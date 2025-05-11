@@ -130,7 +130,9 @@ const FuelMonitoringPage = () => {
   return (
     <div className={styles.fuelMonitoringContainer}>
       <div className={styles.headerRow}>
-        <h1 className={styles.fuelMonitoringTitle}>Advanced Fuel Monitoring Solutions for Efficiency and Theft Prevention</h1>
+        <h1 className={styles.fuelMonitoringTitle}>
+          Fuel Monitoring, GPS Tracking & Fleet Management Solutions
+                  </h1>
         <div className={styles.benefitsSection}>
           <h2 className={styles.keyFeaturesTitle}>Key Benefits</h2>
           <ul className={styles.keyFeaturesList}>

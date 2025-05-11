@@ -14,11 +14,11 @@ const SolarInstallationsRemoteMonitoring = () => {
     "Detailed energy generation reports.",
   ];
 
-  const imageFiles = [
-    // Add your solar installation images here
-    { src: '/solar-panel-1.jpg', name: 'Solar Panel 1', description: 'Solar Panel Model 1' },
-    { src: '/solar-inverter-1.jpg', name: 'Solar Inverter 1', description: 'Solar Inverter Model 1' },
-    { src: '/solar-monitoring-1.jpg', name: 'Solar Monitoring 1', description: 'Solar Monitoring System 1' },
+    const imageFiles = [
+        { src: '/FTC921.png', name: 'FTC921', description: "FTC921 Solar Tracking Device" },
+        { src: '/FTC961.png', name: 'FTC961', description: "FTC961 Heavy-Duty Solar Tracking Device" },
+        { src: '/FTC881.png', name: 'FTC881', description: "FTC881 Easy Installation Solar Tracking Device" },
+        
   ];
 
   const deviceDetails = {
@@ -52,20 +52,13 @@ const SolarInstallationsRemoteMonitoring = () => {
   };
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setVisibleBenefitIndex((prevIndex) => (prevIndex + 1) % benefits.length);
-    }, 4000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  useEffect(() => {
     const intros = document.querySelectorAll(`.${styles.deviceIntro}`);
     intros.forEach((intro, index) => {
-      setTimeout(() => {
-        intro.classList.add(styles.show);
-      }, 800 * index);
+        setTimeout(() => {
+            intro.classList.add(styles.show);
+        }, 800 * index);
     });
+    
   }, []);
 
   return (
@@ -87,17 +80,28 @@ const SolarInstallationsRemoteMonitoring = () => {
         </div>
       </div>
       <div className={styles.mainSection}>
-      <div className={styles.responsiveImageGrid}>
-      {imageFiles.map((image,index)=>{
-              const details = deviceDetails[image.name]
-              return(
-                  <div key={index} className={styles.imageItem}>
-                  {details?.intro && (<p className={`${styles.deviceIntro} ${styles.initialHidden}`}>{details.intro}</p>)}
-                    <div className={styles.imageContainer}><img src={image.src} alt={image.description} className={styles.responsiveImage}/></div>
-                      <p className={styles.imageName}>{details?.name || image.name}</p>
-                      <ul className={styles.descriptionList}> {details?.features?.map((feature,idx)=>(<li key={idx} className={styles.descriptionItem}>{feature}</li>))}</ul></div>
-              )
-            })}
+        <div className={styles.responsiveImageGrid}>
+          {imageFiles.map((image, index) => {
+            const details = deviceDetails[image.name]
+            return (
+              <div key={index} className={styles.imageItem}>
+                {details?.intro && (
+                  <p className={`${styles.deviceIntro} ${styles.initialHidden}`}>
+                    {details.intro}
+                  </p>
+                )}
+                <div className={styles.imageContainer}>
+                  <img src={image.src} alt={image.description} className={styles.responsiveImage}/>
+                </div>
+                <p className={styles.imageName}>{details?.name || image.description}</p>
+                <ul className={styles.descriptionList}>
+                  {details?.features?.map((feature, idx) => (
+                    <li key={idx} className={styles.descriptionItem}>{feature}</li>
+                  ))}
+                </ul>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
