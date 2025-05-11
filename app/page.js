@@ -3,41 +3,54 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+
 import ftc921 from "../public/FTC921.png";
 import ftc961 from "../public/FTC961.png";
 import ftc881 from "../public/FTC881.png";
-import twoWayAlarm from "../public/two_way_alarm.png";
-import "./globals.css";
+import twoWay from "../public/two_way_alarm.png";
+import keyless from "../public/keyless_entry.png";
+import remote from "../public/remote_start.png";
+import shock from "../public/shock_sensor.png";
+import glass from "../public/glass_break_sensor.png";
 
+import "./globals.css";
 
 export default function Home() {
   const monitors = [ftc921, ftc961, ftc881];
-  const [index, setIndex] = useState(0);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const alarmSystems = [
+    { image: twoWay, title: "Two-Way Alarm", subtitle: "Real-time communication" },
+    { image: keyless, title: "Keyless Entry", subtitle: "Advanced access protection" },
+    { image: remote, title: "Remote Start", subtitle: "Convenient engine control" },
+    { image: shock, title: "Shock Sensors", subtitle: "Impact detection" },
+    { image: glass, title: "Glass Break", subtitle: "Window security" },
+  ];
+
+  const [monitorIndex, setMonitorIndex] = useState(0);
+  const [alarmIndex, setAlarmIndex] = useState(0);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((prevIndex) => (prevIndex + 1) % monitors.length);
+    const monitorInterval = setInterval(() => {
+      setMonitorIndex((prev) => (prev + 1) % monitors.length);
     }, 3000);
-    return () => clearInterval(interval);
+    return () => clearInterval(monitorInterval);
   }, []);
 
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
+  useEffect(() => {
+    const alarmInterval = setInterval(() => {
+      setAlarmIndex((prev) => (prev + 1) % alarmSystems.length);
+    }, 3000);
+    return () => clearInterval(alarmInterval);
+  }, []);
 
   return (
-    <>
-      
-
-      <main className="main-content no-padding">
-       
-
+    <main className="main-content no-padding">
+      {/* Fuel Monitors Section */}
+      <section className="section-block">
         <h2 className="product-title">Fuel Monitors</h2>
         <p className="product-subtitle">Built for smart vehicle tracking.</p>
         <div className="image-wrapper">
           <Image
-            src={monitors[index]}
+            src={monitors[monitorIndex]}
             alt="Fuel Monitor Device"
             fill
             className="monitor-image"
@@ -48,9 +61,28 @@ export default function Home() {
           <Link href="/fuel-monitoring">
             <button className="primary-button">Learn more</button>
           </Link>
-     
         </div>
-      </main>
-    </>
+      </section>
+
+      {/* Alarm Systems Section */}
+      <section className="section-block">
+        <h2 className="product-title">Alarm Systems</h2>
+        <p className="product-subtitle">{alarmSystems[alarmIndex].subtitle}</p>
+        <div className="image-wrapper">
+          <Image
+            src={alarmSystems[alarmIndex].image}
+            alt={alarmSystems[alarmIndex].title}
+            fill
+            className="monitor-image"
+            priority
+          />
+        </div>
+        <div className="button-group">
+          <Link href="/alarm-systems">
+            <button className="primary-button">Learn more</button>
+          </Link>
+        </div>
+      </section>
+    </main>
   );
 }
