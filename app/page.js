@@ -6,6 +6,7 @@ import Image from "next/image";
 import ftc921 from "../public/FTC921.png";
 import ftc961 from "../public/FTC961.png";
 import ftc881 from "../public/FTC881.png";
+import twoWayAlarm from "../public/two_way_alarm.png";
 import "./globals.css";
 
 
