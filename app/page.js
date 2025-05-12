@@ -6,7 +6,7 @@ import Image from "next/image";
 
 import ftc921 from "../public/FTC921.png";
 import ftc961 from "../public/FTC961.png";
-import ftc881 from "../public/FTC881.png";
+
 import fmc920 from "../public/fmc920.webp";
 import fmc650 from "../public/fmc650.webp";
 import fmm250 from "../public/fmm250.webp";
@@ -19,16 +19,15 @@ import glass from "../public/glass_break_sensor.png";
 import "./globals.css";
 // all these used in the animations
 export default function Home() {
-  const monitors = [fmm250, ftc921, ftc961, ftc881];
-  const fuelMonitorBenefits = [
+  const monitors = [fmm250, ftc921, ftc961];
+   const fuelMonitorBenefits = [
     { image: fmm250, title: "Precise Level Reading", subtitle: "Accurate fuel data in real-time" },
     { image: fmc650, title: "Fuel Consumption Monitoring", subtitle: "Track fuel usage efficiently" },
     { image: fmc920, title: "Anti-Fuel Siphoning", subtitle: "Protect against fuel theft" },
     { image: ftc921, title: "Robust Fleet Tracking", subtitle: "Reliable tracking with high voltage support" },
     { image: ftc961, title: "Heavy-Duty Tracking", subtitle: "Waterproof and rugged design" },
-    { image: ftc881, title: "Easy Installation", subtitle: "Quick and simple setup" },
-  ];
 
+ ];
   const alarmSystems = [
     { image: twoWay, title: "Two-Way Alarm", subtitle: "Real-time communication" },
  { image: keyless, title: "Keyless Entry", subtitle: "Advanced access protection" },
