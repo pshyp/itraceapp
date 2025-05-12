@@ -7,6 +7,7 @@ import Image from "next/image";
 import ftc921 from "../public/FTC921.png";
 import ftc961 from "../public/FTC961.png";
 import ftc881 from "../public/FTC881.png";
+import fmc920 from "../public/fmc920.webp";
 import fmc650 from "../public/fmc650.webp";
 import fmm250 from "../public/fmm250.webp";
 import twoWay from "../public/two_way_alarm.png";
