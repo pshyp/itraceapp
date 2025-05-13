@@ -147,6 +147,11 @@ const Header = () => {
             Fuel Monitoring
            
           </Link>
+          {/* Blog Link */}
+ <Link href="/blog" className="nav-link" onClick={handleLinkClick}>
+ Blog
+ </Link>
+ {/* About Us Link */}
 
           
 
@@ -239,6 +244,9 @@ const Header = () => {
                 </Link> 
               </div>
             </div>
+
+ {/* About Us Link */}
+            <Link href="/about" className="nav-link" onClick={handleLinkClick}>About Us</Link>
 
             {/* Contact Link */}
             <Link href="/contact" className="nav-link" onClick={handleLinkClick}>Contact</Link>
