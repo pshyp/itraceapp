@@ -1,140 +1,81 @@
-"use client";
+import React, { useEffect } from 'react';
+import styles from './styles/alarmSystems.module.css';
 
-import styles from "./asset-tracking.module.css";
-import { useEffect, useState } from 'react';
-
-const AssetTrackingPage = () => {
-  const [visibleBenefitIndex, setVisibleBenefitIndex] = useState(0);
-
-  const benefits = [
-    "Real-time Vehicle Tracking: Know where your vehicles are, anytime, anywhere.",
-    "Precise GPS Navigation: Get accurate directions to your destinations.",
-    "Instant & Customizable Alerts: Set up and receive notifications for speed, traffic, and more.",
-    "Real-time Traffic Updates: Avoid traffic and find the best routes.",
-    "Enhanced Safety with Location Sharing: Keep loved ones informed of your location for peace of mind.",
-  ];
-
-  const productTypes = [
-    {
-      name: 'Portable GPS Navigators',
-      intro: 'Track and Navigate Freely',
-      description: [
-        'Perfect for fleet managers and personal vehicle owners, these devices provide real-time location and easy-to-use navigation tools.',
-      ],
-      imageSrc: '/portable_gps.png',
-    },
-    {
-      name: 'GPS Smartphone Mounts',
-      intro: 'Smartphone Integration',
-      description: [
-        'Transform your phone into a navigation powerhouse with sturdy mounts designed for driving safety and visibility.',
-      ],
-      imageSrc: '/smartphone_mount.png',
-    },
-    {
-      name: 'GPS Tracker Devices',
-      intro: 'Live Location Monitoring',
-      description: [
-        'Install discreet GPS trackers in vehicles or assets to monitor movement, location history, and receive tamper alerts.',
-      ],
-      imageSrc: '/gps_tracker.png',
-    },
-    {
-      name: 'GPS Accessories',
-      intro: 'Enhance Your System',
-      description: [
-        'Power adapters, cables, and mounts that ensure your GPS systems stay reliable and always ready.',
-      ],
-      imageSrc: '/gps_accessories.png',
-    },
-    {
-      name: 'Outdoor GPS Units',
-      intro: 'Designed for Adventure',
-      description: [
-        'Built to withstand harsh environments—ideal for tracking assets in outdoor, off-road, or industrial settings.',
-      ],
-      imageSrc: '/outdoor_gps.png',
-    },
-    {
-      name: 'Traffic Receiver Modules',
-      intro: 'Stay Ahead of Delays',
-      description: [
-        'Get real-time traffic data and route suggestions to help your fleet or personal vehicle avoid unnecessary slowdowns.',
-      ],
-      imageSrc: '/traffic_module.png',
-    },
-  ];
-
+const AlarmSystems = () => {
   useEffect(() => {
-    const interval = setInterval(() => {
-      setVisibleBenefitIndex((prevIndex) => (prevIndex + 1) % benefits.length);
-    }, 4000);
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add(styles.show);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
 
-    return () => clearInterval(interval);
-  }, []);
+    const items = document.querySelectorAll(`.${styles.deviceIntro}`);
+    items.forEach(item => observer.observe(item));
 
-  useEffect(() => {
-    const intros = document.querySelectorAll(`.${styles.deviceIntro}`);
-    intros.forEach((intro, index) => {
-      setTimeout(() => {
-        intro.classList.add(styles.show);
-      }, 800 * index);
-    });
+    return () => items.forEach(item => observer.unobserve(item));
   }, []);
 
   return (
     <div className={styles.alarmSystemsContainer}>
       <div className={styles.headerRow}>
-        <h1 className={styles.alarmSystemsTitle}>
-          Advanced Asset Tracking & GPS Solutions
-        </h1>
-        <div className={styles.benefitsSection}>
-          <h2 className={styles.keyFeaturesTitle}>Key Benefits</h2>
-          <ul className={styles.keyFeaturesList}>
-            {benefits.map((benefit, index) => (
-              <li
-                key={index}
-                className={`${styles.keyFeatureItem} ${
-                  index === visibleBenefitIndex ? styles.visible : styles.hidden
-                }`}
-              >
-                {benefit}
-              </li>
-            ))}
-          </ul>
-        </div>
+        <h2 className={styles.alarmSystemsTitle}>Alarm Systems</h2>
+        <p>Protect your property with cutting-edge alarm solutions.</p>
       </div>
 
-      <div className={styles.mainSection}>
+      <section className={styles.benefitsSection}>
+        <h3 className={styles.keyFeaturesTitle}>Key Features</h3>
+        <ul className={styles.keyFeaturesList}>
+          <li className={styles.keyFeatureItem}>24/7 Monitoring</li>
+          <li className={styles.keyFeatureItem}>Mobile Notifications</li>
+          <li className={styles.keyFeatureItem}>Smart Integration</li>
+          <li className={styles.keyFeatureItem}>Quick Installation</li>
+          <li className={styles.keyFeatureItem}>Remote Access</li>
+        </ul>
+      </section>
+
+      <section className={styles.mainSection}>
         <div className={styles.responsiveImageGrid}>
-          {productTypes.map((product, index) => (
-            <div key={index} className={styles.imageItem}>
-              {product.intro && (
-                <p className={`${styles.deviceIntro} ${styles.initialHidden}`}>
-                  {product.intro}
-                </p>
-              )}
-              <div className={styles.imageContainer}>
-                <img
-                  src={product.imageSrc}
-                  alt={`${product.name} - ${product.intro}`}
-                  className={styles.responsiveImage}
-                />
-              </div>
-              <p className={styles.imageName}>{product.name}</p>
-              <ul className={styles.descriptionList}>
-                {product.description.map((desc, idx) => (
-                  <li key={idx} className={styles.descriptionItem}>
-                    {desc}
-                  </li>
-                ))}
-              </ul>
+          <div className={`${styles.imageItem} ${styles.deviceIntro}`}>
+            <div className={styles.imageContainer}>
+              <img src="/images/alarm1.png" alt="Smart Sensor" className={styles.responsiveImage} />
             </div>
-          ))}
+            <h4 className={styles.imageName}>Smart Sensor</h4>
+            <ul className={styles.descriptionList}>
+              <li className={styles.descriptionItem}>Detects movement and temperature</li>
+              <li className={styles.descriptionItem}>Battery powered</li>
+            </ul>
+          </div>
+
+          <div className={`${styles.imageItem} ${styles.deviceIntro}`}>
+            <div className={styles.imageContainer}>
+              <img src="/images/alarm2.png" alt="Control Panel" className={styles.responsiveImage} />
+            </div>
+            <h4 className={styles.imageName}>Control Panel</h4>
+            <ul className={styles.descriptionList}>
+              <li className={styles.descriptionItem}>Centralized management</li>
+              <li className={styles.descriptionItem}>Touchscreen display</li>
+            </ul>
+          </div>
+
+          <div className={`${styles.imageItem} ${styles.deviceIntro}`}>
+            <div className={styles.imageContainer}>
+              <img src="/images/alarm3.png" alt="Siren Unit" className={styles.responsiveImage} />
+            </div>
+            <h4 className={styles.imageName}>Siren Unit</h4>
+            <ul className={styles.descriptionList}>
+              <li className={styles.descriptionItem}>Loud outdoor siren</li>
+              <li className={styles.descriptionItem}>Flashing lights</li>
+            </ul>
+          </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 };
 
-export default AssetTrackingPage;
+export default AlarmSystems;
