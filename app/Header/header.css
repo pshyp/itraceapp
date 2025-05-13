@@ -63,6 +63,10 @@
     justify-content: center; /* Center the contact info */
     text-align: center; /* Ensure text is centered */
   }
+  
+  .social-icons {
+    justify-content: center; /* Center the social icons */
+  }
 
   .contact-info a,
   .contact-info span {
