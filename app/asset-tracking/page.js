@@ -7,62 +7,66 @@ const AssetTrackingPage = () => {
   const [visibleBenefitIndex, setVisibleBenefitIndex] = useState(0);
 
   const benefits = [
-    "Monitor valuable assets in real time from any location.",
-    "Prevent theft with instant movement alerts.",
-    "Track vehicles, equipment, and shipments easily.",
-    "Receive notifications if an asset leaves a geofenced area.",
-    "Optimize routes and logistics with live GPS data.",
-    "Minimize operational losses through smart tracking.",
+    "Track your assets in real time with accuracy.",
+    "Get notifications if your asset moves unexpectedly.",
+    "Ensure peace of mind with constant monitoring.",
+    "View asset history with location logs.",
+    "Integrate tracking systems with your existing infrastructure.",
+    "Protect against theft with advanced GPS technology.",
+    "Optimize asset usage and reduce downtime.",
+    "Access detailed reports on asset performance and usage.",
+    "Customize alerts to match your asset management needs.",
+    "Easily manage a fleet of devices from a central dashboard.",
   ];
 
-  const trackerTypes = [
+  const assetTypes = [
     {
-      name: 'Portable GPS Navigators',
-      intro: 'Reliable On-the-Go Tracking',
+      name: 'GPS Accessory Kit',
+      intro: 'Complete Asset Tracking Solution',
       description: [
-        'Ideal for fleets and individuals needing portable, plug-and-play GPS devices with accurate location tracking and long battery life.',
+        'Get everything you need for seamless asset tracking with this all-in-one GPS accessory kit.',
       ],
-      imageSrc: '/portable_gps_navigator.png',
+      imageSrc: '/gps-accessory-kit.png', // Replace with your actual image path
     },
     {
-      name: 'GPS Smartphone Mounts',
-      intro: 'Integrated Mobile Navigation',
+      name: 'GPS Tracker',
+      intro: 'Track Your Assets in Real Time',
       description: [
-        'Mounts with built-in GPS support for smartphones, allowing secure placement and efficient navigation during transit.',
+        'Monitor and track your valuable assets in real time with this highly accurate GPS tracker.',
       ],
-      imageSrc: '/gps_smartphone_mount.png',
+      imageSrc: '/gps-tracker.png', // Replace with your actual image path
     },
     {
-      name: 'GPS Tracker Devices',
-      intro: 'Real-Time Location Monitoring',
+      name: 'Outdoor GPS Navigator',
+      intro: 'Navigate Your Assets Outdoors',
       description: [
-        'Compact trackers suitable for cars, trucks, or containers, offering real-time tracking with cellular and satellite communication.',
+        'Ensure your assets can be tracked in outdoor environments with this rugged and durable GPS navigator.',
       ],
-      imageSrc: '/gps_tracker_device.png',
+      imageSrc: '/outdoor-navigator.png', // Replace with your actual image path
     },
     {
-      name: 'GPS Accessories',
-      intro: 'Support Tools for Trackers',
+      name: 'Portable GPS Navigator',
+      intro: 'On-the-Go Asset Tracking',
       description: [
-        'Power cables, signal boosters, mounts, and more — accessories that enhance the performance and durability of your GPS trackers.',
+        'Keep your asset tracking mobile with this portable GPS navigator, perfect for field operations.',
       ],
-      imageSrc: '/gps_accessories.png',
+      imageSrc: '/portable-navigator.png', // Replace with your actual image path
     },
     {
-      name: 'Outdoor GPS Units',
-      intro: 'Rugged Field-Ready Devices',
+      name: 'Smartphone Mount',
+      intro: 'Mount Your Device for Easy Access',
       description: [
-        'Built to withstand tough environments, these devices are perfect for field teams tracking assets in remote or off-road areas.',
+        'Securely mount your GPS tracker or smartphone for easy access and uninterrupted asset tracking.',
       ],
-      imageSrc: '/outdoor_gps_unit.png',
+      imageSrc: '/smartphone-mount.png', // Replace with your actual image path
     },
     {
       name: 'Traffic Receiver Module',
-      intro: 'Live Traffic Integration',
+      intro: 'Get Real-Time Traffic Data',
       description: [
-        'Attachable modules that provide real-time traffic updates to GPS systems for smarter routing and better ETA predictions.',
+        'Enhance your asset tracking with live traffic data, helping to improve decision-making and route planning.',
       ],
-      imageSrc: '/traffic_receiver_module.png',
+      imageSrc: '/traffic-receiver.png', // Replace with your actual image path
     },
   ];
 
@@ -87,7 +91,7 @@ const AssetTrackingPage = () => {
     <div className={styles.assetTrackingContainer}>
       <div className={styles.headerRow}>
         <h1 className={styles.assetTrackingTitle}>
-          Advanced Asset Tracking for Smarter Logistics
+          Advanced Asset Tracking Solutions for Ultimate Security
         </h1>
         <div className={styles.benefitsSection}>
           <h2 className={styles.keyFeaturesTitle}>Key Benefits</h2>
@@ -108,23 +112,23 @@ const AssetTrackingPage = () => {
 
       <div className={styles.mainSection}>
         <div className={styles.responsiveImageGrid}>
-          {trackerTypes.map((tracker, index) => (
+          {assetTypes.map((asset, index) => (
             <div key={index} className={styles.imageItem}>
-              {tracker.intro && (
+              {asset.intro && (
                 <p className={`${styles.deviceIntro} ${styles.initialHidden}`}>
-                  {tracker.intro}
+                  {asset.intro}
                 </p>
               )}
               <div className={styles.imageContainer}>
                 <img
-                  src={tracker.imageSrc}
-                  alt={`${tracker.name} - ${tracker.intro}`}
+                  src={asset.imageSrc}
+                  alt={`${asset.name} - ${asset.intro}`}
                   className={styles.responsiveImage}
                 />
               </div>
-              <p className={styles.imageName}>{tracker.name}</p>
+              <p className={styles.imageName}>{asset.name}</p>
               <ul className={styles.descriptionList}>
-                {tracker.description.map((desc, idx) => (
+                {asset.description.map((desc, idx) => (
                   <li key={idx} className={styles.descriptionItem}>
                     {desc}
                   </li>
