@@ -231,7 +231,7 @@ const Header = () => {
                 <Link href="/remote-access-systems" className="dropdown-link" onClick={handleLinkClick}>
                  Remote Access Systems
                 </Link>
-                <Link href="/other-services" className="dropdown-link" onClick={handleLinkClick}>
+                <Link href="/asset-tracking" className="dropdown-link" onClick={handleLinkClick}>
                   Asset Tracking Solutions
                 </Link> 
                 <Link href="/alarm-systems" className="dropdown-link" onClick={handleLinkClick}>
