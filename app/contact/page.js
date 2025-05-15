@@ -1,6 +1,4 @@
 import React from 'react';
-import styles from './contact.module.css'; // Assuming you'll create a contact.module.css
-import { phoneNumber1, phoneNumber2, emailAddress } from '../Header/header';
 
 function ContactPage() {
   return (
@@ -10,9 +8,9 @@ function ContactPage() {
         Feel free to reach out to us using the contact information below:
       </p>
       <div className={styles.contactDetails}>
-        <p>Phone 1: <a href={`tel:${phoneNumber1}`} className={styles.link}>{phoneNumber1}</a></p>
-        <p>Phone 2: <a href={`tel:${phoneNumber2}`} className={styles.link}>{phoneNumber2}</a></p>
-        <p>Email: <a href={`mailto:${emailAddress}`} className={styles.link}>{emailAddress}</a></p>
+        <p>Phone 1: <a href="tel:+254704777100" className={styles.link}>(+254) 704 777 100</a></p>
+        <p>Phone 2: <a href="tel:0722100506" className={styles.link}>0722 100 506</a></p>
+        <p>Email: <a href="mailto:info@itraceafrica.com" className={styles.link}>info@itraceafrica.com</a></p>
       </div>
     </div>
   );

@@ -2,49 +2,70 @@
 
 .container {
     max-width: 800px;
-    margin: 40px auto;
+    margin: 60px auto; /* More margin at the top */
     padding: 20px;
     background-color: #f9f9f9;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+ text-align: center; /* Center align content */
 }
 
-.container h1 {
+.title {
     color: #333;
     text-align: center;
     margin-bottom: 30px;
-    font-size: 2.5em;
+    font-size: 2.8em; /* Slightly larger title */
+ font-weight: bold; /* Make title bold */
 }
 
-.container h2 {
-    color: #555;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    font-size: 1.8em;
-}
-
-.container p {
+.info {
     color: #666;
     line-height: 1.6;
     margin-bottom: 15px;
     font-size: 1.1em;
+ text-align: center; /* Center align paragraph */
 }
 
-.contactInfo {
+.contactDetails {
     margin-top: 30px;
     padding-top: 20px;
-    border-top: 1px solid #eee;
+    /* border-top: 1px solid #eee; Remove border top */
+ text-align: center; /* Center align contact details */
 }
 
-.contactInfo p {
+.contactDetails p {
     margin-bottom: 10px;
+ font-size: 1.2em; /* Slightly larger text for details */
 }
 
-.contactInfo a {
-    color: #007bff;
-    text-decoration: none;
+.link {
+ color: #007bff; /* Blue link color */
+ text-decoration: none;
+ font-weight: bold; /* Make links bold */
+ transition: color 0.3s ease; /* Smooth color transition on hover */
 }
 
-.contactInfo a:hover {
+.link:hover {
     text-decoration: underline;
+ color: #0056b3; /* Darker blue on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+ .container {
+ margin: 20px; /* Reduce margin on smaller screens */
+ padding: 15px;
+ }
+
+ .title {
+ font-size: 2em; /* Reduce title size */
+ }
+
+ .info {
+ font-size: 1em; /* Reduce paragraph size */
+ }
+
+ .contactDetails p {
+ font-size: 1.1em; /* Reduce contact details size */
+ }
 }
