@@ -249,7 +249,7 @@ const Header = () => {
             <Link href="/about" className="nav-link" onClick={handleLinkClick}>About Us</Link>
 
             {/* Contact Link */}
-            <Link href="/contact" className="nav-link" onClick={handleLinkClick}>Contact</Link>
+            <Link href="/contact" className="nav-link" onClick={handleLinkClick}>Contact Us</Link>
           </nav>
 
           {/* Mobile Menu Button */}
