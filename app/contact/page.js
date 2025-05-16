@@ -141,6 +141,31 @@ function ContactPage() {
             font-size: 1.75rem;
           }
         }
+
+        @media (prefers-color-scheme: dark) {
+          .contact-page {
+            background-color: #1a1a1a; /* Dark background */
+            color: #f9f9f9; /* Light text */
+          }
+
+          .container {
+            background: #2a2a2a; /* Slightly lighter dark background for container */
+            box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1); /* Lighter shadow */
+          }
+
+          h1,
+          .contact-section h2 {
+            color: #f9f9f9; /* Light headings */
+          }
+
+          .intro-text {
+            color: #ccc; /* Slightly darker light text */
+          }
+
+          a {
+            color: #90ee90; /* Light green for links */
+          }
+        }
       `}</style>
     </div>
   );
