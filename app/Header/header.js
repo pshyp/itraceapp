@@ -242,6 +242,14 @@ const Header = () => {
                 <Link href="/alarm-systems" className="dropdown-link" onClick={handleLinkClick}>
                  Alarm System
                 </Link> 
+                <Link href="/vehicle-audio-multimedia" className="dropdown-link" onClick={handleLinkClick}>
+
+                 Vehicle Audio & Multimedia Systems
+                </Link>
+                <Link href="/autolocksmith-services" className="dropdown-link" onClick={handleLinkClick}>
+
+                 Autolocksmith Services
+                </Link>
               </div>
             </div>
 
