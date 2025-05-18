@@ -1,56 +1,67 @@
 "use client";
 
-import styles from "./vehicle-audio-multimedia.module.css"; // Make sure this CSS file exists and has the styles
+import styles from "./vehicle-audio-multimedia.module.css";
 import { useEffect, useState } from 'react';
 
 const VehicleAudioMultimediaPage = () => {
   const [visibleBenefitIndex, setVisibleBenefitIndex] = useState(0);
 
   const benefits = [
-    "High-quality sound system upgrades",
-    "Integration of modern multimedia players",
-    "Installation of screens and displays",
-    "Custom audio setups",
-    "Bluetooth and smartphone connectivity",
-    "Navigation system installation",
-    "Backup camera integration",
-    "Steering wheel control compatibility",
-    "Noise reduction and sound dampening",
-    "Expert installation and tuning",
+    "PREMIUM SOUND QUALITY: Immerse yourself in crystal-clear, high-fidelity sound.",
+    "CUSTOMIZATION: Tailor your audio and multimedia setup to suit your preferences and vehicle's requirements.",
+    "TOUCHSCREEN DISPLAYS: Intuitive displays provide easy access to entertainment and navigation features.",
+    "ENHANCED ENTERTAINMENT: Enjoy streaming music, video, and your favorite DVDs and CDs.",
+    "SEAMLESS CONNECTIVITY: Stay connected with Bluetooth, Apple CarPlay, Android Auto, and more.",
   ];
 
   const productExamples = [
     {
-      name: 'Premium Speaker System',
-      intro: 'Experience Crystal Clear Sound',
+      name: 'Car Stereos',
+      intro: 'Upgrade Your In-Car Audio Hub',
       description: [
-        'Upgrade your car\'s audio with our range of premium speakers for an immersive listening experience.',
+        'Upgrade your car with the latest car stereos equipped with connectivity features like Bluetooth, USB support, and FM radio. Enjoy easy access to your music library on the go.',
       ],
-      imageSrc: '/placeholder-audio1.png', // Placeholder image
+      imageSrc: '/car-stereos.jpg', // Replace with your actual image path
     },
     {
-      name: 'Touchscreen Multimedia Player',
-      intro: 'Modern Entertainment on the Go',
+      name: 'Car Speakers',
+      intro: 'Replace for Clearer, More Detailed Sound',
       description: [
-        'Install a state-of-the-art touchscreen player with navigation, Bluetooth, and app compatibility.',
+        'Replace your factory speakers with high-performance ones that deliver clearer, more detailed sound. Upgrade your car’s sound system with premium car speakers for a better audio experience.',
       ],
-      imageSrc: '/placeholder-audio2.png', // Placeholder image
+      imageSrc: '/car-speakers.jpg', // Replace with your actual image path
     },
     {
-      name: 'Subwoofer and Amplifier',
-      intro: 'Add Depth to Your Bass',
+      name: 'Amplifiers',
+      intro: 'Enhance Your Sound System\'s Performance',
       description: [
-        'Enhance your audio system with powerful subwoofers and amplifiers for rich, deep bass.',
+        'Enhance your sound system with car amplifiers. These powerful amplifiers boost your audio system’s performance, delivering deep, dynamic sound that brings your music to life.',
       ],
-      imageSrc: '/placeholder-audio3.png', // Placeholder image
+      imageSrc: '/car-amplifiers.jpg', // Replace with your actual image path
     },
     {
-      name: 'Backup Camera System',
-      intro: 'Increased Safety and Convenience',
+      name: 'Subwoofers',
+      intro: 'Add Deep, Heart-Pounding Low-End',
       description: [
-        'Integrate a backup camera with your display for safer parking and maneuvering.',
+        'For those who love bass, our subwoofers add that deep, heart-pounding low-end that makes your car sound system stand out. Add more bass to your system for that powerful audio experience.',
       ],
-      imageSrc: '/placeholder-audio4.png', // Placeholder image
+      imageSrc: '/car-subwoofers.jpg', // Replace with your actual image path
+    },
+    {
+      name: 'Multimedia Receivers',
+      intro: 'Large Touchscreen Displays and Compatibility',
+      description: [
+        'Our multimedia receivers feature large touchscreen displays and compatibility with various media formats. Navigate easily, stream music, and enjoy seamless multimedia integration.',
+      ],
+      imageSrc: '/multimedia-receiver.jpg', // Replace with your actual image path
+    },
+    {
+      name: 'Backup Cameras',
+      intro: 'Improve Safety and Driving Experience',
+      description: [
+        'Improve your safety and driving experience with backup cameras that provide a clear view of your surroundings while reversing. Stay safe and avoid accidents with enhanced visibility.',
+      ],
+      imageSrc: '/backup-camera.jpg', // Replace with your actual image path
     },
   ];
 
@@ -60,7 +71,7 @@ const VehicleAudioMultimediaPage = () => {
     }, 4000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [benefits.length]);
 
   useEffect(() => {
     const intros = document.querySelectorAll(`.${styles.deviceIntro}`);
