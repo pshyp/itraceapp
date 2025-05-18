@@ -1,7 +1,10 @@
-import React from 'react';
-import styles from './ai-dashcams-mdvr.module.css'; // Make sure this CSS has styles similar to asset-tracking.module.css
+'use client';
+import React, { useEffect, useState } from 'react'; // Import useState and useEffect
+import styles from './ai-dashcams-mdvr.module.css';
 
 const AiDashcamsMdvrPage = () => {
+  const [visibleBenefitIndex, setVisibleBenefitIndex] = useState(0); // State for the visible benefit
+
   const benefits = [
     "Improved Driver Safety: Real-time monitoring and alerts for risky driving behaviors.",
     "Incident Investigation: High-definition video footage for evidence.",
@@ -73,6 +76,14 @@ const AiDashcamsMdvrPage = () => {
     },
   ];
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setVisibleBenefitIndex((prevIndex) => (prevIndex + 1) % benefits.length);
+    }, 4000);
+
+    return () => clearInterval(interval); // Cleanup the interval on component unmount
+  }, [benefits.length]); // Re-run effect if the number of benefits changes
+
   return (
     <div className={styles.assetTrackingContainer}>
       <div className={styles.headerRow}>
@@ -83,7 +94,12 @@ const AiDashcamsMdvrPage = () => {
           <h2 className={styles.keyFeaturesTitle}>Key Benefits</h2>
           <ul className={styles.keyFeaturesList}>
             {benefits.map((benefit, index) => (
-              <li key={index} className={styles.keyFeatureItem}>
+              <li
+                key={index}
+                className={`${styles.keyFeatureItem} ${
+                  index === visibleBenefitIndex ? styles.visible : styles.hidden
+                }`}
+              >
                 {benefit}
               </li>
             ))}
