@@ -1,278 +1,129 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
-import Link from "next/link";
-import "./header.css"; // Make sure to import the CSS
-import {
-  FaInstagram,
-  FaPinterest,
-  FaFacebookF,
-  FaTwitter,
-  FaLinkedinIn,
-  FaTiktok,
-  FaPhone,
-  FaEnvelope,
-} from "react-icons/fa";
+import styles from "./ai-dashcams-mdvr.module.css"; // Make sure this CSS file exists and has the styles
+import { useEffect, useState } from 'react';
 
-const Header = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isRemoteDropdownOpen, setIsRemoteDropdownOpen] = useState(false);
-  const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false);
+const AiDashcamsMdvrPage = () => {
+  const [visibleBenefitIndex, setVisibleBenefitIndex] = useState(0);
 
-  const menuButtonRef = useRef(null);
-  const navRef = useRef(null);
+  const benefits = [
+    "Real-time video monitoring",
+    "Driver behavior analysis",
+    "Accident reconstruction data",
+    "Improved fleet safety",
+    "Reduced insurance costs",
+    "Remote access to video footage",
+    "Integration with telematics systems",
+    "Tamper-proof recording",
+    "Customizable alerts and notifications",
+    "High-definition video quality",
+  ];
 
-  const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
+  const productExamples = [
+    {
+      name: 'AI Dashcam',
+      intro: 'Smart Monitoring for Safer Driving',
+      description: [
+        'Advanced dashcams with AI features to monitor driver behavior and capture crucial road events.',
+      ],
+      imageSrc: '/placeholder-aidashcam1.png', // Placeholder image
+    },
+    {
+      name: 'Mobile Digital Video Recorder (MDVR)',
+      intro: 'Comprehensive Fleet Surveillance',
+      description: [
+        'Robust MDVR systems for recording and managing video footage from multiple cameras in a fleet.',
+      ],
+      imageSrc: '/placeholder-mdvr1.png', // Placeholder image
+    },
+    {
+      name: 'Integrated Camera Systems',
+      intro: 'Complete Vehicle Vision',
+      description: [
+        'Solutions combining multiple cameras (forward-facing, driver-facing, side) for full visibility.',
+      ],
+      imageSrc: '/placeholder-integratedcam.png', // Placeholder image
+    },
+    {
+      name: 'Cloud-Based Video Management',
+      intro: 'Access Footage Anytime, Anywhere',
+      description: [
+        'Secure cloud platforms for storing, managing, and accessing video footage remotely.',
+      ],
+      imageSrc: '/placeholder-cloud.png', // Placeholder image
+    },
+  ];
 
-  const closeMobileMenu = () => {
-    setIsMobileMenuOpen(false);
-    setIsRemoteDropdownOpen(false); // Close dropdowns when menu closes
-    setIsServicesDropdownOpen(false);
-  };
-
-  const toggleRemoteDropdown = (e) => {
-    e.preventDefault(); // Prevent navigation if it were a real link
-    setIsRemoteDropdownOpen(!isRemoteDropdownOpen);
-    setIsServicesDropdownOpen(false); // Close other dropdown
-  };
-
-  const toggleServicesDropdown = (e) => {
-    e.preventDefault(); // Prevent navigation if it were a real link
-    setIsServicesDropdownOpen(!isServicesDropdownOpen);
-    setIsRemoteDropdownOpen(false); // Close other dropdown
-  };
-
-  // Effect for handling clicks outside the menu
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      // If menu is open and click is outside the nav and outside the button
-      if (
-        isMobileMenuOpen &&
-        navRef.current &&
-        !navRef.current.contains(event.target) &&
-        menuButtonRef.current &&
-        !menuButtonRef.current.contains(event.target)
-      ) {
-        closeMobileMenu();
-      }
-    };
+    const interval = setInterval(() => {
+      setVisibleBenefitIndex((prevIndex) => (prevIndex + 1) % benefits.length);
+    }, 4000);
 
-    // Add listener if menu is open
-    if (isMobileMenuOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
+    return () => clearInterval(interval);
+  }, []);
 
-    // Cleanup: remove listener when component unmounts or menu closes
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [isMobileMenuOpen]); // Re-run effect when isMobileMenuOpen changes
-
-  // Helper function for link clicks
-  const handleLinkClick = () => {
-    closeMobileMenu();
-    // Add any other logic needed on link click
-  };
+  useEffect(() => {
+    const intros = document.querySelectorAll(`.${styles.deviceIntro}`);
+    intros.forEach((intro, index) => {
+      setTimeout(() => {
+        intro.classList.add(styles.show);
+      }, 800 * index);
+    });
+  }, []);
 
   return (
-    <header className="site-header">
-      {/* Top Bar (no changes needed here) */}
-      <div className="top-bar ">
-        <div className="container flex items-center justify-between">
-          <div className="contact-info flex items-center justify-center ">
-            <FaPhone />
-            <a href="tel:+254704777100" className="whitespace-nowrap">
-              (+254) 704 777 100
-            </a>
-            <span className="hidden px-2">|</span>
-            <a href="tel:0722100506" className="whitespace-nowrap hidden ">
-              0722 100 506
-            </a>
-            <span className="hidden px-2">|</span>
-            
-            
-           
-            
-            <a href="mailto:info@itraceservice.com" className="email-link px-2">
-              <FaEnvelope />
-              <span>info@itraceafrica.com</span>
-            </a>
-          </div>
-
-          <div className="social-icons">
-            <Link href="https://www.facebook.com/itrace.africa"  target="_blank" rel="noopener noreferrer">
-              <a
-                aria-label="Facebook"
-                target="_blank"
-                rel="noopener noreferrer"
+    <div className={styles.assetTrackingContainer}>
+      <div className={styles.headerRow}>
+        <h1 className={styles.assetTrackingTitle}>
+          AI Dashcams and MDVR Solutions
+        </h1>
+        <div className={styles.benefitsSection}>
+          <h2 className={styles.keyFeaturesTitle}>Key Benefits</h2>
+          <ul className={styles.keyFeaturesList}>
+            {benefits.map((benefit, index) => (
+              <li
+                key={index}
+                className={`${styles.keyFeatureItem} ${
+                  index === visibleBenefitIndex ? styles.visible : styles.hidden
+                }`}
               >
-                <FaFacebookF />
-              </a>
-            </Link>
-            <Link href="http://tiktok.com/@itraceafricatelematics"  target="_blank" rel="noopener noreferrer">
-              <a aria-label="TikTok" target="_blank" rel="noopener noreferrer">
-                <FaTiktok />
-              </a>
-            </Link>
-          </div>
+                {benefit}
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
 
-      {/* Main Navigation */}
-      <div className="main-nav">
-        <div className="container">
-        {/* Logo (no changes needed) */}
-          <Link href="/" passHref legacyBehavior>
-            <a
-              className="flex items-center site-logo"
-              onClick={handleLinkClick}
-            >
-              <img
-                src="/LogoMobi.jpeg"
-                alt="iTraceAfrica Logo - Home"
-                className="h-10"
-              />
-            </a>
-          </Link>
-
-          {/* Main Menu Nav */}
-          <nav
-            ref={navRef} // Add ref for outside click detection
-            className={`main-menu ${
-              isMobileMenuOpen ? "mobile-menu-active" : "hidden"
-            }`}
-          >
-          {/* Fuel Monitoring Link */}
-          <Link href="/fuel-monitoring" className="nav-link" onClick={handleLinkClick}>
-            Fuel Monitoring
-           
-          </Link>
-          {/* Blog Link */}
- <Link href="/blog" className="nav-link" onClick={handleLinkClick}>
- Blog
- </Link>
- {/* About Us Link */}
-
-          
-
-            {/* Remote Access Dropdown */}
-            <div className="nav-item-with-dropdown">
-              <a
-                className="nav-link"
-                onClick={toggleRemoteDropdown} // Click handler for dropdown toggle
-                aria-haspopup="true" // Accessibility
-                aria-expanded={isRemoteDropdownOpen} // Accessibility
-              >
-                Remote Access Systems
-                <svg
-                  className={`nav-arrow ${
-                    isRemoteDropdownOpen ? "rotate-180" : ""
-                  }`}
-                  viewBox="0 0 20 20"
-                >
-                  <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
-                </svg>
-              </a>
-              <div
-                className={`dropdown-menu ${
-                  isRemoteDropdownOpen ? "show" : ""
-                }`}
-              >
-                <h6 className="dropdown-section-header">
-                  iTrace Networks - Remote Access
-                </h6>
-                <Link href="/genset-solutions" className="dropdown-link" onClick={handleLinkClick}>
-                  
-                  Genset Solutions
-                
-                </Link>
-                <Link href="/solar-installations-remote-monitoring" className="dropdown-link" onClick={handleLinkClick}>
-                  
-                  Solar Installations Remote Monitoring
-               
-                </Link>
-                <Link href="/smart-farm-solutions" className="dropdown-link" onClick={handleLinkClick}>
-                  
-                  Smart Farm Solutions
-                
-                </Link>
-                <Link href="/cold-storage-remote-monitoring-iot" className="dropdown-link" onClick={handleLinkClick}>
-                  Cold Storage Remote Monitoring (IOT)
-                </Link>
+      <div className={styles.mainSection}>
+        <div className={styles.responsiveImageGrid}>
+          {productExamples.map((product, index) => (
+            <div key={index} className={styles.imageItem}>
+              {product.intro && (
+                <p className={`${styles.deviceIntro} ${styles.initialHidden}`}>
+                  {product.intro}
+                </p>
+              )}
+              <div className={styles.imageContainer}>
+                <img
+                  src={product.imageSrc}
+                  alt={`${product.name} - ${product.intro}`}
+                  className={styles.responsiveImage}
+                />
               </div>
+              <p className={styles.imageName}>{product.name}</p>
+              <ul className={styles.descriptionList}>
+                {product.description.map((desc, idx) => (
+                  <li key={idx} className={styles.descriptionItem}>
+                    {desc}
+                  </li>
+                ))}
+              </ul>
             </div>
-
-            {/* Services Dropdown */}
-            <div className="nav-item-with-dropdown">
-              <a
-                className="nav-link"
-                onClick={toggleServicesDropdown} // Click handler for dropdown toggle
-                aria-haspopup="true" // Accessibility
-                aria-expanded={isServicesDropdownOpen} // Accessibility
-              >
-                Services
-                <svg
-                  className={`nav-arrow ${
-                    isServicesDropdownOpen ? "rotate-180" : ""
-                  }`}
-                  viewBox="0 0 20 20"
-                >
-                  <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
-                </svg>
-              </a>
-              <div
-                className={`dropdown-menu ${
-                  isServicesDropdownOpen ? "show" : ""
-                }`}
-              >
-                <h6 className="dropdown-section-header">
-                  iTrace Services - Industry Leader
-                </h6> 
-                <Link href="/fuel-monitoring" className="dropdown-link" onClick={handleLinkClick}>
-                  
-                  Fuel Monitoring 
-                
-                </Link>
-                <Link href="/remote-access-systems" className="dropdown-link" onClick={handleLinkClick}>
-                 Remote Access Systems
-                </Link>
-                <Link href="/asset-tracking" className="dropdown-link" onClick={handleLinkClick}>
-                  Asset Tracking Solutions
-                </Link> 
-                <Link href="/alarm-systems" className="dropdown-link" onClick={handleLinkClick}>
-                 Alarm System
-                </Link> 
-                <Link href="/vehicle-audio-multimedia" className="dropdown-link" onClick={handleLinkClick}>
-
-                 Vehicle Audio & Multimedia Systems
-                </Link>
-                <Link href="/autolocksmith-services" className="dropdown-link" onClick={handleLinkClick}>
-
-                 Autolocksmith Services
-                </Link>
-              </div>
-            </div>
-
- {/* About Us Link */}
-            <Link href="/about" className="nav-link" onClick={handleLinkClick}>About Us</Link>
-
-            {/* Contact Link */}
-            <Link href="/contact" className="nav-link" onClick={handleLinkClick}>Contact Us</Link>
-          </nav>
-
-          {/* Mobile Menu Button */}
-          <button
-            ref={menuButtonRef}
-            onClick={toggleMobileMenu}
-            className="menu-button"
-            aria-label="Toggle mobile menu"
-          >
-            <span className="text-black">☰</span> {/* Hamburger icon */}
-          </button>
+          ))}
         </div>
       </div>
-    </header>
+    </div>
   );
 };
 
-export default Header;
+export default AiDashcamsMdvrPage;
