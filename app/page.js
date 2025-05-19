@@ -23,7 +23,13 @@ import portableNav from "../public/portable-navigator.png";
 import smartphoneMount from "../public/smartphone-mount.png";
 
 // New Images
-import vehicleAudioImage from "../public/Logo.png"; // Placeholder image
+import carStereo from "../public/Car_stereo.png";
+import carSpeaker from "../public/car_speaker.png";
+import amplifier from "../public/Amplifier.png";
+import subwoofer from "../public/Subwoofer.png";
+import multimediaReceiver from "../public/multimedia_receivers.png";
+import backupCamera from "../public/backupcamera.png";
+
 import autolocksmithImage from "../public/Logo.png"; // Placeholder image
 import mc201 from "../public/MC201.png";
 import mc202x from "../public/MC202X.png";
@@ -63,6 +69,15 @@ export default function Home() {
     { image: trafficReceiver, title: "Traffic Receiver", subtitle: "Live road condition updates" },
   ];
 
+  const vehicleAudioMultimedia = [
+    { image: carStereo, title: 'Car Stereos', subtitle: 'Upgrade Your In-Car Audio Hub' },
+    { image: carSpeaker, title: 'Car Speakers', subtitle: 'Replace for Clearer, More Detailed Sound' },
+    { image: amplifier, title: 'Amplifiers', subtitle: 'Enhance Your Sound System\'s Performance' },
+    { image: subwoofer, title: 'Subwoofers', subtitle: 'Add Deep, Heart-Pounding Low-End' },
+    { image: multimediaReceiver, title: 'Multimedia Receivers', subtitle: 'Large Touchscreen Displays and Compatibility' },
+    { image: backupCamera, title: 'Backup Cameras', subtitle: 'Improve Safety and Driving Experience' },
+  ];
+
   const aiDashcamsMdvr = [
     {
       image: mc201,
@@ -99,6 +114,7 @@ export default function Home() {
   const [alarmIndex, setAlarmIndex] = useState(0);
   const [fuelBenefitIndex, setFuelBenefitIndex] = useState(0);
   const [assetIndex, setAssetIndex] = useState(0);
+  const [vehicleAudioIndex, setVehicleAudioIndex] = useState(0);
 
   useEffect(() => {
     const monitorInterval = setInterval(() => {
@@ -119,6 +135,13 @@ export default function Home() {
       setFuelBenefitIndex((prev) => (prev + 1) % fuelMonitorBenefits.length);
     }, 3000);
     return () => clearInterval(fuelInterval);
+  }, []);
+
+  useEffect(() => {
+    const vehicleAudioInterval = setInterval(() => {
+      setVehicleAudioIndex((prev) => (prev + 1) % vehicleAudioMultimedia.length);
+    }, 3000);
+    return () => clearInterval(vehicleAudioInterval);
   }, []);
 
   useEffect(() => {
@@ -200,11 +223,11 @@ export default function Home() {
       {/* Vehicle Audio & Multimedia Systems Section */}
       <section className="section-block">
         <h2 className="product-title">Vehicle Audio & Multimedia Systems</h2>
-        <p className="product-subtitle">Placeholder subtitle for Vehicle Audio & Multimedia Systems</p>
+        <p className="product-subtitle">{vehicleAudioMultimedia[vehicleAudioIndex].subtitle}</p>
         <div className="image-wrapper">
           <Image
-            src={vehicleAudioImage}
-            alt="Vehicle Audio & Multimedia Systems Placeholder Image"
+            src={vehicleAudioMultimedia[vehicleAudioIndex].image}
+            alt={vehicleAudioMultimedia[vehicleAudioIndex].title}
             fill
             className="monitor-image"
             priority
