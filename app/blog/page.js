@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import Link from 'next/link';
 import matter from "gray-matter";
 
 async function getBlogPosts() {
@@ -13,12 +14,21 @@ async function getBlogPosts() {
   });
   return postsData;
 }
+
 const BlogPage = async () => {
   const posts = await getBlogPosts();
 
   return (
     <div>
       <h1>All Blog Posts</h1>
+      <ul>
+        {posts.map((post) => (
+          <li key={post.slug}>
+            {/* Make the title clickable and link to the blog post */}
+            <Link href={/blog/${post.slug}}>{post.title}</Link>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
