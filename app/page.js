@@ -21,6 +21,12 @@ import gpsTracker from "../public/gps-tracker.png";
 import outdoorNav from "../public/outdoor-navigator.png";
 import portableNav from "../public/portable-navigator.png";
 import smartphoneMount from "../public/smartphone-mount.png";
+
+// New Images
+import vehicleAudioImage from "../public/Logo.png"; // Placeholder image
+import autolocksmithImage from "../public/Logo.png"; // Placeholder image
+import aiDashcamsImage from "../public/Logo.png"; // Placeholder image
+
 import trafficReceiver from "../public/traffic-receiver.png";
 
 import "./globals.css";
@@ -142,6 +148,66 @@ export default function Home() {
         </div>
         <div className="button-group">
           <Link href="/asset-tracking">
+            <button className="primary-button">Learn more</button>
+          </Link>
+        </div>
+      </section>
+
+      {/* Vehicle Audio & Multimedia Systems Section */}
+      <section className="section-block">
+        <h2 className="product-title">Vehicle Audio & Multimedia Systems</h2>
+        <p className="product-subtitle">Placeholder subtitle for Vehicle Audio & Multimedia Systems</p>
+        <div className="image-wrapper">
+          <Image
+            src={vehicleAudioImage}
+            alt="Vehicle Audio & Multimedia Systems Placeholder Image"
+            fill
+            className="monitor-image"
+            priority
+          />
+        </div>
+        <div className="button-group">
+          <Link href="/vehicle-audio-multimedia">
+            <button className="primary-button">Learn more</button>
+          </Link>
+        </div>
+      </section>
+
+      {/* Autolocksmith Services Section */}
+      <section className="section-block">
+        <h2 className="product-title">Autolocksmith Services</h2>
+        <p className="product-subtitle">Placeholder subtitle for Autolocksmith Services</p>
+        <div className="image-wrapper">
+          <Image
+            src={autolocksmithImage}
+            alt="Autolocksmith Services Placeholder Image"
+            fill
+            className="monitor-image"
+            priority
+          />
+        </div>
+        <div className="button-group">
+          <Link href="/autolocksmith-services">
+            <button className="primary-button">Learn more</button>
+          </Link>
+        </div>
+      </section>
+
+      {/* AI Dashcams and MDVR Solutions Section */}
+      <section className="section-block">
+        <h2 className="product-title">AI Dashcams and MDVR Solutions</h2>
+        <p className="product-subtitle">Placeholder subtitle for AI Dashcams and MDVR Solutions</p>
+        <div className="image-wrapper">
+          <Image
+            src={aiDashcamsImage}
+            alt="AI Dashcams and MDVR Solutions Placeholder Image"
+            fill
+            className="monitor-image"
+            priority
+          />
+        </div>
+        <div className="button-group">
+          <Link href="/ai-dashcams-mdvr">
             <button className="primary-button">Learn more</button>
           </Link>
         </div>
