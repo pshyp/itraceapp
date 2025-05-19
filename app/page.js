@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useEffect, useState } from "react";
@@ -26,7 +25,12 @@ import smartphoneMount from "../public/smartphone-mount.png";
 // New Images
 import vehicleAudioImage from "../public/Logo.png"; // Placeholder image
 import autolocksmithImage from "../public/Logo.png"; // Placeholder image
-import aiDashcamsImage from "../public/Logo.png"; // Placeholder image
+import mc201 from "../public/MC201.png";
+import mc202x from "../public/MC202X.png";
+import mc402 from "../public/MC402_1080P_4CH_AI_DashCam.png";
+import mc904 from "../public/mc904_1080p_4ch_sd_mdvr.png";
+import mc908 from "../public/mc908_8ChannelRecorder.png";
+import mc912 from "../public/mdvrMc912_12ch1080p.png";
 
 import trafficReceiver from "../public/traffic-receiver.png";
 
@@ -59,6 +63,38 @@ export default function Home() {
     { image: trafficReceiver, title: "Traffic Receiver", subtitle: "Live road condition updates" },
   ];
 
+  const aiDashcamsMdvr = [
+    {
+      image: mc201,
+      title: 'MC201 2K AI 2CH DashCam',
+      subtitle: 'Advanced Dual-Channel AI Dashcam',
+    },
+    {
+      image: mc202x,
+      title: 'MC202X 1080P 2CH AI Dash Cam',
+      subtitle: 'Compact Dual-Camera AI Solution',
+    },
+    {
+      image: mc402,
+      title: 'MC402 1080P 4CH AI Dash Cam',
+      subtitle: 'Comprehensive Quad-Channel AI Recording',
+    },
+    {
+      image: mc904,
+      title: 'MC904 1080P 4CH SD card MDVR',
+      subtitle: 'Reliable 4-Channel SD Card MDVR',
+    },
+    {
+      image: mc908,
+      title: 'MC908 1080P 8CH MDVR',
+      subtitle: 'Expandable 8-Channel MDVR System',
+    },
+    {
+      image: mc912,
+      title: 'MC912 1080P 12CH MDVR',
+      subtitle: 'High-Capacity 12-Channel Full HD MDVR',
+    },
+  ];
   const [monitorIndex, setMonitorIndex] = useState(0);
   const [alarmIndex, setAlarmIndex] = useState(0);
   const [fuelBenefitIndex, setFuelBenefitIndex] = useState(0);
@@ -90,6 +126,13 @@ export default function Home() {
       setAssetIndex((prev) => (prev + 1) % assetTracking.length);
     }, 3000);
     return () => clearInterval(assetInterval);
+  }, []);
+
+  const [aiDashcamsMdvrIndex, setAiDashcamsMdvrIndex] = useState(0);
+  useEffect(() => {
+    const aiDashcamsMdvrInterval = setInterval(() => {
+      setAiDashcamsMdvrIndex((prev) => (prev + 1) % aiDashcamsMdvr.length);
+    }, 3000);
   }, []);
 
   return (
@@ -197,11 +240,11 @@ export default function Home() {
       {/* AI Dashcams and MDVR Solutions Section */}
       <section className="section-block">
         <h2 className="product-title">AI Dashcams and MDVR Solutions</h2>
-        <p className="product-subtitle">Placeholder subtitle for AI Dashcams and MDVR Solutions</p>
+        <p className="product-subtitle">{aiDashcamsMdvr[aiDashcamsMdvrIndex].subtitle}</p>
         <div className="image-wrapper">
           <Image
-            src={aiDashcamsImage}
-            alt="AI Dashcams and MDVR Solutions Placeholder Image"
+            src={aiDashcamsMdvr[aiDashcamsMdvrIndex].image}
+            alt={aiDashcamsMdvr[aiDashcamsMdvrIndex].title}
             fill
             className="monitor-image"
             priority
