@@ -26,7 +26,7 @@ const AutolocksmithServicesPage = () => {
       description: [
         'Fast and reliable assistance when you\'re locked out of your vehicle.',
       ],
-      imageSrc: '/placeholder-autolocksmith1.png', // Placeholder image
+      imageSrc: '/Emergency_lock.png',
     },
     {
       name: 'Car Key Cutting',
@@ -34,7 +34,7 @@ const AutolocksmithServicesPage = () => {
       description: [
         'Precision key cutting and duplication for most vehicle makes and models.',
       ],
-      imageSrc: '/placeholder-autolocksmith2.png', // Placeholder image
+      imageSrc: '/Key_cutting.png',
     },
     {
       name: 'Transponder Key Programming',
@@ -42,7 +42,7 @@ const AutolocksmithServicesPage = () => {
       description: [
         'Programming of transponder keys and key fobs to your vehicle\'s immobilizer system.',
       ],
-      imageSrc: '/placeholder-autolocksmith3.png', // Placeholder image
+      imageSrc: '/Transponder.png',
     },
     {
       name: 'Ignition Repair',
@@ -50,7 +50,7 @@ const AutolocksmithServicesPage = () => {
       description: [
         'Repair or replacement of faulty ignition cylinders and switches.',
       ],
-      imageSrc: '/placeholder-autolocksmith4.png', // Placeholder image
+      imageSrc: '/ignition.png',
     },
   ];
 
