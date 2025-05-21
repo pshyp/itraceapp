@@ -325,4 +325,3 @@ className="monitor-image"
 
 
 
-a
