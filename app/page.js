@@ -187,7 +187,8 @@ title: 'MC201 2K AI 2CH DashCam',
    const aiDashcamsMdvrInterval = setInterval(() => {
      setAiDashcamsMdvrIndex((prev) => (prev + 1) % aiDashcamsMdvr.length);
    }, 3000);
- }, []);
+   return () => clearInterval(aiDashcamsMdvrInterval);
+ }, []); // Add empty dependency array here
 
 
  return (
