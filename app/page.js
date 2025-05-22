@@ -140,6 +140,7 @@ title: 'MC201 2K AI 2CH DashCam',
  const [fuelBenefitIndex, setFuelBenefitIndex] = useState(0);
  const [assetIndex, setAssetIndex] = useState(0);
  const [vehicleAudioIndex, setVehicleAudioIndex] = useState(0);
+ const [autolocksmithIndex, setAutolocksmithIndex] = useState(0);
 
 
  useEffect(() => {
@@ -190,6 +191,13 @@ title: 'MC201 2K AI 2CH DashCam',
    return () => clearInterval(aiDashcamsMdvrInterval);
  }, []); // Add empty dependency array here
 
+
+ useEffect(() => {
+ const autolocksmithInterval = setInterval(() => {
+ setAutolocksmithIndex((prev) => (prev + 1) % autolocksmithImages.length);
+ }, 3000);
+ return () => clearInterval(autolocksmithInterval);
+ }, [autolocksmithImages.length]);
 
  return (
    <main className="main-content no-padding">
@@ -281,17 +289,14 @@ title: 'MC201 2K AI 2CH DashCam',
      <section className="section-block">
        <h2 className="product-title">Autolocksmith Services</h2>
        <p className="product-subtitle">Placeholder subtitle for Autolocksmith Services</p>
-       <div className="autolocksmith-image-gallery">
-{autolocksmithImages.map((img, index) => (
-<div key={index} className="image-wrapper">
+       <div className="image-wrapper">
 <Image
-src={img.src}
-alt={img.alt}
+src={autolocksmithImages[autolocksmithIndex].src}
+alt={autolocksmithImages[autolocksmithIndex].alt}
 fill
 className="monitor-image"
+           priority
            />
-</div>
-))}
        </div>
        <div className="button-group">
          <Link href="/autolocksmith-services">
