@@ -1,111 +1,40 @@
 "use client";
 
-import styles from "../fuel-monitoring/fuel-monitoring.module.css";
+import styles from "./fuel-monitoring.module.css";
 import { useEffect, useState } from 'react';
 
-const GensetSolutions = () => {
+const FuelMonitoringPage = () => {
   const [visibleBenefitIndex, setVisibleBenefitIndex] = useState(0);
 
-  const benefits = [
-    'Reduce Fuel Consumption',
-    'Prevent Genset Malfunctions',
-    'Ensure Continuous Power Supply',
-    'Optimize Maintenance Schedules',
-    'Enhance Operational Efficiency',
+  // Benefits specifically for Generator Predictive Maintenance
+  const benefits = [    
+    "Reduced downtime and operational costs for generators.",
+    "Prevention of unexpected generator malfunctions and breakdowns.",
+    "Improved generator health and operational efficiency through continuous monitoring.",
+    "Early detection of anomalies and potential issues for proactive maintenance.",
+    "Real-time monitoring of critical parameters like fuel level, engine temperature, and oil pressure.",
+    "Automated data collection and secure transmission of sensor data.",
+    "Enhanced reliability and extended longevity of generator sets.",
+    "Optimized maintenance schedules based on actual usage and condition, not just time.",
   ];
 
+  // Image Files, now focused on TRB140 as the key device for this solution
   const imageFiles = [
-    { src: '/GMS125.webp', name: 'GMS125', description: "GMS125 advanced genset monitoring device" },
-    { src: '/GMS650.webp', name: 'GMS650', description: "GMS650 comprehensive genset monitoring device" },
-    { src: '/GMS920.webp', name: 'GMS920', description: "GMS920 smart genset monitoring device" },
-    { src: '/GMS250.webp', name: 'GMS250', description: "GMS250 EV & CAN Bus genset monitoring device" },
-    { src: '/GST140.webp', name: 'GST140', description: "GST140 reliable genset tracking device" },
-    { src: '/GHS200.png', name: 'GHS200', description: "GHS200 genset safety & communication device" },
-    { src: '/GST921.png', name: 'GST921', description: "GST921 robust genset tracking device" },
-    { src: '/GST961.png', name: 'GST961', description: "GST961 heavy-duty genset tracking device" },
-    { src: '/GST881.png', name: 'GST881', description: "GST881 easy installation genset tracking device" },
+    { src: '/trb140.png', name: 'TRB140', description: "Teltonika TRB140 LTE Cat 1 Gateway for Generator Monitoring" },
   ];
 
+  // Device Details, only including TRB140
   const deviceDetails = {
-    GMS125: {
-      name: 'GMS125',
-      intro: 'Advanced Genset Monitoring and Control',
+    TRB140: {
+      name: 'TRB140',
+      intro: 'Compact LTE Cat 1 Gateway for Industrial Automation',
       features: [
-        'Fuel usage optimization',
-        'Significantly lower operational costs',
-        'Precise fuel consumption control',
-      ],
-    },
-    GMS650: {
-      name: 'GMS650',
-      intro: 'Comprehensive Genset Data Analysis',
-      features: [
-        'Extensive global coverage and enhanced GNSS module',
-        'Remote tachograph file downloads and live data',
-        'CAN data reading from heavy machinery',
-      ],
-    },
-    GMS920: {
-      name: 'GMS920',
-      intro: 'Smart & Efficient Genset Management',
-      features: [
-        'Optimized eco-driving for improved efficiency',
-        'Compact design for versatile installation',
-        'Comprehensive remote monitoring capabilities',
-      ],
-    },
-    GMS250: {
-      name: 'GMS250',
-      intro: 'EV & CAN Bus Genset Tracking',
-      features: [
-        'Protection against dust and water ingress',
-        'Integrated CAN bus data reading chip',
-        'CAN data reading from electric vehicle gensets',
-      ],
-    },
-    GST140: {
-      name: 'GST140',
-      intro: 'Simple & Reliable Genset Tracking',
-      features: [
-        'Regular location reporting',
-        'Simplified backup tracking',
-        'Extended battery life',
-      ],
-    },
-    GHS200: {
-      name: 'GHS200',
-      intro: 'Genset Safety & Communication',
-      features: [
-        'Dual-way voice communication',
-        'Customizable button functions',
-        'Dedicated alarm button for emergencies',
-      ],
-    },
-    GST921: {
-      name: 'GST921',
-      intro: 'Robust Genset Fleet Tracking',
-      features: [
-        'Advanced FT platform integration',
-        'High-voltage power supply compatibility',
-        'Prolonged operational performance with reduced drainage',
-      ],
-    },
-    GST961: {
-      name: 'GST961',
-      intro: 'Heavy-Duty Genset Tracking',
-      features: [
-        'Robust FT platform integration',
-        'IP69K-rated waterproof casing',
-        'High-voltage power supply support',
-      ],
-    },
-    GST881: {
-      name: 'GST881',
-      intro: 'Easy Installation Genset Tracking',
-      features: [
-        'FT platform device',
-        'Streamlined installation process',
-        'High voltage power supply',
+        'Enables secure remote monitoring of generators.',
+        'Collects data from generator\'s ECU via Modbus RTU.',
+        'Robust design suitable for harsh industrial environments.',
+        'Supports various sensor inputs for comprehensive data.',
+        'Easy to deploy and integrate into existing systems.',
+        'Reliable data transmission over LTE Cat 1 network.',
       ],
     },
   };
@@ -130,9 +59,11 @@ const GensetSolutions = () => {
   return (
     <div className={styles.fuelMonitoringContainer}>
       <div className={styles.headerRow}>
-        <h1 className={styles.fuelMonitoringTitle}>Advanced Genset Monitoring and Remote Control Solutions</h1>
+        <h1 className={styles.fuelMonitoringTitle}>
+          LTE Router Enabling Generator Predictive Maintenance
+        </h1>
         <div className={styles.benefitsSection}>
-          <h2 className={styles.keyFeaturesTitle}>Explore the Key Benefits of Our Genset Solutions</h2>
+          <h2 className={styles.keyFeaturesTitle}>Key Benefits</h2>
           <ul className={styles.keyFeaturesList}>
             {benefits.map((benefit, index) => (
               <li
@@ -162,7 +93,7 @@ const GensetSolutions = () => {
                 <div className={styles.imageContainer}>
                   <img
                     src={image.src}
-                    alt={details?.name ? `Genset monitoring device ${details.name} details and features` : `Genset monitoring device ${image.description}`}
+                    alt={details?.description ? `Teltonika ${details.name}: ${details.description}` : `Teltonika ${image.name}`}
                     className={styles.responsiveImage}
                   />
                 </div>
@@ -183,4 +114,4 @@ const GensetSolutions = () => {
   );
 };
 
-export default GensetSolutions;
+export default FuelMonitoringPage;
