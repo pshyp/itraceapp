@@ -106,6 +106,25 @@ const FuelMonitoringPage = () => {
           })}
         </div>
       </div>
+
+      <div className={styles.highlightSection}>
+        <div className={styles.highlightItem}>
+          <h3 className={styles.highlightTitle}>CONNECTIVITY</h3>
+          <p className={styles.highlightText}>4G/LTE (Cat 4), 3G, 2G</p>
+        </div>
+        <div className={styles.highlightItem}>
+          <h3 className={styles.highlightTitle}>COMPACTNESS</h3>
+          <p className={styles.highlightText}>Small size, easy installation</p>
+        </div>
+        <div className={styles.highlightItem}>
+          <h3 className={styles.highlightTitle}>PROTOCOLS</h3>
+          <p className={styles.highlightText}>Compatible with industrial DNP3 & Modbus communication protocols</p>
+        </div>
+        <div className={styles.highlightItem}>
+          <h3 className={styles.highlightTitle}>RMS</h3>
+          <p className={styles.highlightText}>Compatible with Teltonika Networks Remote Management System</p>
+        </div>
+      </div>
     </div>
   );
 };
