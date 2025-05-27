@@ -1,5 +1,6 @@
 "use client";
 
+import styles from "./genset-solutions.module.css";
 import { useEffect, useState } from 'react';
 
 const FuelMonitoringPage = () => {
@@ -47,10 +48,10 @@ const FuelMonitoringPage = () => {
   }, []);
 
   useEffect(() => {
-    const intros = document.querySelectorAll(`.deviceIntro`);
+    const intros = document.querySelectorAll(`.${styles.deviceIntro}`);
     intros.forEach((intro, index) => {
       setTimeout(() => {
-        intro.classList.add('show');
+        intro.classList.add(styles.show);
       }, 800 * index);
     });
   }, []);
@@ -85,19 +86,19 @@ const FuelMonitoringPage = () => {
             return (
               <div key={index} className="imageItem">
                 {details?.intro && (
-                  <p className={`deviceIntro initialHidden`}>
+                  <p className={`${styles.deviceIntro} ${styles.initialHidden}`}>
                     {details.intro}
                   </p>
                 )}
-                <div className="imageContainer">
+                <div className={styles.imageContainer}>
                   <img
                     src={image.src}
                     alt={details?.description ? `Teltonika ${details.name}: ${details.description}` : `Teltonika ${image.name}`}
-                    className="responsiveImage"
+                    className={styles.responsiveImage}
                   />
                 </div>
-                <p className="imageName">{details?.name || image.name}</p>
-                <ul className="descriptionList">
+                <p className={styles.imageName}>{details?.name || image.name}</p>
+                <ul className={styles.descriptionList}>
                   {details?.features?.map((feature, idx) => (
                     <li key={idx} className={styles.descriptionItem}>
                       {feature}
