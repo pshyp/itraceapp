@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 const FuelMonitoringPage = () => {
   const [visibleBenefitIndex, setVisibleBenefitIndex] = useState(0);
 
-  const benefits = [
+  const benefits = [    
     "Reduced downtime and operational costs for generators.",
     "Prevention of unexpected generator malfunctions and breakdowns.",
     "Improved generator health and operational efficiency through continuous monitoring.",
@@ -17,20 +17,23 @@ const FuelMonitoringPage = () => {
     "Optimized maintenance schedules based on actual usage and condition, not just time.",
   ];
 
-  const product = {
-    name: "TRB140",
-    tagline: "INDUSTRIAL RUGGED LTE GATEWAY",
-    image: "/trb140.png",
-    description:
-      "TRB140 is an ultra-small, lightweight, and energy-efficient IoT device with mission-critical LTE Cat 4 and Gigabit Ethernet connectivity options. Linux environment offers a high degree of customization. This gateway is perfect for projects and applications where a single device must be upgraded with reliable and secure internet connectivity.",
-    features: [
-      "Compact LTE Cat 4 gateway for industrial automation.",
-      "Gigabit Ethernet port ensures high-speed wired connection.",
-      "Linux OS with SDK for advanced customization.",
-      "Secure remote access and monitoring over VPNs and firewalls.",
-      "DIN rail mounting option and rugged aluminum housing.",
-      "Ideal for SCADA systems, smart metering, and industrial monitoring.",
-    ],
+  const imageFiles = [
+    { src: '/trb140.png', name: 'TRB140', description: "Teltonika TRB140 LTE Cat 1 Gateway for Generator Monitoring" },
+  ];
+
+  const deviceDetails = {
+    TRB140: {
+      name: 'TRB140',
+      intro: 'Compact LTE Cat 1 Gateway for Industrial Automation',
+      features: [
+        'Enables secure remote monitoring of generators.',
+        'Collects data from generator\'s ECU via Modbus RTU.',
+        'Robust design suitable for harsh industrial environments.',
+        'Supports various sensor inputs for comprehensive data.',
+        'Easy to deploy and integrate into existing systems.',
+        'Reliable data transmission over LTE Cat 1 network.',
+      ],
+    },
   };
 
   useEffect(() => {
@@ -41,18 +44,20 @@ const FuelMonitoringPage = () => {
   }, []);
 
   useEffect(() => {
-    const intro = document.querySelector(`.${styles.productIntro}`);
-    if (intro) {
+    const intros = document.querySelectorAll(`.${styles.deviceIntro}`);
+    intros.forEach((intro, index) => {
       setTimeout(() => {
         intro.classList.add(styles.show);
-      }, 500);
-    }
+      }, 800 * index);
+    });
   }, []);
 
   return (
     <div className={styles.fuelMonitoringContainer}>
-      <header className={styles.headerSection}>
-        <h1 className={styles.title}>Predictive Maintenance with TRB140</h1>
+      <div className={styles.headerRow}>
+        <h1 className={styles.fuelMonitoringTitle}>
+          LTE Router Enabling Generator Predictive Maintenance
+        </h1>
         <div className={styles.benefitsSection}>
           <h2 className={styles.keyFeaturesTitle}>Key Benefits</h2>
           <ul className={styles.keyFeaturesList}>
@@ -68,31 +73,39 @@ const FuelMonitoringPage = () => {
             ))}
           </ul>
         </div>
-      </header>
+      </div>
 
-      <section className={styles.productShowcase}>
-        <div className={styles.imageContainer}>
-          <img
-            src={product.image}
-            alt={`${product.name} industrial LTE gateway`}
-            className={styles.responsiveImage}
-          />
+      <div className={styles.mainSection}>
+        <div className={styles.responsiveImageGrid}>
+          {imageFiles.map((image, index) => {
+            const details = deviceDetails[image.name];
+            return (
+              <div key={index} className={styles.imageItem}>
+                {details?.intro && (
+                  <p className={`${styles.deviceIntro} ${styles.initialHidden}`}>
+                    {details.intro}
+                  </p>
+                )}
+                <div className={styles.imageContainer}>
+                  <img
+                    src={image.src}
+                    alt={details?.description ? `Teltonika ${details.name}: ${details.description}` : `Teltonika ${image.name}`}
+                    className={styles.responsiveImage}
+                  />
+                </div>
+                <p className={styles.imageName}>{details?.name || image.name}</p>
+                <ul className={styles.descriptionList}>
+                  {details?.features?.map((feature, idx) => (
+                    <li key={idx} className={styles.descriptionItem}>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            );
+          })}
         </div>
-        <div className={styles.productInfo}>
-          <h2 className={styles.productName}>{product.name}</h2>
-          <p className={styles.tagline}>{product.tagline}</p>
-          <p className={`${styles.productIntro} ${styles.initialHidden}`}>
-            {product.description}
-          </p>
-          <ul className={styles.featureList}>
-            {product.features.map((feature, idx) => (
-              <li key={idx} className={styles.featureItem}>
-                {feature}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+      </div>
     </div>
   );
 };

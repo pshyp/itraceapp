@@ -3,13 +3,14 @@
   font-family: sans-serif;
 }
 
-.headerSection {
+.headerRow {
   margin-bottom: 2rem;
 }
 
-.title {
+.fuelMonitoringTitle {
   font-size: 2rem;
   font-weight: bold;
+  margin-bottom: 1rem;
 }
 
 .benefitsSection {
@@ -22,7 +23,7 @@
 }
 
 .keyFeaturesList {
-  list-style: disc;
+  list-style-type: disc;
   padding-left: 1.5rem;
 }
 
@@ -43,46 +44,27 @@
   height: 0;
 }
 
-.productShowcase {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+.mainSection {
   margin-top: 2rem;
 }
 
-.imageContainer {
-  text-align: center;
+.responsiveImageGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
 }
 
-.responsiveImage {
-  max-width: 100%;
-  height: auto;
-  border: 1px solid #ddd;
+.imageItem {
+  border: 1px solid #ccc;
+  padding: 1rem;
   border-radius: 8px;
 }
 
-.productInfo {
-  text-align: left;
-}
-
-.productName {
-  font-size: 1.8rem;
+.deviceIntro {
   font-weight: bold;
-  margin-bottom: 0.2rem;
-}
-
-.tagline {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #444;
-  margin-bottom: 1rem;
-}
-
-.productIntro {
-  font-size: 1rem;
-  line-height: 1.6;
   opacity: 0;
-  transition: opacity 0.6s ease-in-out;
+  transition: opacity 0.5s ease-in;
+  margin-bottom: 0.5rem;
 }
 
 .show {
@@ -93,11 +75,26 @@
   opacity: 0;
 }
 
-.featureList {
-  margin-top: 1rem;
+.imageContainer {
+  text-align: center;
+}
+
+.responsiveImage {
+  max-width: 100%;
+  height: auto;
+}
+
+.imageName {
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+  font-weight: bold;
+}
+
+.descriptionList {
+  margin-top: 0.5rem;
   padding-left: 1.2rem;
 }
 
-.featureItem {
-  margin-bottom: 0.4rem;
+.descriptionItem {
+  margin-bottom: 0.3rem;
 }
