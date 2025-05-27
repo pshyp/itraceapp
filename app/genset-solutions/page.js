@@ -1,6 +1,5 @@
 "use client";
 
-import styles from "./fuel-monitoring.module.css";
 import { useEffect, useState } from 'react';
 
 const FuelMonitoringPage = () => {
@@ -48,23 +47,23 @@ const FuelMonitoringPage = () => {
   }, []);
 
   useEffect(() => {
-    const intros = document.querySelectorAll(`.${styles.deviceIntro}`);
+    const intros = document.querySelectorAll(`.deviceIntro`);
     intros.forEach((intro, index) => {
       setTimeout(() => {
-        intro.classList.add(styles.show);
+        intro.classList.add('show');
       }, 800 * index);
     });
   }, []);
 
   return (
-    <div className={styles.fuelMonitoringContainer}>
-      <div className={styles.headerRow}>
-        <h1 className={styles.fuelMonitoringTitle}>
+    <div className="fuelMonitoringContainer">
+      <div className="headerRow">
+        <h1 className="fuelMonitoringTitle">
           LTE Router Enabling Generator Predictive Maintenance
         </h1>
-        <div className={styles.benefitsSection}>
-          <h2 className={styles.keyFeaturesTitle}>Key Benefits</h2>
-          <ul className={styles.keyFeaturesList}>
+        <div className="benefitsSection">
+          <h2 className="keyFeaturesTitle">Key Benefits</h2>
+          <ul className="keyFeaturesList">
             {benefits.map((benefit, index) => (
               <li
                 key={index}
@@ -79,26 +78,26 @@ const FuelMonitoringPage = () => {
         </div>
       </div>
 
-      <div className={styles.mainSection}>
-        <div className={styles.responsiveImageGrid}>
+      <div className="mainSection">
+        <div className="responsiveImageGrid">
           {imageFiles.map((image, index) => {
             const details = deviceDetails[image.name];
             return (
-              <div key={index} className={styles.imageItem}>
+              <div key={index} className="imageItem">
                 {details?.intro && (
-                  <p className={`${styles.deviceIntro} ${styles.initialHidden}`}>
+                  <p className={`deviceIntro initialHidden`}>
                     {details.intro}
                   </p>
                 )}
-                <div className={styles.imageContainer}>
+                <div className="imageContainer">
                   <img
                     src={image.src}
                     alt={details?.description ? `Teltonika ${details.name}: ${details.description}` : `Teltonika ${image.name}`}
-                    className={styles.responsiveImage}
+                    className="responsiveImage"
                   />
                 </div>
-                <p className={styles.imageName}>{details?.name || image.name}</p>
-                <ul className={styles.descriptionList}>
+                <p className="imageName">{details?.name || image.name}</p>
+                <ul className="descriptionList">
                   {details?.features?.map((feature, idx) => (
                     <li key={idx} className={styles.descriptionItem}>
                       {feature}
