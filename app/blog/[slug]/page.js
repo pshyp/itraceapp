@@ -1,24 +1,15 @@
-import fs, { readFileSync } from 'fs';
-import { join } from 'path';
-import matter from 'gray-matter';
 import { serialize } from 'next-mdx-remote/serialize';
 import { MDXRemote } from 'next-mdx-remote';
+import { getAllPostSlugs, getPostBySlug } from '@/lib/posts';
 
 export async function generateStaticParams() {
-  const postsDirectory = join(process.cwd(), 'content/blog');
-  const filenames = fs.readdirSync(postsDirectory);
-
-  return filenames.map((filename) => ({
-    slug: filename.replace(/\.mdx$/, ''),
-  }));
+  const slugs = getAllPostSlugs();
+  return slugs.map((slug) => ({ slug }));
 }
 
 export default async function Post({ params }) {
   const { slug } = params;
-  const postFilePath = join(process.cwd(), 'content/blog', `${slug}.mdx`);
-  const source = readFileSync(postFilePath);
-
-  const { content, data } = matter(source);
+  const { data, content } = getPostBySlug(slug);
   const mdxSource = await serialize(content, { scope: data });
 
   return (
