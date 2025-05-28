@@ -1,4 +1,4 @@
-import { readFileSync } from 'fs';
+import fs, { readFileSync } from 'fs';
 import { join } from 'path';
 import matter from 'gray-matter';
 import { serialize } from 'next-mdx-remote/serialize';
