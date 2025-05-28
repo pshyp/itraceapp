@@ -1,11 +1,10 @@
-// pages/blog/index.js
+// app/blog/page.js
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import Image from 'next/image';
-import styles from './blog.module.css'; // optional, for styling
 
-export async function getStaticProps() {
+const BlogPage = () => {
   const blogDirectory = path.join(process.cwd(), 'content', 'blog');
   const filenames = fs.readdirSync(blogDirectory);
 
@@ -25,12 +24,6 @@ export async function getStaticProps() {
       };
     });
 
-  return {
-    props: { posts },
-  };
-}
-
-const BlogPage = ({ posts }) => {
   return (
     <div>
       <h1>All Blog Posts</h1>
