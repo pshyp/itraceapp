@@ -77,6 +77,9 @@ const AutolocksmithServicesPage = () => {
         <h1 className={styles.assetTrackingTitle}>
           Autolocksmith Services
         </h1>
+        <p>
+          <a href="https://wa.me/254722100506" target="_blank" rel="noopener noreferrer">WhatsApp us: 0722100506</a>
+        </p>
         <div className={styles.benefitsSection}>
           <h2 className={styles.keyFeaturesTitle}>Key Benefits</h2>
           <ul className={styles.keyFeaturesList}>

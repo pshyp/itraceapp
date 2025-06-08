@@ -109,6 +109,11 @@ const AssetTrackingPage = () => {
           </ul>
         </div>
       </div>
+      <div className={styles.whatsappButtonContainer}>
+        <a href="https://wa.me/0722100506" className={styles.whatsappButton} target="_blank" rel="noopener noreferrer">
+          Chat with us on WhatsApp
+        </a>
+      </div>
 
       <div className={styles.mainSection}>
         <div className={styles.responsiveImageGrid}>

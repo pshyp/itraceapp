@@ -133,6 +133,12 @@ const FuelMonitoringPage = () => {
         <h1 className={styles.fuelMonitoringTitle}>
           Fuel Monitoring, GPS Tracking & Fleet Management Solutions
                   </h1>
+ {/* Add the WhatsApp link here */}
+        <div className={styles.whatsappLinkContainer}>
+          <a href="https://wa.me/254722100506" target="_blank" rel="noopener noreferrer" className={styles.whatsappLink}>
+            Chat on WhatsApp
+          </a>
+        </div>
         <div className={styles.benefitsSection}>
           <h2 className={styles.keyFeaturesTitle}>Key Benefits</h2>
           <ul className={styles.keyFeaturesList}>

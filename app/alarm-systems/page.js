@@ -101,6 +101,12 @@ const AlarmSystemsPage = () => {
             ))}
           </ul>
         </div>
+        <div className={styles.whatsappLinkContainer}>
+          <p>Contact us on WhatsApp:</p>
+          <a href="https://wa.me/0722100506" target="_blank" rel="noopener noreferrer" className={styles.whatsappLink}>
+            0722100506
+          </a>
+        </div>
       </div>
 
       <div className={styles.mainSection}>

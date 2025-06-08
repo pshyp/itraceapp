@@ -98,6 +98,9 @@ const VehicleAudioMultimediaPage = () => {
         <h1 className={styles.assetTrackingTitle}>
           Vehicle Audio & Multimedia Systems
         </h1>
+        <a href="https://wa.me/0722100506" target="_blank" rel="noopener noreferrer" className={styles.whatsappLink}>
+          Contact us on WhatsApp
+        </a>
         <div className={styles.benefitsSection}>
           <h2 className={styles.keyFeaturesTitle}>Key Benefits</h2>
           <ul className={styles.keyFeaturesList}>

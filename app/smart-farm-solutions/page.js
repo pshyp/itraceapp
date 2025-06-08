@@ -83,6 +83,9 @@ const SmartFarmSolutions = () => {
               </li>
             ))}
           </ul>
+          <a href="tel:+254722100506" className={styles.whatsappLink}>
+            Contact us on WhatsApp: +254 722 100 506
+          </a>
         </div>
       </div>
 

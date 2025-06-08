@@ -73,6 +73,11 @@ const FuelMonitoringPage = () => {
             ))}
           </ul>
         </div>
+        <div className={styles.contactLink}>
+          Contact us for a personalized solution: <a href="https://wa.me/0722100506" target="_blank" rel="noopener noreferrer">WhatsApp us</a>
+        </div>
+
+
       </div>
 
       <div className={styles.mainSection}>

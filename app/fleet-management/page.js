@@ -147,6 +147,9 @@ const FleetManagementPage = () => {
               </li>
             ))}
           </ul>
+          <div className={styles.whatsappLinkContainer}>
+            <a href="https://wa.me/254722100506" className={styles.whatsappLink} target="_blank" rel="noopener noreferrer">Chat with us on WhatsApp</a>
+          </div>
         </div>
       </div>
 
