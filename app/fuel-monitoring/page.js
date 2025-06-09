@@ -94,6 +94,7 @@ const FuelMonitoringPage = () => {
     intros.forEach((intro, index) => {
       setTimeout(() => {
         intro.classList.add(styles.show);
+        intro.style.visibility = "visible";
       }, 800 * index);
     });
   }, []);
