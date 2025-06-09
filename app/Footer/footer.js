@@ -65,7 +65,7 @@ const Footer = () => {
                 className="partner-logo"
               />
               <img
-                src="/EMFKenya.png"
+                src="/EMKFKenya.png"
                 alt="EMFK Kenya Partner Logo"
                 className="partner-logo"
               />
