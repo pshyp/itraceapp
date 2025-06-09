@@ -129,10 +129,10 @@
   visibility: hidden;
 }
 .whatsappLinkContainer {
- position: fixed;
- bottom: 20px;
- right: 20px;
- z-index: 1000; /* Ensure it's above other content */
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000; /* Ensure it's above other content */
 }
 
 .whatsappLink {
@@ -140,19 +140,27 @@
   align-items: center;
   background-color: #25d366;
   color: white;
+  font-weight: bold;
+  padding: 12px 20px;
   border-radius: 30px;
   text-decoration: none;
-  font-size: 1rem;
-  transition: background-color 0.3s ease;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.whatsappLink:hover {
-  background-color: #1ebe5d;
+  font-size: 0.9rem;
 }
 
 .whatsappIcon {
   width: 24px;
   height: 24px;
   margin-right: 10px;
+}
+.whatsappLink {
+ display: inline-flex;
+ align-items: center;
+ background-color: #25d366;
+ color: white;
+ font-weight: bold;
+ padding: 12px 20px;
+ border-radius: 30px;
+ text-decoration: none;
+ font-size: 0.9rem;
+ transition: background-color 0.3s ease;
 }
