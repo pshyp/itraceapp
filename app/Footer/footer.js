@@ -14,8 +14,6 @@ const Footer = () => {
           <div className="widget">
             <h3>Head Office</h3>
             <p>
-              <FaHome className="icon" /> Itrace Africa
-              <br />
               <FaMapMarkerAlt className="icon" /> Limuru Rd, Opp. Jamhuri High
               School, Nairobi
               <br />
