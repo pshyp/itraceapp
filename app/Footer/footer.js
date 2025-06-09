@@ -58,18 +58,14 @@ const Footer = () => {
           <div className="widget logo-widget">
             <h3>Our Partners</h3>
             <div className="partner-logos"> {/* Add a container for better styling */}
-              <img
-                src="/LogoMobi.jpeg"
-                alt="Mobi Partner Logo"
-                className="partner-logo"
-              />
+             
               <img
                 src="/communicationsauthority.png"
                 alt="Communications Authority Partner Logo"
                 className="partner-logo"
               />
               <img
-                src="/EMFKKenya.png"
+                src="/EMFKenya.png"
                 alt="EMFK Kenya Partner Logo"
                 className="partner-logo"
               />
