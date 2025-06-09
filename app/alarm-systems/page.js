@@ -1,7 +1,7 @@
 "use client";
 
 import styles from "./alarm-systems.module.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 const AlarmSystemsPage = () => {
   const [visibleBenefitIndex, setVisibleBenefitIndex] = useState(0);
@@ -9,34 +9,58 @@ const AlarmSystemsPage = () => {
   const benefits = [
     "Receive real-time alerts on your remote control or smartphone.",
     "Protect against key-less entry system hacking.",
-    "Remotely start and stop your vehicle engine.",
-    "Immobilize your vehicle in case of unauthorized access.",
-    "Access detailed logs of vehicle alarms and alerts.",
+    "Remotely start and stop your car's engine securely.",
+    "Detect even the slightest impact on your vehicle.",
+    "Trigger the alarm immediately if a window is shattered.",
+    "Experience the reliability of two-way communication.",
+    "Enhance security with specialized key-less entry solutions.",
+    "Enjoy the convenience of remote engine control.",
+    "Get immediate alerts upon any physical impact.",
+    "Protect your car from window breakage with sound detection.",
   ];
 
-  const imageFiles = [
-    { src: "/alarm1.png", name: "SmartGuard A1", description: "Advanced alarm system with smartphone integration" },
-    { src: "/alarm2.png", name: "SecureLock Pro", description: "Anti-theft system with immobilizer" },
-    { src: "/alarm3.png", name: "Guardian Elite", description: "Premium car alarm with remote start" },
+  const alarmTypes = [
+    {
+      name: 'Two-Way Alarm Systems',
+      intro: 'Real-Time Communication',
+      description: [
+        'Receive real-time alerts on your remote control or smartphone when your car is tampered with or breached, ensuring you are always informed.',
+      ],
+      imageSrc: '/two_way_alarm.png',
+    },
+    {
+      name: 'Key-Less Entry Security',
+      intro: 'Advanced Access Protection',
+      description: [
+        'Protect against key-less entry system hacking with specialized security solutions designed to safeguard your vehicle\'s access from modern theft techniques.',
+      ],
+      imageSrc: '/keyless_entry.png',
+    },
+    {
+      name: 'Remote Start and Stop',
+      intro: 'Convenient Engine Control',
+      description: [
+        'Enjoy the convenience of remotely starting and stopping your car\'s engine while keeping it secure, ideal for pre-heating or cooling your vehicle.',
+      ],
+      imageSrc: '/remote_start.png',
+    },
+    {
+      name: 'Shock Sensors',
+      intro: 'Impact Detection',
+      description: [
+        'Detect even the slightest impact on your vehicle, triggering the alarm and alerting you to potential threats like bumps or attempted break-ins.',
+      ],
+      imageSrc: '/shock_sensor.png',
+    },
+    {
+      name: 'Glass Break Sensors',
+      intro: 'Window Security',
+      description: [
+        'If a window is shattered, our alarms will immediately sound, deterring burglars and alerting you to the intrusion based on the sound of breaking glass.',
+      ],
+      imageSrc: '/glass_break_sensor.png',
+    },
   ];
-
-  const deviceDetails = {
-    "SmartGuard A1": {
-      name: "SmartGuard A1",
-      intro: "Smartphone-Enabled Protection",
-      features: ["Real-time smartphone alerts", "Remote engine control", "Geo-fencing capabilities"],
-    },
-    "SecureLock Pro": {
-      name: "SecureLock Pro",
-      intro: "Anti-Theft & Immobilizer",
-      features: ["Keyless entry protection", "Automatic immobilization", "Loud tamper alarms"],
-    },
-    "Guardian Elite": {
-      name: "Guardian Elite",
-      intro: "Full-Suite Alarm Solution",
-      features: ["Remote start/stop engine", "Shock & tilt sensors", "Integrated siren and alert system"],
-    },
-  };
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -50,30 +74,16 @@ const AlarmSystemsPage = () => {
     intros.forEach((intro, index) => {
       setTimeout(() => {
         intro.classList.add(styles.show);
-        intro.style.visibility = "visible";
       }, 800 * index);
     });
   }, []);
 
   return (
-    <div className={styles.fuelMonitoringContainer}>
+    <div className={styles.alarmSystemsContainer}>
       <div className={styles.headerRow}>
-        <h1 className={styles.fuelMonitoringTitle}>
-          Car Alarm Systems & Anti-Theft Protection
+        <h1 className={styles.alarmSystemsTitle}>
+          Advanced Car Alarm Systems for Superior Security
         </h1>
-
-        <div className={styles.whatsappLinkContainer}>
-          <a
-            href="https://wa.me/254722100506"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.whatsappLink}
-          >
-            <img src="/whatsapp-icon.png" alt="WhatsApp" className={styles.whatsappIcon} />
-            Chat with Us on WhatsApp
-          </a>
-        </div>
-
         <div className={styles.benefitsSection}>
           <h2 className={styles.keyFeaturesTitle}>Key Benefits</h2>
           <ul className={styles.keyFeaturesList}>
@@ -93,36 +103,44 @@ const AlarmSystemsPage = () => {
 
       <div className={styles.mainSection}>
         <div className={styles.responsiveImageGrid}>
-          {imageFiles.map((image, index) => {
-            const details = deviceDetails[image.name];
-            return (
-              <div key={index} className={styles.imageItem}>
-                {details?.intro && (
-                  <p className={`${styles.deviceIntro} ${styles.initialHidden}`}>{details.intro}</p>
-                )}
-                <div className={styles.imageContainer}>
-                  <img
-                    src={image.src}
-                    alt={
-                      details?.name
-                        ? `Alarm system device ${details.name} details and features`
-                        : `Car alarm system ${image.description}`
-                    }
-                    className={styles.responsiveImage}
-                  />
-                </div>
-                <p className={styles.imageName}>{details?.name || image.name}</p>
-                <ul className={styles.descriptionList}>
-                  {details?.features?.map((feature, idx) => (
-                    <li key={idx} className={styles.descriptionItem}>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
+          {alarmTypes.map((alarm, index) => (
+            <div key={index} className={styles.imageItem}>
+              {alarm.intro && (
+                <p className={`${styles.deviceIntro} ${styles.initialHidden}`}>
+                  {alarm.intro}
+                </p>
+              )}
+              <div className={styles.imageContainer}>
+                <img
+                  src={alarm.imageSrc}
+                  alt={`${alarm.name} - ${alarm.intro}`}
+                  className={styles.responsiveImage}
+                />
               </div>
-            );
-          })}
+              <p className={styles.imageName}>{alarm.name}</p>
+              <ul className={styles.descriptionList}>
+                {alarm.description.map((desc, idx) => (
+                  <li key={idx} className={styles.descriptionItem}>
+                    {desc}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
+      </div>
+
+      {/* ✅ WhatsApp Banner Fixed */}
+      <div className={styles.whatsappLinkContainer}>
+        <a
+          href="https://wa.me/0722100506"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.whatsappLink}
+        >
+          <img src="/whatsapp-icon.png" alt="WhatsApp Icon" className={styles.whatsappIcon} />
+          Chat with Us on WhatsApp
+        </a>
       </div>
     </div>
   );
