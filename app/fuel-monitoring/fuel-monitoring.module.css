@@ -129,8 +129,10 @@
   visibility: hidden;
 }
 .whatsappLinkContainer {
-  margin: 20px auto;
-  text-align: center;
+ position: fixed;
+ bottom: 20px;
+ right: 20px;
+ z-index: 1000; /* Ensure it's above other content */
 }
 
 .whatsappLink {
@@ -138,8 +140,6 @@
   align-items: center;
   background-color: #25d366;
   color: white;
-  font-weight: bold;
-  padding: 12px 20px;
   border-radius: 30px;
   text-decoration: none;
   font-size: 1rem;
