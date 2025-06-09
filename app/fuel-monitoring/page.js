@@ -2,6 +2,7 @@
 
 import styles from "./fuel-monitoring.module.css";
 import { useEffect, useState } from "react";
+import { FaWhatsapp } from "react-icons/fa";
 
 const FuelMonitoringPage = () => {
   const [visibleBenefitIndex, setVisibleBenefitIndex] = useState(0);
@@ -113,7 +114,7 @@ const FuelMonitoringPage = () => {
             rel="noopener noreferrer"
             className={styles.whatsappLink}
           >
-            <img src="/whatsapp-icon.png" alt="WhatsApp" className={styles.whatsappIcon} />
+            <FaWhatsapp className={styles.whatsappIcon} />
             Chat with Us on WhatsApp
           </a>
         </div>
