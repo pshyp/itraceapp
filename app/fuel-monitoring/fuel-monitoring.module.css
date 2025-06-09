@@ -128,3 +128,31 @@
 .initialHidden {
   visibility: hidden;
 }
+.whatsappLinkContainer {
+  margin: 20px auto;
+  text-align: center;
+}
+
+.whatsappLink {
+  display: inline-flex;
+  align-items: center;
+  background-color: #25d366;
+  color: white;
+  font-weight: bold;
+  padding: 12px 20px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.whatsappLink:hover {
+  background-color: #1ebe5d;
+}
+
+.whatsappIcon {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
