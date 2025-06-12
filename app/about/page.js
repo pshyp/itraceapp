@@ -44,16 +44,16 @@ export default function AboutPage() {
         <p>
           📍 Limuru Rd, Opp. Jamhuri High School, Nairobi<br />
           📞 (+254) 704 777 100 / 0722 100 506 / 0751 100 506<br />
-          📧 <a href="mailto:info@itraceafrica.com">info@itraceafrica.com</a><br />
-          🌐 <a href="https://itraceafrica.com" target="_blank" rel="noopener noreferrer">itraceafrica.com</a>
+          📧 <a href="mailto:info@itraceafrica.com" className={styles.link}>info@itraceafrica.com</a><br />
+          🌐 <a href="https://itraceafrica.com" target="_blank" rel="noopener noreferrer" className={styles.link}>itraceafrica.com</a>
         </p>
       </section>
 
       <section className={styles.section}>
         <h2>Follow Us</h2>
         <p>
-          <a href="https://www.facebook.com/itrace.africa" target="_blank" rel="noopener noreferrer">Facebook</a> |{' '}
-          <a href="https://tiktok.com/@itraceafricatelematics" target="_blank" rel="noopener noreferrer">TikTok</a>
+          <a href="https://www.facebook.com/itrace.africa" target="_blank" rel="noopener noreferrer" className={styles.link}>Facebook</a> |{' '}
+          <a href="https://tiktok.com/@itraceafricatelematics" target="_blank" rel="noopener noreferrer" className={styles.link}>TikTok</a>
         </p>
       </section>
     </div>
