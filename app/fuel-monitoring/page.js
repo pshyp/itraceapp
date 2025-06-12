@@ -4,14 +4,14 @@ import styles from "./fuel-monitoring.module.css";
 import { useEffect, useState } from "react";
 
 const FuelMonitoringPage = () => {
-  const [visibleBenefitIndex, setVisibleBenefitIndex] = useState(0);
+  const [visibleBenefitIndices, setVisibleBenefitIndices] = useState([]); // Changed to an array for multiple visible benefits
 
   const benefits = [
-    "Reduced cost of fuel.",
-    "Optimize route and monitor driver behavior.",
-    "Prevent fuel theft with advanced fuel sensors.",
-    "Detect and prevent fuel theft with real-time alerts.",
-    "Access detailed reports on fuel consumption and vehicle performance.",
+    { text: "Reduced cost of fuel.", icon: "💰" },
+    { text: "Optimize route and monitor driver behavior.", icon: "🗺️" },
+    { text: "Prevent fuel theft with advanced fuel sensors.", icon: "🔒" },
+    { text: "Detect and prevent fuel theft with real-time alerts.", icon: "🚨" },
+    { text: "Access detailed reports on fuel consumption and vehicle performance.", icon: "📊" },
   ];
 
   const imageFiles = [
@@ -83,20 +83,21 @@ const FuelMonitoringPage = () => {
   };
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setVisibleBenefitIndex((prevIndex) => (prevIndex + 1) % benefits.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, [benefits.length]); // Added benefits.length to dependency array
+    // Staggered reveal for benefit cards
+    benefits.forEach((_, index) => {
+      setTimeout(() => {
+        setVisibleBenefitIndices((prevIndices) => [...prevIndices, index]);
+      }, 200 * index); // Adjust delay as needed for desired effect
+    });
+  }, [benefits.length]); // Re-run if benefits array changes
 
   useEffect(() => {
     const intros = document.querySelectorAll(`.${styles.deviceIntro}`);
     intros.forEach((intro, index) => {
-      // Use requestAnimationFrame for smoother animation
       requestAnimationFrame(() => {
         setTimeout(() => {
           intro.classList.add(styles.show);
-        }, 300 * index); // Stagger the animation
+        }, 300 * index);
       });
     });
   }, []);
@@ -108,7 +109,6 @@ const FuelMonitoringPage = () => {
           Fuel Monitoring, GPS Tracking & Fleet Management Solutions
         </h1>
 
-        {/* This WhatsApp link is now optional or can be a secondary link */}
         <div className={styles.whatsappLinkContainer}>
           <a
             href="https://wa.me/254722100506"
@@ -121,20 +121,22 @@ const FuelMonitoringPage = () => {
           </a>
         </div>
 
+        {/* Updated Benefits Section */}
         <div className={styles.benefitsSection}>
           <h2 className={styles.keyFeaturesTitle}>Key Benefits</h2>
-          <ul className={styles.keyFeaturesList}>
+          <div className={styles.benefitsGrid}>
             {benefits.map((benefit, index) => (
-              <li
+              <div
                 key={index}
-                className={`${styles.keyFeatureItem} ${
-                  index === visibleBenefitIndex ? styles.visible : styles.hidden
+                className={`${styles.benefitCard} ${
+                  visibleBenefitIndices.includes(index) ? styles.visible : ''
                 }`}
               >
-                {benefit}
-              </li>
+                <span className={styles.benefitIcon}>{benefit.icon}</span>
+                <p className={styles.benefitText}>{benefit.text}</p>
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
       </div>
 
