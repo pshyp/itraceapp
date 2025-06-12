@@ -87,15 +87,17 @@ const FuelMonitoringPage = () => {
       setVisibleBenefitIndex((prevIndex) => (prevIndex + 1) % benefits.length);
     }, 4000);
     return () => clearInterval(interval);
-  }, []);
+  }, [benefits.length]); // Added benefits.length to dependency array
 
   useEffect(() => {
     const intros = document.querySelectorAll(`.${styles.deviceIntro}`);
     intros.forEach((intro, index) => {
-      setTimeout(() => {
-        intro.classList.add(styles.show);
-        intro.style.visibility = "visible";
-      }, 800 * index);
+      // Use requestAnimationFrame for smoother animation
+      requestAnimationFrame(() => {
+        setTimeout(() => {
+          intro.classList.add(styles.show);
+        }, 300 * index); // Stagger the animation
+      });
     });
   }, []);
 
@@ -106,6 +108,7 @@ const FuelMonitoringPage = () => {
           Fuel Monitoring, GPS Tracking & Fleet Management Solutions
         </h1>
 
+        {/* This WhatsApp link is now optional or can be a secondary link */}
         <div className={styles.whatsappLinkContainer}>
           <a
             href="https://wa.me/254722100506"
@@ -114,27 +117,24 @@ const FuelMonitoringPage = () => {
             className={styles.whatsappLink}
           >
             <img src="/whatsapp-icon.png" alt="WhatsApp" className={styles.whatsappIcon} />
-            Chat with Us on WhatsApp
+            Chat with Us Now
           </a>
         </div>
 
         <div className={styles.benefitsSection}>
           <h2 className={styles.keyFeaturesTitle}>Key Benefits</h2>
-          <div className={styles.benefitsCarousel}>
-            <div className={styles.benefitCard}>
-              <p>{benefits[visibleBenefitIndex]}</p>
-            </div>
-            <div className={styles.carouselControls}>
-              {benefits.map((_, i) => (
-                <button
-                  key={i}
-                  className={`${styles.carouselDot} ${i === visibleBenefitIndex ? styles.activeDot : ""}`}
-                  onClick={() => setVisibleBenefitIndex(i)}
-                  aria-label={`Show benefit ${i + 1}`}
-                />
-              ))}
-            </div>
-          </div>
+          <ul className={styles.keyFeaturesList}>
+            {benefits.map((benefit, index) => (
+              <li
+                key={index}
+                className={`${styles.keyFeatureItem} ${
+                  index === visibleBenefitIndex ? styles.visible : styles.hidden
+                }`}
+              >
+                {benefit}
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
 
@@ -153,7 +153,7 @@ const FuelMonitoringPage = () => {
                     alt={
                       details?.name
                         ? `Fuel monitoring device ${details.name} details and features`
-                        : `Fuel monitoring device ${image.description}`
+                        : `Fuel monitoring device ${image.description || image.name}`
                     }
                     className={styles.responsiveImage}
                   />
@@ -170,6 +170,19 @@ const FuelMonitoringPage = () => {
             );
           })}
         </div>
+      </div>
+
+      {/* Floating WhatsApp Banner */}
+      <div className={styles.floatingWhatsappBanner}>
+        <a
+          href="https://wa.me/254722100506"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="Chat with us on WhatsApp"
+        >
+          <img src="/whatsapp-icon.png" alt="WhatsApp" className={styles.whatsappIcon} />
+          WhatsApp Us!
+        </a>
       </div>
     </div>
   );

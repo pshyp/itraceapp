@@ -1,154 +1,305 @@
-.fuelMonitoringContainer {
-  padding: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
+/* General Body Styles */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f9fa; /* Light background */
+  color: #343a40; /* Darker text for readability */
 }
 
+/* Main Container */
+.fuelMonitoringContainer {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Header Section */
 .headerRow {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 40px;
+  position: relative; /* Needed for absolute positioning of WhatsApp link */
 }
 
 .fuelMonitoringTitle {
-  font-size: 2rem;
-  color: #003366;
+  font-size: 2.8em;
+  color: #0056b3; /* A prominent blue */
+  margin-bottom: 20px;
+  font-weight: 700;
+  line-height: 1.2;
 }
 
+/* WhatsApp Link in Header */
 .whatsappLinkContainer {
-  margin-top: 1rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: 10px;
+  margin-right: 10px;
 }
 
 .whatsappLink {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  padding: 0.5rem 1rem;
-  background-color: #25d366;
-  color: white;
   text-decoration: none;
-  border-radius: 5px;
-  font-weight: bold;
+  background-color: #25D366; /* WhatsApp green */
+  color: white;
+  padding: 10px 18px;
+  border-radius: 25px;
+  font-size: 1.1em;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.whatsappLink:hover {
+  background-color: #1DA851;
+  transform: translateY(-2px);
 }
 
 .whatsappIcon {
   width: 24px;
   height: 24px;
-  margin-right: 0.5rem;
+  margin-right: 8px;
 }
 
+/* Benefits Section */
 .benefitsSection {
-  margin-top: 3rem;
-  text-align: center;
+  margin-top: 40px;
+  background-color: #e9f7ef; /* Light green background for benefits */
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .keyFeaturesTitle {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-  color: #1a1a1a;
+  font-size: 2.2em;
+  color: #007bff; /* A standard blue */
+  margin-bottom: 25px;
+  font-weight: 600;
+  text-align: center;
 }
 
-.benefitsCarousel {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.keyFeaturesList {
+  list-style: none;
+  padding: 0;
+  text-align: center;
 }
 
-.benefitCard {
-  background-color: #f5f7fa;
-  border-left: 6px solid #2a9d8f;
-  padding: 1.5rem 2rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-  max-width: 700px;
-  min-height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.4s ease;
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: #333;
+.keyFeatureItem {
+  font-size: 1.3em;
+  padding: 12px 0;
+  margin-bottom: 10px;
+  border-bottom: 1px dashed #d1e7dd; /* Subtle separator */
+  color: #495057;
+  opacity: 0; /* Initially hidden */
+  transform: translateY(20px); /* Start slightly below */
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Smooth transition */
 }
 
-.carouselControls {
-  margin-top: 1rem;
-  display: flex;
-  gap: 0.5rem;
-  justify-content: center;
+.keyFeatureItem:last-child {
+  border-bottom: none;
 }
 
-.carouselDot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  border: none;
-  background-color: #ccc;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+.keyFeatureItem.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.activeDot {
-  background-color: #2a9d8f;
-}
-
+/* Main Content Section - Device Grid */
 .mainSection {
-  margin-top: 4rem;
+  margin-top: 60px;
 }
 
 .responsiveImageGrid {
   display: grid;
-  gap: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+  gap: 30px;
+  padding: 20px;
 }
 
 .imageItem {
-  background-color: #f9f9f9;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
   border-radius: 10px;
-  padding: 1rem;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
   text-align: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Distribute content vertically */
+}
+
+.imageItem:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
 }
 
 .deviceIntro {
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-  color: #2a9d8f;
-  font-size: 1rem;
-  transition: opacity 0.5s ease;
-  visibility: hidden;
+  font-size: 1.1em;
+  font-style: italic;
+  color: #6c757d;
+  margin-bottom: 15px;
+  height: 0; /* Initially hidden with no height */
+  overflow: hidden;
+  visibility: hidden; /* Hide completely */
+  transition: all 0.8s ease-out; /* Smooth reveal */
 }
 
-.initialHidden {
-  opacity: 0;
-}
-
-.show {
-  opacity: 1;
+.deviceIntro.show {
+  height: auto; /* Animate height to auto */
   visibility: visible;
 }
 
 .imageContainer {
-  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+  min-height: 180px; /* Ensure consistent image container height */
 }
 
 .responsiveImage {
   max-width: 100%;
   height: auto;
+  max-height: 160px; /* Limit image height */
+  object-fit: contain; /* Ensure image fits without distortion */
+  border-radius: 5px;
 }
 
 .imageName {
-  font-weight: bold;
-  margin-top: 0.5rem;
-  font-size: 1.1rem;
+  font-size: 1.5em;
+  font-weight: 700;
+  color: #0056b3;
+  margin-bottom: 10px;
 }
 
 .descriptionList {
-  list-style: disc;
-  padding-left: 1.2rem;
-  margin-top: 0.5rem;
+  list-style: none;
+  padding: 0;
+  margin-top: 15px;
   text-align: left;
+  flex-grow: 1; /* Allows list to take up available space */
 }
 
 .descriptionItem {
-  font-size: 0.95rem;
+  font-size: 0.95em;
   color: #555;
+  margin-bottom: 8px;
+  position: relative;
+  padding-left: 20px; /* Space for custom bullet */
+}
+
+.descriptionItem::before {
+  content: '✔'; /* Custom checkmark bullet */
+  color: #28a745; /* Green checkmark */
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-weight: bold;
+}
+
+/* Floating WhatsApp Banner */
+.floatingWhatsappBanner {
+  position: fixed;
+  bottom: 25px;
+  left: 25px;
+  z-index: 1000; /* Ensure it stays on top */
+}
+
+.floatingWhatsappBanner a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  background-color: #25D366; /* WhatsApp green */
+  color: white;
+  padding: 12px 20px;
+  border-radius: 30px;
+  font-size: 1.15em;
+  font-weight: 600;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.floatingWhatsappBanner a:hover {
+  background-color: #1DA851;
+  transform: translateY(-3px);
+}
+
+.floatingWhatsappBanner .whatsappIcon {
+  width: 28px;
+  height: 28px;
+  margin-right: 10px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .fuelMonitoringTitle {
+    font-size: 2em;
+  }
+
+  .keyFeaturesTitle {
+    font-size: 1.8em;
+  }
+
+  .keyFeatureItem {
+    font-size: 1.1em;
+  }
+
+  .responsiveImageGrid {
+    grid-template-columns: 1fr; /* Stack on small screens */
+  }
+
+  .whatsappLinkContainer {
+    position: static; /* Remove absolute positioning */
+    margin: 20px auto 0;
+    text-align: center;
+  }
+
+  .whatsappLink {
+    justify-content: center;
+  }
+
+  .floatingWhatsappBanner {
+    bottom: 15px;
+    left: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .fuelMonitoringContainer {
+    padding: 15px;
+  }
+
+  .fuelMonitoringTitle {
+    font-size: 1.8em;
+  }
+
+  .keyFeaturesTitle {
+    font-size: 1.6em;
+  }
+
+  .keyFeatureItem {
+    font-size: 1em;
+    padding: 10px 0;
+  }
+
+  .floatingWhatsappBanner {
+    bottom: 10px;
+    left: 10px;
+  }
+
+  .floatingWhatsappBanner a {
+    padding: 10px 15px;
+    font-size: 1em;
+  }
+
+  .floatingWhatsappBanner .whatsappIcon {
+    width: 24px;
+    height: 24px;
+  }
 }
