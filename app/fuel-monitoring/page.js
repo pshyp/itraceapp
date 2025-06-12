@@ -120,18 +120,21 @@ const FuelMonitoringPage = () => {
 
         <div className={styles.benefitsSection}>
           <h2 className={styles.keyFeaturesTitle}>Key Benefits</h2>
-          <ul className={styles.keyFeaturesList}>
-            {benefits.map((benefit, index) => (
-              <li
-                key={index}
-                className={`${styles.keyFeatureItem} ${
-                  index === visibleBenefitIndex ? styles.visible : styles.hidden
-                }`}
-              >
-                {benefit}
-              </li>
-            ))}
-          </ul>
+          <div className={styles.benefitsCarousel}>
+            <div className={styles.benefitCard}>
+              <p>{benefits[visibleBenefitIndex]}</p>
+            </div>
+            <div className={styles.carouselControls}>
+              {benefits.map((_, i) => (
+                <button
+                  key={i}
+                  className={`${styles.carouselDot} ${i === visibleBenefitIndex ? styles.activeDot : ""}`}
+                  onClick={() => setVisibleBenefitIndex(i)}
+                  aria-label={`Show benefit ${i + 1}`}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
 
