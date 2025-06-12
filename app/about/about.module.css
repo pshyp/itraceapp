@@ -1,0 +1,53 @@
+.aboutPage {
+  background-color: #0c0c0c;
+  color: #f0f0f0;
+  padding: 3rem 1.5rem;
+  max-width: 960px;
+  margin: 0 auto;
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.6;
+}
+
+.intro {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.intro h1 {
+  font-size: 2.5rem;
+  margin: 1rem 0;
+  color: #00ffcc;
+}
+
+.section {
+  margin-bottom: 3rem;
+}
+
+.section h2 {
+  font-size: 1.8rem;
+  color: #00ccff;
+  margin-bottom: 1rem;
+}
+
+.section ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.partnerLogos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+a {
+  color: #33ccff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
