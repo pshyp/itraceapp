@@ -4,7 +4,9 @@ import styles from './about.module.css';
 export default function AboutPage() {
   return (
     <div className={styles.aboutPage}>
-      <section className={styles.intro}>
+      <section className={`${styles.intro} ${styles.section}`}> {/* Added styles.section */}
+ {/* The image below will now have the styling of the intro section */}
+ {/* This image will be centered and styled by the intro section */}
         <Image src="/LogoMobi.jpeg" alt="iTrace Africa Logo" width={160} height={160} />
         <h1>About iTrace Africa</h1>
         <p>
@@ -30,12 +32,36 @@ export default function AboutPage() {
       <section className={styles.section}>
         <h2>Our Partners</h2>
         <div className={styles.partnerLogos}>
-          <Image src="/images/ca.png" alt="Communications Authority" width={100} height={50} />
-          <Image src="/images/emfk.png" alt="EMFK Kenya" width={100} height={50} />
-          <Image src="/images/kcic.png" alt="KCIC" width={100} height={50} />
-          <Image src="/images/mojaev.png" alt="Mojaev" width={100} height={50} />
-          <Image src="/images/netaev.png" alt="Neta EV" width={100} height={50} />
-          <Image src="/images/stecolcorp.png" alt="Stecolcorp" width={100} height={50} />
+ <Image
+ src="/communicationsauthority.png"
+ alt="Communications Authority Partner Logo"
+ width={100}
+ height={50}
+ className="partner-logo"
+ />
+ <Image
+ src="/EMKFKenya.png"
+ alt="EMFK Kenya Partner Logo"
+ width={100}
+ height={50}
+ className="partner-logo"
+ />
+ <Image
+ src="/KCIC.png"
+ alt="KCIC Partner Logo"
+ width={100}
+ height={50}
+ className="partner-logo"
+ />
+ <Image
+ src="/Mojaev.png"
+ alt="Mojaev Partner Logo"
+ width={100}
+ height={50}
+ className="partner-logo"
+ />
+
+
         </div>
       </section>
 
