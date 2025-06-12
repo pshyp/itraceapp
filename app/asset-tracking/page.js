@@ -4,14 +4,14 @@ import styles from "./asset-tracking.module.css";
 import { useEffect, useState } from "react";
 
 const AssetTrackingPage = () => {
-  const [visibleBenefitIndex, setVisibleBenefitIndex] = useState(0);
+  const [visibleBenefitIndices, setVisibleBenefitIndices] = useState([]); // Changed to array for staggered reveal
 
   const benefits = [
-    "Track your assets in real time with accuracy.",
-    "Get notifications if your asset moves unexpectedly.",
-    "Ensure peace of mind with geo-fencing alerts.",
-    "Improve asset utilization and reduce operational costs.",
-    "Generate detailed reports for compliance and analysis.",
+    { text: "Track your assets in real time with accuracy.", icon: "📍" },
+    { text: "Get notifications if your asset moves unexpectedly.", icon: "🚨" },
+    { text: "Ensure peace of mind with geo-fencing alerts.", icon: "🔒" },
+    { text: "Improve asset utilization and reduce operational costs.", icon: "📈" },
+    { text: "Generate detailed reports for compliance and analysis.", icon: "📊" },
   ];
 
   const imageFiles = [
@@ -36,19 +36,23 @@ const AssetTrackingPage = () => {
   };
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setVisibleBenefitIndex((prevIndex) => (prevIndex + 1) % benefits.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, []);
+    // Staggered reveal for benefit cards
+    benefits.forEach((_, index) => {
+      setTimeout(() => {
+        setVisibleBenefitIndices((prevIndices) => [...prevIndices, index]);
+      }, 200 * index); // Adjust delay as needed for desired effect
+    });
+  }, [benefits.length]);
 
   useEffect(() => {
     const intros = document.querySelectorAll(`.${styles.deviceIntro}`);
     intros.forEach((intro, index) => {
-      setTimeout(() => {
-        intro.classList.add(styles.show);
-        intro.style.visibility = "visible";
-      }, 800 * index);
+      requestAnimationFrame(() => {
+        setTimeout(() => {
+          intro.classList.add(styles.show);
+          // Removed inline style visibility manipulation, let CSS handle it
+        }, 300 * index); // Adjusted delay for consistency
+      });
     });
   }, []);
 
@@ -59,32 +63,24 @@ const AssetTrackingPage = () => {
           Asset Tracking, GPS Monitoring & Remote Management
         </h1>
 
-        <div className={styles.whatsappLinkContainer}>
-          <a
-            href="https://wa.me/254722100506"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.whatsappLink}
-          >
-            <img src="/whatsapp-icon.png" alt="WhatsApp" className={styles.whatsappIcon} />
-            Chat with Us on WhatsApp
-          </a>
-        </div>
+        {/* Removed: The static WhatsApp link from the header */}
 
+        {/* Updated Benefits Section with Animated Benefit Cards */}
         <div className={styles.benefitsSection}>
           <h2 className={styles.keyFeaturesTitle}>Key Benefits</h2>
-          <ul className={styles.keyFeaturesList}>
+          <div className={styles.benefitsGrid}> {/* Changed from ul to div, and keyFeaturesList to benefitsGrid */}
             {benefits.map((benefit, index) => (
-              <li
+              <div
                 key={index}
-                className={`${styles.keyFeatureItem} ${
-                  index === visibleBenefitIndex ? styles.visible : styles.hidden
+                className={`${styles.benefitCard} ${
+                  visibleBenefitIndices.includes(index) ? styles.visible : ''
                 }`}
               >
-                {benefit}
-              </li>
+                <span className={styles.benefitIcon}>{benefit.icon}</span>
+                <p className={styles.benefitText}>{benefit.text}</p>
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
       </div>
 
@@ -103,7 +99,7 @@ const AssetTrackingPage = () => {
                     alt={
                       details?.name
                         ? `Asset tracking device ${details.name} details and features`
-                        : `Asset tracking device ${image.description}`
+                        : `Asset tracking device ${image.description || image.name}`
                     }
                     className={styles.responsiveImage}
                   />
@@ -120,6 +116,20 @@ const AssetTrackingPage = () => {
             );
           })}
         </div>
+      </div>
+
+      {/* Floating WhatsApp Banner (now the primary WhatsApp contact) */}
+      <div className={styles.whatsappLinkContainer}>
+        <a
+          href="https://wa.me/254722100506"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.whatsappLink}
+          title="Chat with us on WhatsApp"
+        >
+          <img src="/whatsapp-icon.png" alt="WhatsApp Icon" className={styles.whatsappIcon} />
+          WhatsApp Us!
+        </a>
       </div>
     </div>
   );

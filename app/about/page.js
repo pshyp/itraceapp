@@ -7,7 +7,6 @@ export default function AboutPage() {
       <section className={`${styles.intro} ${styles.section}`}> {/* Added styles.section */}
  {/* The image below will now have the styling of the intro section */}
  {/* This image will be centered and styled by the intro section */}
-        <Image src="/LogoMobi.jpeg" alt="iTrace Africa Logo" width={160} height={160} />
         <h1>About iTrace Africa</h1>
         <p>
           iTrace Africa is a Nairobi-based technology firm focused on delivering smart,
