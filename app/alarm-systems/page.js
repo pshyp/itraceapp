@@ -139,12 +139,12 @@ const AlarmSystemsPage = () => {
 
       {/* Floating WhatsApp Banner */}
       <div className={styles.whatsappLinkContainer}>
+        {/* Fixed phone number to be consistent with fuel-monitoring */}
         <a
-          href="https://wa.me/254722100506" {/* Fixed phone number to be consistent with fuel-monitoring */}
+          href="https://wa.me/254722100506"
           target="_blank"
           rel="noopener noreferrer"
           className={styles.whatsappLink}
-          title="Chat with us on WhatsApp" {/* Added title for accessibility */}
         >
           <img src="/whatsapp-icon.png" alt="WhatsApp Icon" className={styles.whatsappIcon} />
           Chat with Us on WhatsApp
