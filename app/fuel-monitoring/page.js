@@ -4,7 +4,7 @@ import styles from "./fuel-monitoring.module.css";
 import { useEffect, useState } from "react";
 
 const FuelMonitoringPage = () => {
-  const [visibleBenefitIndices, setVisibleBenefitIndices] = useState([]); // Changed to an array for multiple visible benefits
+  const [visibleBenefitIndices, setVisibleBenefitIndices] = useState([]);
 
   const benefits = [
     { text: "Reduced cost of fuel.", icon: "💰" },
@@ -89,7 +89,7 @@ const FuelMonitoringPage = () => {
         setVisibleBenefitIndices((prevIndices) => [...prevIndices, index]);
       }, 200 * index); // Adjust delay as needed for desired effect
     });
-  }, [benefits.length]); // Re-run if benefits array changes
+  }, [benefits.length]);
 
   useEffect(() => {
     const intros = document.querySelectorAll(`.${styles.deviceIntro}`);
@@ -109,19 +109,9 @@ const FuelMonitoringPage = () => {
           Fuel Monitoring, GPS Tracking & Fleet Management Solutions
         </h1>
 
-        <div className={styles.whatsappLinkContainer}>
-          <a
-            href="https://wa.me/254722100506"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.whatsappLink}
-          >
-            <img src="/whatsapp-icon.png" alt="WhatsApp" className={styles.whatsappIcon} />
-            Chat with Us Now
-          </a>
-        </div>
+        {/* Removed: The static WhatsApp link from the header */}
 
-        {/* Updated Benefits Section */}
+        {/* Updated Benefits Section with Animated Benefit Cards */}
         <div className={styles.benefitsSection}>
           <h2 className={styles.keyFeaturesTitle}>Key Benefits</h2>
           <div className={styles.benefitsGrid}>
@@ -174,7 +164,7 @@ const FuelMonitoringPage = () => {
         </div>
       </div>
 
-      {/* Floating WhatsApp Banner */}
+      {/* Floating WhatsApp Banner (now the primary WhatsApp contact) */}
       <div className={styles.floatingWhatsappBanner}>
         <a
           href="https://wa.me/254722100506"
