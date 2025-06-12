@@ -4,19 +4,19 @@ import styles from "./alarm-systems.module.css";
 import { useEffect, useState } from 'react';
 
 const AlarmSystemsPage = () => {
-  const [visibleBenefitIndex, setVisibleBenefitIndex] = useState(0);
+  const [visibleBenefitIndices, setVisibleBenefitIndices] = useState([]); // Changed to an array for staggered reveal
 
   const benefits = [
-    "Receive real-time alerts on your remote control or smartphone.",
-    "Protect against key-less entry system hacking.",
-    "Remotely start and stop your car's engine securely.",
-    "Detect even the slightest impact on your vehicle.",
-    "Trigger the alarm immediately if a window is shattered.",
-    "Experience the reliability of two-way communication.",
-    "Enhance security with specialized key-less entry solutions.",
-    "Enjoy the convenience of remote engine control.",
-    "Get immediate alerts upon any physical impact.",
-    "Protect your car from window breakage with sound detection.",
+    { text: "Receive real-time alerts on your remote control or smartphone.", icon: "🔔" },
+    { text: "Protect against key-less entry system hacking.", icon: "🔑" },
+    { text: "Remotely start and stop your car's engine securely.", icon: "🚗" },
+    { text: "Detect even the slightest impact on your vehicle.", icon: "💥" },
+    { text: "Trigger the alarm immediately if a window is shattered.", icon: " shatter" }, // Consider a more suitable emoji or icon for shattering
+    { text: "Experience the reliability of two-way communication.", icon: "💬" },
+    { text: "Enhance security with specialized key-less entry solutions.", icon: "🛡️" },
+    { text: "Enjoy the convenience of remote engine control.", icon: "🎮" },
+    { text: "Get immediate alerts upon any physical impact.", icon: "🚨" },
+    { text: "Protect your car from window breakage with sound detection.", icon: "🔊" },
   ];
 
   const alarmTypes = [
@@ -63,18 +63,22 @@ const AlarmSystemsPage = () => {
   ];
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setVisibleBenefitIndex((prevIndex) => (prevIndex + 1) % benefits.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, []);
+    // Staggered reveal for benefit cards
+    benefits.forEach((_, index) => {
+      setTimeout(() => {
+        setVisibleBenefitIndices((prevIndices) => [...prevIndices, index]);
+      }, 200 * index); // Adjust delay as needed for desired effect
+    });
+  }, [benefits.length]); // Added benefits.length to dependency array
 
   useEffect(() => {
     const intros = document.querySelectorAll(`.${styles.deviceIntro}`);
     intros.forEach((intro, index) => {
-      setTimeout(() => {
-        intro.classList.add(styles.show);
-      }, 800 * index);
+      requestAnimationFrame(() => { // Use requestAnimationFrame for smoother animation
+        setTimeout(() => {
+          intro.classList.add(styles.show);
+        }, 300 * index); // Adjust delay as needed
+      });
     });
   }, []);
 
@@ -84,20 +88,23 @@ const AlarmSystemsPage = () => {
         <h1 className={styles.alarmSystemsTitle}>
           Advanced Car Alarm Systems for Superior Security
         </h1>
+
+        {/* Updated Benefits Section to use Animated Benefit Cards */}
         <div className={styles.benefitsSection}>
           <h2 className={styles.keyFeaturesTitle}>Key Benefits</h2>
-          <ul className={styles.keyFeaturesList}>
+          <div className={styles.benefitsGrid}> {/* Changed from ul to div, and keyFeaturesList to benefitsGrid */}
             {benefits.map((benefit, index) => (
-              <li
+              <div
                 key={index}
-                className={`${styles.keyFeatureItem} ${
-                  index === visibleBenefitIndex ? styles.visible : styles.hidden
+                className={`${styles.benefitCard} ${
+                  visibleBenefitIndices.includes(index) ? styles.visible : ''
                 }`}
               >
-                {benefit}
-              </li>
+                <span className={styles.benefitIcon}>{benefit.icon}</span>
+                <p className={styles.benefitText}>{benefit.text}</p>
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
       </div>
 
@@ -130,13 +137,14 @@ const AlarmSystemsPage = () => {
         </div>
       </div>
 
-      {/* ✅ WhatsApp Banner Fixed */}
+      {/* Floating WhatsApp Banner */}
       <div className={styles.whatsappLinkContainer}>
         <a
-          href="https://wa.me/0722100506"
+          href="https://wa.me/254722100506" {/* Fixed phone number to be consistent with fuel-monitoring */}
           target="_blank"
           rel="noopener noreferrer"
           className={styles.whatsappLink}
+          title="Chat with us on WhatsApp" {/* Added title for accessibility */}
         >
           <img src="/whatsapp-icon.png" alt="WhatsApp Icon" className={styles.whatsappIcon} />
           Chat with Us on WhatsApp
