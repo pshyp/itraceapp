@@ -1,11 +1,4 @@
-/* General Body Styles */
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f8f9fa; /* Light background */
-  color: #343a40; /* Darker text for readability */
-}
+/* fuel-monitoring.module.css */
 
 /* Main Container */
 .fuelMonitoringContainer {
@@ -32,7 +25,7 @@ body {
   line-height: 1.2;
 }
 
-/* WhatsApp Link in Header */
+/* WhatsApp Link in Header (optional, consider if you want it *and* the floating one) */
 .whatsappLinkContainer {
   position: absolute;
   top: 0;
