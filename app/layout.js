@@ -1,13 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
-import useScrollReveal from "./hooks/useScrollReveal";
+import Link from "next/link"; // Make sure Link is imported if used elsewhere
 
 // ——— Import your product images (swap for real files) ———
-import fmc150 from "../public/fmc150.webp";
-import fmc250 from "../public/fmc250.webp";
-import fmm250 from "../public/fmm250.webp";
+import fmc150 from "/fmc150.webp";
+import fmc250 from "/fmc250.webp";
+import fmm250 from "/fmm250.webp";
+
 
 function SectionBlock({ title, subtitle, imgSrc, imgAlt, ctaHref = "/contact" }) {
   return (
@@ -39,8 +39,7 @@ function SectionBlock({ title, subtitle, imgSrc, imgAlt, ctaHref = "/contact" })
 }
 
 export default function HomePage() {
-  // Initialise the scroll‑reveal once on mount
-  useScrollReveal();
+  // Removed useScrollReveal import as the module was not found
 
   return (
     <div className="main-content">
