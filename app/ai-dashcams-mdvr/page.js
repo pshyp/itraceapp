@@ -1,16 +1,18 @@
 'use client';
-import React, { useEffect, useState } from 'react'; // Import useState and useEffect
+import React, { useEffect, useState } from 'react';
 import styles from './ai-dashcams-mdvr.module.css';
 
 const AiDashcamsMdvrPage = () => {
-  const [visibleBenefitIndex, setVisibleBenefitIndex] = useState(0); // State for the visible benefit
+  // State for the visible benefit cards (now an array for staggered reveal)
+  const [visibleBenefitIndices, setVisibleBenefitIndices] = useState([]);
 
+  // Updated benefits with icons to match the "perfect design"
   const benefits = [
-    "Improved Driver Safety: Real-time monitoring and alerts for risky driving behaviors.",
-    "Incident Investigation: High-definition video footage for evidence.",
-    "Reduced Insurance Costs: Demonstrating safety commitment can lower premiums.",
-    "Enhanced Security: Monitor vehicle activity and deter theft.",
-    "Optimized Fleet Operations: Gain insights into route efficiency.",
+    { text: "Improved Driver Safety: Real-time monitoring and alerts for risky driving behaviors.", icon: "🚦" },
+    { text: "Incident Investigation: High-definition video footage for evidence.", icon: "🎥" },
+    { text: "Reduced Insurance Costs: Demonstrating safety commitment can lower premiums.", icon: "📉" },
+    { text: "Enhanced Security: Monitor vehicle activity and deter theft.", icon: "🛡️" },
+    { text: "Optimized Fleet Operations: Gain insights into route efficiency.", icon: "🛣️" },
   ];
 
   const products = [
@@ -77,33 +79,48 @@ const AiDashcamsMdvrPage = () => {
   ];
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setVisibleBenefitIndex((prevIndex) => (prevIndex + 1) % benefits.length);
-    }, 4000);
+    // Staggered reveal for benefit cards
+    benefits.forEach((_, index) => {
+      setTimeout(() => {
+        setVisibleBenefitIndices((prevIndices) => [...prevIndices, index]);
+      }, 200 * index); // Adjust delay as needed for desired effect
+    });
+  }, [benefits.length]);
 
-    return () => clearInterval(interval); // Cleanup the interval on component unmount
-  }, [benefits.length]); // Re-run effect if the number of benefits changes
+  useEffect(() => {
+    const intros = document.querySelectorAll(`.${styles.deviceIntro}`);
+    intros.forEach((intro, index) => {
+      requestAnimationFrame(() => {
+        setTimeout(() => {
+          intro.classList.add(styles.show);
+        }, 300 * index);
+      });
+    });
+  }, []);
 
   return (
-    <div className={styles.assetTrackingContainer}>
+    <div className={styles.aiDashcamsMdvrContainer}> {/* Renamed main container class */}
       <div className={styles.headerRow}>
-        <h1 className={styles.assetTrackingTitle}>
-          AI Dashcams and MDVR Solutions
+        <h1 className={styles.aiDashcamsMdvrTitle}> {/* Renamed title class */}
+          AI Dashcams and MDVR Solutions for Advanced Fleet Safety & Management
         </h1>
+
+        {/* Updated Benefits Section with Animated Benefit Cards */}
         <div className={styles.benefitsSection}>
           <h2 className={styles.keyFeaturesTitle}>Key Benefits</h2>
-          <ul className={styles.keyFeaturesList}>
+          <div className={styles.benefitsGrid}>
             {benefits.map((benefit, index) => (
-              <li
+              <div
                 key={index}
-                className={`${styles.keyFeatureItem} ${
-                  index === visibleBenefitIndex ? styles.visible : styles.hidden
+                className={`${styles.benefitCard} ${
+                  visibleBenefitIndices.includes(index) ? styles.visible : ''
                 }`}
               >
-                {benefit}
-              </li>
+                <span className={styles.benefitIcon}>{benefit.icon}</span>
+                <p className={styles.benefitText}>{benefit.text}</p>
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
       </div>
 
@@ -134,6 +151,19 @@ const AiDashcamsMdvrPage = () => {
             </div>
           ))}
         </div>
+      </div>
+
+      {/* Floating WhatsApp Banner */}
+      <div className={styles.floatingWhatsappBanner}>
+        <a
+          href="https://wa.me/254722100506"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="Chat with us on WhatsApp"
+        >
+          <img src="/whatsapp-icon.png" alt="WhatsApp" className={styles.whatsappIcon} />
+          WhatsApp Us!
+        </a>
       </div>
     </div>
   );
