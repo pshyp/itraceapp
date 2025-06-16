@@ -1,19 +1,24 @@
-/* RESET */
-* {
+/* RESET ─────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* BODY */
+/* BODY ──────────────────────────────────────────────── */
 body {
-  background: linear-gradient(to bottom right, #2d2d2d, #000);
+  --bg-from: #2d2d2d;
+  --bg-to: #000;
+  background: linear-gradient(135deg, var(--bg-from), var(--bg-to));
+  animation: bg-shift 12s ease-in-out infinite alternate;
   color: #fff;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   line-height: 1.6;
 }
 
-/* MAIN CONTENT */
+/* MAIN CONTENT ─────────────────────────────────────── */
 .main-content {
   min-height: 100vh;
   display: flex;
@@ -22,16 +27,25 @@ body {
   justify-content: flex-start;
   text-align: center;
   padding: 4rem 1.5rem;
+  animation: fade-slide-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-/* SECTION BLOCKS */
+/* SECTION BLOCKS ───────────────────────────────────── */
 .section-block {
   width: 100%;
   max-width: 960px;
   margin-bottom: 5rem;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
-/* TITLES */
+.section-block.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* TITLES ───────────────────────────────────────────── */
 .product-title {
   font-size: 2.8rem;
   font-weight: 600;
@@ -46,7 +60,7 @@ body {
   color: #d1d1d1;
 }
 
-/* IMAGE WRAPPER */
+/* IMAGE WRAPPER ────────────────────────────────────── */
 .image-wrapper {
   position: relative;
   width: 280px;
@@ -57,80 +71,86 @@ body {
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
 }
 
-/* IMAGE STYLE */
 .monitor-image {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  transition: opacity 0.5s ease-in-out;
+  transition: transform 0.5s cubic-bezier(0.18, 0.89, 0.43, 1.19);
 }
 
-/* BUTTON GROUP */
+@media (hover: hover) {
+  .image-wrapper:hover .monitor-image {
+    transform: scale(1.08) rotateZ(0.5deg);
+  }
+}
+
+/* BUTTON GROUP ─────────────────────────────────────── */
 .button-group {
   display: flex;
   justify-content: center;
   gap: 1.5rem;
 }
 
-/* BUTTON BASE STYLES */
 .primary-button,
 .secondary-button {
   font-size: 1.2rem;
   padding: 1rem 2rem;
   border-radius: 999px;
   cursor: pointer;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
   font-weight: 500;
+  transition: background-color 0.25s ease, border-color 0.25s ease,
+              transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
 }
 
-/* PRIMARY BUTTON */
 .primary-button {
   background-color: #0070f3;
   color: #fff;
   border: none;
 }
-
-.primary-button:hover {
+.primary-button:hover,
+.primary-button:focus-visible {
   background-color: #0057c2;
+  transform: translateY(-2px);
 }
 
-/* SECONDARY BUTTON */
 .secondary-button {
   background: transparent;
   color: #ffffff;
   border: 1px solid #aaa;
 }
-
-.secondary-button:hover {
+.secondary-button:hover,
+.secondary-button:focus-visible {
   border-color: #ffffff;
+  transform: translateY(-2px);
 }
 
-/* MOBILE STYLES */
+/* MOBILE ───────────────────────────────────────────── */
 @media (max-width: 640px) {
-  .product-title {
-    font-size: 2.4rem;
-    margin-bottom: 2rem;
+  .product-title { font-size: 2.4rem; margin-bottom: 2rem; }
+  .product-subtitle { font-size: 1.3rem; margin-bottom: 2rem; }
+  .image-wrapper { width: 320px; height: 320px; margin-bottom: 2.5rem; }
+  .button-group { flex-direction: column; align-items: center; gap: 1.5rem; }
+  .primary-button, .secondary-button {
+    width: 100%; max-width: 340px; padding: 1rem 1.5rem;
   }
+}
 
-  .product-subtitle {
-    font-size: 1.3rem;
-    margin-bottom: 2rem;
-  }
-
-  .image-wrapper {
-    width: 320px;
-    height: 320px;
-    margin-bottom: 2.5rem;
-  }
-
-  .button-group {
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-  }
-
+/* REDUCED‑MOTION FRIENDLINESS ─────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; }
+  .monitor-image,
   .primary-button,
-  .secondary-button {
-    width: 100%;
-    max-width: 340px;
-    padding: 1rem 1.5rem;
-  }
+  .secondary-button { transition: none !important; }
+}
+
+/* KEYFRAMES ───────────────────────────────────────── */
+@keyframes fade-slide-up {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bg-shift {
+  0%   { background-position: 0% 0%; }
+  100% { background-position: 100% 100%; }
 }
