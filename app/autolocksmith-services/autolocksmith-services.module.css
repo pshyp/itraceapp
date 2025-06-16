@@ -1,75 +1,124 @@
-.assetTrackingContainer {
-  padding: 40px 20px;
+/* autolocksmith-services.module.css */
+
+/* Main Container */
+.autolocksmithServicesContainer { /* Renamed container class */
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
 }
 
+/* Header Section */
 .headerRow {
   text-align: center;
   margin-bottom: 50px;
+  position: relative; /* Needed for potential absolute positioning of elements like WhatsApp link */
 }
 
-.assetTrackingTitle {
-  font-size: 2.2rem;
+.autolocksmithServicesTitle { /* Renamed title class */
+  font-size: 2.5rem; /* Larger font size */
   color: #2c3e50;
   margin-bottom: 20px;
+  font-weight: 700; /* Bolder */
+  line-height: 1.2;
 }
 
+/* Removed static WhatsApp link styles as it's replaced by the floating banner */
+
+/* --- */
+/* NEW/UPDATED Benefits Section for Animated Cards */
+/* --- */
 .benefitsSection {
-  margin-top: 20px;
+  margin-top: 60px; /* More space above benefits */
+  background-color: #f0f8ff; /* A softer light blue background */
+  padding: 40px 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
 }
 
 .keyFeaturesTitle {
-  font-size: 1.5rem;
-  color: #34495e;
-  margin-bottom: 10px;
+  font-size: 2.2rem; /* Larger title for benefits */
+  color: #0056b3; /* Matching main title blue */
+  margin-bottom: 35px; /* More space below title */
+  font-weight: 700;
+  text-align: center;
 }
 
-.keyFeaturesList {
-  list-style-type: none;
-  padding: 0;
-  margin: 0 auto;
-  max-width: 600px;
+.benefitsGrid { /* New class for grid layout */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid for cards */
+  gap: 25px; /* Space between cards */
+  padding: 0 10px; /* Slight padding for the grid */
 }
 
-.keyFeatureItem {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
-  font-size: 1.1rem;
-  margin: 10px 0;
-  color: #555;
+.benefitCard { /* New class for individual benefit cards */
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 25px;
+  text-align: left;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.5s ease, transform 0.5s ease; /* Added opacity and transform for animation */
+  display: flex; /* Use flexbox for icon and text alignment */
+  align-items: flex-start; /* Align icon and text at the top */
+  opacity: 0; /* Initially hidden for staggered animation */
+  transform: translateY(30px); /* Start slightly below */
 }
 
-.visible {
+.benefitCard.visible { /* Class for animated reveal */
   opacity: 1;
   transform: translateY(0);
 }
 
-.hidden {
-  display: none;
+.benefitCard:hover {
+  transform: translateY(-8px); /* More pronounced lift on hover */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
 }
 
+.benefitIcon { /* New class for benefit icons */
+  font-size: 2.5em; /* Large icon size */
+  color: #28a745; /* Green color for icons */
+  margin-right: 15px; /* Space between icon and text */
+  flex-shrink: 0; /* Prevent icon from shrinking */
+}
+
+.benefitText { /* New class for benefit text */
+  font-size: 1.15rem; /* Clear text size */
+  color: #343a40;
+  line-height: 1.5;
+}
+
+
+/* Main Content Section - Service Examples Grid */
 .mainSection {
-  display: flex;
-  justify-content: center;
-  padding: 0 10px;
+  margin-top: 60px;
+  display: flex; /* Ensure flex for centering responsive grid */
+  justify-content: center; /* Center the grid */
+  padding: 0 10px; /* Add padding consistent with example */
 }
 
 .responsiveImageGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Use 280px min for consistency */
   gap: 30px;
-  max-width: 1200px;
-  width: 100%;
+  max-width: 1200px; /* Max width for the grid */
+  width: 100%; /* Ensure it takes full width within max-width */
+  padding: 20px; /* Padding for the grid itself */
 }
 
 .imageItem {
   background-color: #fff;
   border-radius: 10px;
   padding: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Stronger shadow */
+  text-align: center;
   transition: transform 0.3s ease;
+  display: flex; /* Use flex for column layout */
+  flex-direction: column;
+  justify-content: space-between; /* Pushes content apart */
 }
 
 .imageItem:hover {
@@ -77,51 +126,167 @@
 }
 
 .deviceIntro {
-  font-weight: bold;
-  color: #2c3e50;
-  font-size: 1rem;
-  text-align: center;
-  margin-bottom: 10px;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  font-size: 1.1em; /* Consistent font size */
+  font-style: italic; /* Italicize */
+  color: #6c757d; /* Softer color */
+  margin-bottom: 15px; /* More space */
+  height: 0; /* Initial hidden state for animation */
+  overflow: hidden;
+  visibility: hidden;
+  transition: all 0.8s ease-out; /* Longer, smoother transition */
 }
 
 .deviceIntro.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.initialHidden {
-  opacity: 0;
+  height: auto; /* Animate height */
+  visibility: visible;
 }
 
 .imageContainer {
-  text-align: center;
-  margin-bottom: 10px;
+  width: 100%; /* Take full width */
+  height: 180px; /* Fixed height for consistent image sizing */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px; /* More space below image */
 }
 
 .responsiveImage {
   max-width: 100%;
-  height: auto;
-  border-radius: 8px;
+  max-height: 100%; /* Ensure image fits within container */
+  object-fit: contain; /* Contain the image within its bounds */
+  border-radius: 0; /* Remove border-radius if not desired */
 }
 
 .imageName {
-  font-size: 1.2rem;
-  font-weight: 600;
+  font-weight: bold;
+  font-size: 1.3rem; /* Slightly larger for emphasis */
+  margin-bottom: 10px;
   color: #2c3e50;
-  text-align: center;
-  margin: 10px 0;
+  text-align: center; /* Ensure text is centered */
 }
 
 .descriptionList {
-  list-style-type: disc;
-  padding-left: 20px;
-  color: #555;
-  font-size: 0.95rem;
+  list-style: none; /* Changed to none for custom bullets */
+  padding: 0;
+  margin-top: 15px; /* More space above list */
+  text-align: left;
+  flex-grow: 1; /* Allow list to take available space */
 }
 
 .descriptionItem {
+  font-size: 0.95em;
+  color: #555;
   margin-bottom: 8px;
+  position: relative;
+  padding-left: 20px; /* Space for custom bullet */
+}
+
+.descriptionItem::before {
+  content: '✓'; /* Custom checkmark bullet */
+  color: #28a745; /* Green checkmark */
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-weight: bold;
+}
+
+/* Floating WhatsApp Banner */
+.floatingWhatsappBanner {
+  position: fixed;
+  bottom: 25px;
+  left: 25px; /* Consistent left position */
+  z-index: 1000;
+}
+
+.floatingWhatsappBanner a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  background-color: #25D366;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 30px;
+  font-size: 1.15em;
+  font-weight: 600;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.floatingWhatsappBanner a:hover {
+  background-color: #1DA851;
+  transform: translateY(-3px);
+}
+
+.floatingWhatsappBanner .whatsappIcon {
+  width: 28px;
+  height: 28px;
+  margin-right: 10px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .autolocksmithServicesTitle { /* Renamed title class */
+    font-size: 2em;
+  }
+
+  .keyFeaturesTitle {
+    font-size: 1.8em;
+  }
+
+  .benefitCard {
+    font-size: 1em;
+    padding: 20px;
+  }
+
+  .responsiveImageGrid {
+    grid-template-columns: 1fr; /* Single column on smaller screens */
+  }
+
+  .floatingWhatsappBanner {
+    bottom: 15px;
+    left: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .autolocksmithServicesContainer { /* Renamed container class */
+    padding: 15px;
+  }
+
+  .autolocksmithServicesTitle { /* Renamed title class */
+    font-size: 1.8em;
+  }
+
+  .keyFeaturesTitle {
+    font-size: 1.6em;
+  }
+
+  .benefitCard {
+    padding: 15px;
+    font-size: 0.95em;
+  }
+
+  .benefitIcon {
+    font-size: 2em;
+    margin-right: 10px;
+  }
+
+  .benefitText {
+    font-size: 1rem;
+  }
+
+  .floatingWhatsappBanner {
+    bottom: 10px;
+    left: 10px;
+  }
+
+  .floatingWhatsappBanner a {
+    padding: 10px 15px;
+    font-size: 1em;
+  }
+
+  .floatingWhatsappBanner .whatsappIcon {
+    width: 24px;
+    height: 24px;
+  }
 }
