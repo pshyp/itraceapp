@@ -1,53 +1,52 @@
 "use client";
-
 import styles from "./asset-tracking.module.css";
-import gpsTracker from "../../public/gps-tracker.png";
-import gpsAccessory from "../../public/gps-accessory-kit.png";
-import outdoorNav from "../../public/outdoor-navigator.png";
-import portableNav from "../../public/portable-navigator.png";
-import smartphoneMount from "../../public/smartphone-mount.png";
-import trafficReceiver from "../../public/traffic-receiver.png";
-
 import { useEffect, useState } from "react";
 
 const AssetTrackingPage = () => {
   const [visibleBenefitIndex, setVisibleBenefitIndex] = useState(0);
 
   const benefits = [
-    "Track your assets in real time with accuracy.",
-    "Get notifications if your asset moves unexpectedly.",
-    "Ensure peace of mind with geo-fencing alerts.",
-    "Improve asset utilization and reduce operational costs.",
-    "Generate detailed reports for compliance and analysis.",
+    "Improve asset security with real-time location monitoring.",
+    "Reduce operational costs by optimizing routes and usage.",
+    "Enhance efficiency with instant alerts and geo-fencing.",
+    "Deter theft and ensure rapid recovery of valuable assets.",
+    "Gain detailed insights with comprehensive reports and analytics.",
+    "Increase productivity through better asset allocation and visibility.",
   ];
 
   const imageFiles = [
-    { src: "/asset1.webp", name: "AssetTracker A1", description: "Compact real-time asset tracker" },
-    { src: "/asset2.webp", name: "AssetTracker B2", description: "Durable GPS asset tracker with long battery" },
-    { src: "/asset3.webp", name: "AssetTracker C3", description: "Remote monitoring asset tracker" },
-  ];
-
-  const assetTracking = [
-    { image: gpsTracker, title: "GPS Tracker", subtitle: "Real-time asset location updates" },
-    { image: gpsAccessory, title: "Accessory Kit", subtitle: "Mounts and wiring for GPS units" },
-    { image: outdoorNav, title: "Rugged GPS for tough environments" },
-    { image: portableNav, title: "Flexible tracking on the go" },
-    { image: smartphoneMount, title: "Device integration made easy" },
-    { src: "/asset3.webp", name: "AssetTracker C3", description: "Remote monitoring asset tracker" },
+    { src: "/gps-tracker.png", name: "GPS Tracker", description: "Real-time asset location updates" },
+    { src: "/outdoor-navigator.png", name: "Outdoor Navigator", description: "Rugged GPS for tough environments" },
+    { src: "/portable-navigator.png", name: "Portable Navigator", description: "Flexible tracking on the go" },
+    { src: "/traffic-receiver.png", name: "Traffic Receiver", description: "Live road condition updates" },
+    { src: "/accessory-kit.png", name: "Accessory Kit", description: "Mounts and wiring for GPS units" },
+    { src: "/smartphone-mount.png", name: "Smartphone Mount", description: "Device integration made easy" },
   ];
 
   const deviceDetails = {
-    "AssetTracker A1": {
-      intro: "Compact & Powerful Tracking",
-      features: ["Small size, great performance", "Real-time GPS updates", "Long-lasting battery"],
+    "GPS Tracker": {
+      intro: "Pinpoint Location Accuracy",
+      features: ["Live GPS tracking worldwide", "Compact and discreet design", "Long-lasting rechargeable battery"],
     },
-    "AssetTracker B2": {
-      intro: "Built for Rugged Environments",
-      features: ["IP67 water and dust resistant", "Extended battery life", "Tamper alerts"],
+    "Outdoor Navigator": {
+      intro: "Built for the Extremes",
+      features: ["IP67 water and dust proof", "High-precision satellite reception", "Durable, shock-resistant casing"],
     },
-    "AssetTracker C3": {
-      intro: "Smart Remote Monitoring",
-      features: ["SIM + Wi-Fi dual connectivity", "Remote diagnostics", "Flexible mounting options"],
+    "Portable Navigator": {
+      intro: "Tracking That Moves With You",
+      features: ["Lightweight and easy to carry", "Versatile for personal or asset use", "SOS button for emergency alerts"],
+    },
+    "Traffic Receiver": {
+      intro: "Avoid Delays, Save Time",
+      features: ["Real-time traffic incident alerts", "Suggests faster alternative routes", "Seamless integration with navigators"],
+    },
+    "Accessory Kit": {
+      intro: "Secure & Professional Setup",
+      features: ["Includes magnetic and screw mounts", "Hard-wiring kit for permanent power", "Durable, high-quality components"],
+    },
+    "Smartphone Mount": {
+      intro: "Integrate Your Devices",
+      features: ["Securely holds any smartphone", "Adjustable for optimal viewing angle", "Quick and easy installation"],
     },
   };
 
@@ -142,3 +141,4 @@ const AssetTrackingPage = () => {
 };
 
 export default AssetTrackingPage;
+```
