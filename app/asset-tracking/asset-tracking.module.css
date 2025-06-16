@@ -26,12 +26,46 @@
   line-height: 1.2;
 }
 
+/* WhatsApp Link in Header (optional, consider if you want it *and* the floating one) */
+.whatsappLinkContainer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.whatsappLink {
+  display: inline-flex;
+  align-items: center;
+  background-color: #25d366;
+  color: white;
+  font-weight: bold;
+  padding: 10px 18px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-size: 1.0rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.whatsappLink:hover {
+  background-color: #1DA851;
+  transform: translateY(-2px);
+}
+
+.whatsappIcon {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+}
+
 /* --- */
-/* Benefits Section with Animated Benefit Cards (matching fuel-monitoring) */
+/* Benefits Section with Animated Cards */
 /* --- */
 .benefitsSection {
   margin-top: 60px;
-  background-color: #f0f8ff; /* Soft light blue background for benefits */
+  background-color: #f0f8ff;
   padding: 40px 20px;
   border-radius: 12px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
@@ -45,15 +79,13 @@
   text-align: center;
 }
 
-/* New: Grid for benefit cards */
-.benefitsGrid { /* Renamed from keyFeaturesList for clarity based on JSX structure */
+.benefitsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
-  gap: 25px; /* Space between cards */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
   padding: 0 10px;
 }
 
-/* New: Styling for individual benefit cards */
 .benefitCard {
   background-color: #ffffff;
   border: 1px solid #e0e0e0;
@@ -61,9 +93,9 @@
   padding: 25px;
   text-align: left;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
-  display: flex; /* For icon and text alignment */
-  align-items: flex-start; /* Align icon and text at the top */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.5s ease, transform 0.5s ease; /* Added opacity and transform for animation */
+  display: flex;
+  align-items: flex-start;
   opacity: 0; /* Initially hidden for staggered animation */
   transform: translateY(30px); /* Start slightly below */
 }
@@ -78,20 +110,21 @@
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
-.benefitIcon { /* Styling for the emoji icons within cards */
+.benefitIcon {
   font-size: 2.5em;
-  color: #28a745; /* Green color for icons */
+  color: #28a745;
   margin-right: 15px;
   flex-shrink: 0;
 }
 
-.benefitText { /* Styling for the text within benefit cards */
+.benefitText {
   font-size: 1.15rem;
   color: #343a40;
   line-height: 1.5;
 }
 
-/* Main Content Section - Asset Types Grid */
+
+/* Main Content Section - Device Grid */
 .mainSection {
   margin-top: 60px;
 }
@@ -109,7 +142,7 @@
   padding: 20px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -117,12 +150,11 @@
 
 .imageItem:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
 }
 
 .imageContainer {
   width: 100%;
-  height: 180px; /* Consistent height for image container */
+  height: 180px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -133,7 +165,6 @@
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
-  border-radius: 5px;
 }
 
 .imageName {
@@ -184,15 +215,16 @@
   visibility: visible;
 }
 
+
 /* Floating WhatsApp Banner */
-.whatsappLinkContainer { /* This is the floating banner */
+.floatingWhatsappBanner {
   position: fixed;
   bottom: 25px;
   left: 25px;
   z-index: 1000;
 }
 
-.whatsappLink {
+.floatingWhatsappBanner a {
   display: flex;
   align-items: center;
   text-decoration: none;
@@ -206,12 +238,12 @@
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.whatsappLink:hover {
+.floatingWhatsappBanner a:hover {
   background-color: #1DA851;
   transform: translateY(-3px);
 }
 
-.whatsappIcon {
+.floatingWhatsappBanner .whatsappIcon {
   width: 28px;
   height: 28px;
   margin-right: 10px;
@@ -230,12 +262,6 @@
   .benefitCard {
     font-size: 1em;
     padding: 20px;
-    flex-direction: column; /* Stack icon and text vertically */
-    text-align: center;
-  }
-  .benefitIcon {
-    margin-right: 0;
-    margin-bottom: 10px;
   }
 
   .responsiveImageGrid {
@@ -243,6 +269,16 @@
   }
 
   .whatsappLinkContainer {
+    position: static;
+    margin: 20px auto 0;
+    text-align: center;
+  }
+
+  .whatsappLink {
+    justify-content: center;
+  }
+
+  .floatingWhatsappBanner {
     bottom: 15px;
     left: 15px;
   }
@@ -268,19 +304,24 @@
 
   .benefitIcon {
     font-size: 2em;
+    margin-right: 10px;
   }
 
-  .whatsappLinkContainer {
+  .benefitText {
+    font-size: 1rem;
+  }
+
+  .floatingWhatsappBanner {
     bottom: 10px;
     left: 10px;
   }
 
-  .whatsappLink {
+  .floatingWhatsappBanner a {
     padding: 10px 15px;
     font-size: 1em;
   }
 
-  .whatsappIcon {
+  .floatingWhatsappBanner .whatsappIcon {
     width: 24px;
     height: 24px;
   }
