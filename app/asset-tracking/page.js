@@ -1,4 +1,5 @@
 "use client";
+
 import styles from "./asset-tracking.module.css";
 import { useEffect, useState } from "react";
 
@@ -76,7 +77,7 @@ const AssetTrackingPage = () => {
 
         <div className={styles.whatsappLinkContainer}>
           <a
-            href="https://wa.me/254722100506"
+            href="[https://wa.me/254722100506](https://wa.me/254722100506)"
             target="_blank"
             rel="noopener noreferrer"
             className={styles.whatsappLink}
@@ -141,4 +142,3 @@ const AssetTrackingPage = () => {
 };
 
 export default AssetTrackingPage;
-```
