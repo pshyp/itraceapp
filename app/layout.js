@@ -3,11 +3,6 @@
 import Image from "next/image";
 import Link from "next/link"; // Make sure Link is imported if used elsewhere
 
-// ——— Import your product images (swap for real files) ———
-import fmc150 from "/fmc150.webp";
-import fmc250 from "/fmc250.webp";
-import fmm250 from "/fmm250.webp";
-
 
 function SectionBlock({ title, subtitle, imgSrc, imgAlt, ctaHref = "/contact" }) {
   return (
@@ -45,22 +40,22 @@ export default function HomePage() {
     <div className="main-content">
       <SectionBlock
         title="FMC150"
-        subtitle="Compact GNSS Tracker for Vehicles"
-        imgSrc={fmc150}
+        subtitle="Compact GNSS Tracker for Vehicles"// Removed useScrollReveal import as the module was not found
+        imgSrc="/fmc150.webp"
         imgAlt="FMC150 product photo"
       />
 
       <SectionBlock
         title="FMC250"
         subtitle="Advanced 4G LTE Vehicle Tracker"
-        imgSrc={fmc250}
+        imgSrc="/fmc250.webp"
         imgAlt="FMC250 product photo"
       />
 
       <SectionBlock
         title="FMM250"
         subtitle="OBDII Plug‑and‑Play Tracker with BLE"
-        imgSrc={fmm250}
+        imgSrc="/fmm250.webp"
         imgAlt="FMM250 product photo"
       />
     </div>
