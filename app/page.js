@@ -43,7 +43,6 @@ import ignition from "../public/ignition.png";
 import mc202x from "../public/MC202X.png";
 import mc402 from "../public/MC402_1080P_4CH_AI_DashCam.png";
 import mc904 from "../public/mc904_1080p_4ch_sd_mdvr.png";
-import mc908 from "../public/MC908_8ChannelRecorder.png";
 import mc912 from "../public/mdvrMc912_12ch1080p.png";
 /* ------------------------------------------------------------------ */
 
@@ -104,7 +103,7 @@ const aiDash = [
   { img: mc202x,       title: "MC202X 1080P 2CH AI",      subtitle: "Compact dual‑camera AI solution" },
   { img: mc402,        title: "MC402 1080P 4CH AI",       subtitle: "Comprehensive quad‑channel AI" },
   { img: mc904,        title: "MC904 1080P 4CH SD MDVR",  subtitle: "Reliable 4‑channel SD MDVR" },
-  { img: mc908,        title: "MC908 1080P 8CH MDVR",     subtitle: "Expandable 8‑channel system" },
+  { img: "/MC908_8ChannelRecorder.png", title: "MC908 1080P 8CH MDVR",     subtitle: "Expandable 8‑channel system" },
   { img: mc912,        title: "MC912 1080P 12CH MDVR",    subtitle: "High‑capacity 12‑channel MDVR" },
 ];
 
