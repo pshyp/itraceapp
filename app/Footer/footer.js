@@ -38,11 +38,7 @@ const Footer = () => {
                 </Link>
               </li>
              
-              <li>
-                <Link href="/services" passHref legacyBehavior>
-                  <a>Services</a>
-                </Link>
-              </li>
+              
               <li>
                 <Link href="/contact" passHref legacyBehavior>
                   <a>Contact Us</a>
@@ -53,11 +49,7 @@ const Footer = () => {
                   <a>Cookie Policy</a>
                 </Link>
               </li>
-              <li>
-                <Link href="/ai-dashcams-mdvr" passHref legacyBehavior>
-                  <a>AI Dashcams and MDVR</a>
-                </Link>
-              </li>
+            
               <li>
                 <Link href="/alarm-systems" passHref legacyBehavior>
                   <a>Alarm Systems</a>
