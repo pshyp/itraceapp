@@ -20,7 +20,7 @@ const AssetTrackingPage = () => {
     { src: "/outdoor-navigator.png", name: "Outdoor Navigator", description: "Rugged GPS for tough environments" },
     { src: "/portable-navigator.png", name: "Portable Navigator", description: "Flexible tracking on the go" },
     { src: "/traffic-receiver.png", name: "Traffic Receiver", description: "Live road condition updates" },
-    { src: "/accessory-kit.png", name: "Accessory Kit", description: "Mounts and wiring for GPS units" },
+    { src: "/gps-accessory-kit.png", name: "Accessory Kit", description: "Mounts and wiring for GPS units" },
     { src: "/smartphone-mount.png", name: "Smartphone Mount", description: "Device integration made easy" },
   ];
 
