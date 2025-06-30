@@ -68,7 +68,7 @@ const Header = () => {
     };
   }, [isMobileMenuOpen]); // Re-run effect when isMobileMenuOpen changes
 
-  // Helper function for link clicks
+  // Helper function for link clicks (closes menu)
   const handleLinkClick = () => {
     closeMobileMenu();
     // Add any other logic needed on link click
@@ -79,7 +79,7 @@ const Header = () => {
       {/* Top Bar (no changes needed here) */}
       <div className="top-bar ">
         <div className="container flex items-center justify-between">
-          <div className="contact-info flex items-center justify-center ">
+          <div className="contact-info flex items-center justify-center flex-wrap">
             <FaPhone />
             <a href="tel:+254704777100" className="whitespace-nowrap">
               (+254) 704 777 100
