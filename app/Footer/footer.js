@@ -52,6 +52,11 @@ const Footer = () => {
                   <a>Contact Us</a>
                 </Link>
               </li>
+              <li>
+                <Link href="/cookie-policy" passHref legacyBehavior>
+                  <a>Cookie Policy</a>
+                </Link>
+              </li>
               {/* Add more quick links as needed */}
             </ul>
           </div>
