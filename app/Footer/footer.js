@@ -37,11 +37,7 @@ const Footer = () => {
                   <a>Fuel Monitoring</a>
                 </Link>
               </li>
-              <li>
-                <Link href="/remote-access-systems" passHref legacyBehavior>
-                  <a>Remote Access Systems</a>
-                </Link>
-              </li>
+             
               <li>
                 <Link href="/services" passHref legacyBehavior>
                   <a>Services</a>
@@ -55,6 +51,26 @@ const Footer = () => {
               <li>
                 <Link href="/cookie-policy" passHref legacyBehavior>
                   <a>Cookie Policy</a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/ai-dashcams-mdvr" passHref legacyBehavior>
+                  <a>AI Dashcams and MDVR</a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/alarm-systems" passHref legacyBehavior>
+                  <a>Alarm Systems</a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/asset-tracking" passHref legacyBehavior>
+                  <a>Asset Tracking</a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/autolocksmith-services" passHref legacyBehavior>
+                  <a>Autolocksmith Services</a>
                 </Link>
               </li>
               {/* Add more quick links as needed */}
