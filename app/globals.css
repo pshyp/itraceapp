@@ -127,16 +127,26 @@ body {
 
 /* MOBILE ───────────────────────────────────────────── */
 @media (max-width: 640px) {
-  .product-title { font-size: 2.4rem; margin-bottom: 2rem; }
-  .product-subtitle { font-size: 1.3rem; margin-bottom: 2rem; }
-  .image-wrapper { width: 320px; height: 320px; margin-bottom: 2.5rem; }
-  .button-group { flex-direction: column; align-items: center; gap: 1.5rem; }
+  .main-content { padding: 2.5rem 1rem; }
+
+  .section-block { margin-bottom: 3rem; }
+
+  .product-title { font-size: 1.8rem; margin-bottom: 1rem; }
+  .product-subtitle { font-size: 1.1rem; margin-bottom: 1.5rem; }
+
+  .image-wrapper { width: 220px; height: 220px; margin-bottom: 1.8rem; }
+
+  .button-group { flex-direction: column; align-items: center; gap: 1rem; }
+
   .primary-button, .secondary-button {
-    width: 100%; max-width: 340px; padding: 1rem 1.5rem;
+    width: 100%;
+    max-width: 300px;
+    padding: 0.9rem 1.2rem;
+    font-size: 1rem;
   }
 }
 
-/* REDUCED‑MOTION FRIENDLINESS ─────────────────────── */
+/* REDUCED-MOTION FRIENDLINESS ─────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; }
   .monitor-image,
