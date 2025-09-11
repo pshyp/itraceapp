@@ -6,7 +6,7 @@ const CookiePolicyPage = () => {
   return (
     <div style={{ padding: '20px', maxWidth: '800px', margin: '0 auto' }}>
       <h1>Cookie Policy</h1>
-      <p>Last updated: [Date]</p>
+      <p>Last updated: [23rd August 2025]</p>
 
       <section>
         <h2>What are cookies?</h2>

@@ -1,0 +1,27 @@
+/* blog.module.css */
+
+/* Main Container */
+.blogContainer {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  font-family: Arial, sans-serif;
+}
+
+/* Header Section */
+.headerRow {
+  text-align: center;
+  margin-bottom: 50px;
+  position: relative;
+}
+
+.blogTitle {
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin-bottom: 20px;
+  font-weight: 700;
+  line-height: 1.2;
+}
