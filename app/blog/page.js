@@ -12,7 +12,7 @@ function getBlogs() {
     const filePath = path.join(contentDir, filename);
     const fileContents = fs.readFileSync(filePath, "utf8");
     const { data } = matter(fileContents);
-
+    console.log(`Reading file: ${filename}, Title: ${data.title}`);
     return {
       slug: data.slug || filename.replace(/\.mdx$/, ""),
       title: data.title || "Untitled",
