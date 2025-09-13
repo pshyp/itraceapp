@@ -1,8 +1,19 @@
-
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { compileMDX } from "next-mdx-remote/rsc";
+import React from 'react';
+
+// Define components to render MDX elements
+const components = {
+  h1: (props) => <h1 {...props} />,
+  h2: (props) => <h2 {...props} />,
+  p: (props) => <p {...props} />,
+  img: (props) => <img style={{ maxWidth: '100%', height: 'auto' }} {...props} />,
+  a: (props) => <a {...props} />,
+  ul: (props) => <ul {...props} />,
+  li: (props) => <li {...props} />,
+};
 
 export async function generateStaticParams() {
   const contentDir = path.join(process.cwd(), "public/content");
@@ -21,7 +32,10 @@ async function getBlogBySlug(slug) {
 
   const { content: compiledContent } = await compileMDX({
     source: content,
-    options: { parseFrontmatter: false },
+    components,
+    options: {
+      parseFrontmatter: false,
+    },
   });
 
   return {
