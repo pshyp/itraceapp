@@ -12,10 +12,10 @@ function getBlogs() {
     const filePath = path.join(contentDir, filename);
     const fileContents = fs.readFileSync(filePath, "utf8");
     const { data } = matter(fileContents);
-    console.log(`Reading file: ${filename}, Title: ${data.title}`);
     return {
       slug: data.slug || filename.replace(/\.mdx$/, ""),
       title: data.title || "Untitled",
+      author: data.author || "Anonymous",
     };
   });
   return blogs;
@@ -30,6 +30,7 @@ export default function Blog() {
         {blogs.map((blog) => (
           <div key={blog.slug} className={styles.blogCard}>
             <h2>{blog.title}</h2>
+            <p className={styles.blogAuthor}>By {blog.author}</p>
             <Link href={`/blog/${blog.slug}`}>Read More</Link>
           </div>
         ))}

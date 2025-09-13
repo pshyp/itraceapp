@@ -38,6 +38,12 @@
   margin-bottom: 10px;
 }
 
+.blogAuthor {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 15px;
+}
+
 .blogCard a {
   text-decoration: none;
   color: #0070f3;
