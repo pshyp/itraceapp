@@ -3,6 +3,7 @@ import path from "path";
 import matter from "gray-matter";
 import { compileMDX } from "next-mdx-remote/rsc";
 import React from 'react';
+import styles from "../blog.module.css";
 
 // Define components to render MDX elements
 const components = {
@@ -49,9 +50,9 @@ export default async function BlogPage({ params }) {
   const blog = await getBlogBySlug(slug);
 
   return (
-    <div>
-      <h1>{blog.title}</h1>
-      <div>{blog.content}</div>
+    <div className={styles.postContainer}>
+      <h1 className={styles.postTitle}>{blog.title}</h1>
+      <div className={styles.postContent}>{blog.content}</div>
     </div>
   );
 }

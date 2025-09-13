@@ -26,13 +26,14 @@ export default function Blog() {
   return (
     <div className={styles.blogContainer}>
       <h1 className={styles.blogTitle}>Blog</h1>
-      <ul>
+      <div className={styles.blogGrid}>
         {blogs.map((blog) => (
-          <li key={blog.slug}>
-            <Link href={`/blog/${blog.slug}`}>{blog.title}</Link>
-          </li>
+          <div key={blog.slug} className={styles.blogCard}>
+            <h2>{blog.title}</h2>
+            <Link href={`/blog/${blog.slug}`}>Read More</Link>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }
