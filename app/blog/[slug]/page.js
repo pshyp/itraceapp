@@ -17,41 +17,63 @@ const components = {
 };
 
 export async function generateStaticParams() {
-  const contentDir = path.join(process.cwd(), "public/content");
-  const filenames = fs.readdirSync(contentDir).filter((file) => file.endsWith(".mdx"));
+  try {
+    const contentDir = path.join(process.cwd(), "public/content");
+    const filenames = fs.readdirSync(contentDir).filter((file) => file.endsWith(".mdx"));
 
-  return filenames.map((filename) => ({
-    slug: filename.replace(/\.mdx$/, ""),
-  }));
+    console.log("✅ Found blog files:", filenames);
+
+    return filenames.map((filename) => ({
+      slug: filename.replace(/\.mdx$/, ""),
+    }));
+  } catch (err) {
+    console.error("❌ Error in generateStaticParams:", err);
+    throw err;
+  }
 }
 
 async function getBlogBySlug(slug) {
-  const contentDir = path.join(process.cwd(), "public/content");
-  const filePath = path.join(contentDir, `${slug}.mdx`);
-  const fileContents = fs.readFileSync(filePath, "utf8");
+  try {
+    const contentDir = path.join(process.cwd(), "public/content");
+    const filePath = path.join(contentDir, `${slug}.mdx`);
 
-  const { frontmatter, content } = await compileMDX({
-    source: fileContents,
-    components,
-    options: {
-      parseFrontmatter: true,
-    },
-  });
+    console.log("📂 Reading file:", filePath);
 
-  return {
-    title: frontmatter.title || "Untitled",
-    content,
-  };
+    const fileContents = fs.readFileSync(filePath, "utf8");
+
+    console.log("📄 Raw file contents loaded (first 200 chars):", fileContents.slice(0, 200));
+
+    const { frontmatter, content } = await compileMDX({
+      source: fileContents,
+      components,
+      options: { parseFrontmatter: true },
+    });
+
+    console.log("✅ MDX compiled. Frontmatter:", frontmatter);
+
+    return {
+      title: frontmatter?.title || "Untitled",
+      content,
+    };
+  } catch (err) {
+    console.error("❌ Error in getBlogBySlug:", err);
+    throw err;
+  }
 }
 
 export default async function BlogPage({ params }) {
-  const { slug } = params;
-  const blog = await getBlogBySlug(slug);
+  try {
+    console.log("📌 Rendering blog page for slug:", params.slug);
+    const blog = await getBlogBySlug(params.slug);
 
-  return (
-    <div className={styles.postContainer}>
-      <h1 className={styles.postTitle}>{blog.title}</h1>
-      <div className={styles.postContent}>{blog.content}</div>
-    </div>
-  );
+    return (
+      <div className={styles.postContainer}>
+        <h1 className={styles.postTitle}>{blog.title}</h1>
+        <div className={styles.postContent}>{blog.content}</div>
+      </div>
+    );
+  } catch (err) {
+    console.error("❌ Error in BlogPage render:", err);
+    return <div>⚠️ Failed to load blog post. Check server logs.</div>;
+  }
 }
