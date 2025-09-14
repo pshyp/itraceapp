@@ -14,6 +14,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
+      </head>
       <body className={inter.className}>
         <Header />
         <main>{children}</main>
