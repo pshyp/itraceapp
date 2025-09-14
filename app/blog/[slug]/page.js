@@ -1,22 +1,20 @@
 // app/blog/[slug]/page.js
 import fs from "fs";
 import path from "path";
+import matter from "gray-matter";
 import { compileMDX } from "next-mdx-remote/rsc";
 import React from "react";
 import styles from "../blog.module.css";
-import Link from "next/link";
 
-// MDX components
+// Define components to render MDX elements
 const components = {
   h1: (props) => <h1 {...props} />,
   h2: (props) => <h2 {...props} />,
   p: (props) => <p {...props} />,
-  img: (props) => <img style={{ maxWidth: "100%", height: "auto" }} {...props} />,
-  a: ({ href, children, ...props }) => (
-    <Link href={href} {...props}>
-      {children}
-    </Link>
+  img: (props) => (
+    <img style={{ maxWidth: "100%", height: "auto" }} {...props} />
   ),
+  a: (props) => <a {...props} />,
   ul: (props) => <ul {...props} />,
   li: (props) => <li {...props} />,
 };
@@ -24,15 +22,17 @@ const components = {
 export async function generateStaticParams() {
   try {
     const contentDir = path.join(process.cwd(), "public/content");
-    const filenames = fs.readdirSync(contentDir).filter((file) => file.endsWith(".mdx"));
+    const filenames = fs.readdirSync(contentDir).filter((file) =>
+      file.endsWith(".mdx")
+    );
 
-    console.log("✅ Found blog files:", filenames);
+    console.log("📝 Found blog files:", filenames);
 
     return filenames.map((filename) => ({
       slug: filename.replace(/\.mdx$/, ""),
     }));
   } catch (err) {
-    console.error("❌ Error in generateStaticParams:", err.message, err.stack);
+    console.error("❌ Error in generateStaticParams:", err);
     throw err;
   }
 }
@@ -41,45 +41,45 @@ async function getBlogBySlug(slug) {
   try {
     const contentDir = path.join(process.cwd(), "public/content");
     const filePath = path.join(contentDir, `${slug}.mdx`);
-
-    console.log("📂 Looking for file:", filePath);
+    console.log("📂 Trying to load file:", filePath);
 
     if (!fs.existsSync(filePath)) {
       console.error("❌ File does not exist:", filePath);
-      throw new Error(`Blog file not found for slug: ${slug}`);
+      throw new Error(`File not found: ${filePath}`);
     }
 
     const fileContents = fs.readFileSync(filePath, "utf8");
+    console.log("📄 File loaded successfully, length:", fileContents.length);
 
-    console.log("📄 Raw file contents (first 200 chars):", fileContents.slice(0, 200));
+    const { data, content } = matter(fileContents);
+    console.log("🔑 Frontmatter parsed:", data);
 
-    const { frontmatter, content } = await compileMDX({
-      source: fileContents,
+    const compiled = await compileMDX({
+      source: content,
       components,
-      options: { parseFrontmatter: true },
+      options: {
+        parseFrontmatter: false,
+      },
     });
 
-    console.log("✅ MDX compiled successfully.");
-    console.log("📝 Frontmatter:", frontmatter);
+    console.log("✅ MDX compiled successfully");
 
     return {
-      title: frontmatter?.title || "Untitled",
-      content,
+      title: data.title || "Untitled",
+      content: compiled.content,
     };
   } catch (err) {
-    console.error("❌ Error in getBlogBySlug:", err.message);
-    console.error(err.stack);
+    console.error("❌ Error in getBlogBySlug:", err);
+    console.error("🔎 Full error stack:", err.stack);
     throw err;
   }
 }
 
 export default async function BlogPage({ params }) {
+  const { slug } = params;
+
   try {
-    console.log("📌 Rendering blog page for slug:", params.slug);
-
-    const blog = await getBlogBySlug(params.slug);
-
-    console.log("✅ Blog loaded successfully:", blog.title);
+    const blog = await getBlogBySlug(slug);
 
     return (
       <div className={styles.postContainer}>
@@ -88,12 +88,13 @@ export default async function BlogPage({ params }) {
       </div>
     );
   } catch (err) {
-    console.error("❌ Error in BlogPage render:", err.message);
-    console.error(err.stack);
+    console.error("❌ Error rendering blog page for slug:", slug, err);
     return (
-      <div>
-        ⚠️ Failed to load blog post for slug <b>{params.slug}</b>.  
-        Check server logs for details.
+      <div className={styles.postContainer}>
+        <h1 className={styles.postTitle}>Error Loading Blog</h1>
+        <pre style={{ color: "red", whiteSpace: "pre-wrap" }}>
+          {err.message}
+        </pre>
       </div>
     );
   }
