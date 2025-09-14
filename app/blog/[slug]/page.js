@@ -39,7 +39,14 @@ export async function generateStaticParams() {
 
 async function getBlogBySlug(slug) {
   try {
-    const filePath = path.join(CONTENT_DIR, `${slug}.mdx`)
+    const index = JSON.parse(fs.readFileSync(INDEX_FILE, 'utf-8'));
+    const postData = index.find(post => post.slug === slug);
+
+    if (!postData) {
+      throw new Error(`Blog post with slug '${slug}' not found in index.`);
+    }
+
+    const filePath = path.join(CONTENT_DIR, postData.file)
     const fileContents = fs.readFileSync(filePath, 'utf-8')
 
     const { frontmatter, content } = await compileMDX({
