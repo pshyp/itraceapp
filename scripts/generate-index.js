@@ -16,6 +16,7 @@ function generateIndex() {
     const { data } = matter(raw);
 
     return {
+      file: file,
       slug: data.slug || file.replace(/\.mdx$/, ""),
       title: data.title || "Untitled",
       author: data.author || "Unknown",
