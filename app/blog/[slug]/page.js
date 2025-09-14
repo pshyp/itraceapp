@@ -3,6 +3,7 @@ import fs from 'fs'
 import path from 'path'
 import styles from '../blog.module.css'
 import Link from 'next/link'
+import Image from 'next/image'
 
 const CONTENT_DIR = path.join(process.cwd(), 'public', 'content')
 const INDEX_FILE = path.join(CONTENT_DIR, 'index.json')
@@ -56,7 +57,7 @@ async function getBlogBySlug(slug) {
     })
 
     return {
-      title: frontmatter?.title || 'Untitled',
+      frontmatter,
       content,
     }
   } catch (err) {
@@ -71,7 +72,21 @@ export default async function BlogPage({ params }) {
 
     return (
       <div className={styles.postContainer}>
-        <h1 className={styles.postTitle}>{blog.title}</h1>
+        {blog.frontmatter.cover_image && (
+          <Image
+            src={blog.frontmatter.cover_image}
+            alt={blog.frontmatter.title}
+            width={800}
+            height={400}
+            className={styles.postCoverImage}
+          />
+        )}
+        <h1 className={styles.postTitle}>{blog.frontmatter.title}</h1>
+        <div className={styles.postMeta}>
+          <span>By {blog.frontmatter.author}</span>
+          <span> | </span>
+          <span>{new Date(blog.frontmatter.date).toLocaleDateString()}</span>
+        </div>
         <div className={styles.postContent}>{blog.content}</div>
       </div>
     )
