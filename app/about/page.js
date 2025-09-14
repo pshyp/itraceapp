@@ -51,7 +51,7 @@ export default function AboutPage() {
  src="/KCIC.png"
  alt="KCIC Partner Logo"
  width={100}
- height={50}
+ height={83}
  className="partner-logo"
  loading="lazy"
  />
