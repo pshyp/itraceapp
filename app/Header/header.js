@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import "./header.css"; // Make sure to import the CSS
 import {
   FaInstagram,
@@ -125,10 +126,11 @@ const Header = () => {
               className="flex items-center site-logo"
               onClick={handleLinkClick}
             >
-              <img
+              <Image
                 src="/LogoMobi.jpeg"
                 alt="iTraceAfrica Logo - Home"
-                className="h-10"
+                width={92}
+                height={44}
               />
             </a>
           </Link>
