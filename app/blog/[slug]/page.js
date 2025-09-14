@@ -4,6 +4,7 @@ import path from "path";
 import { compileMDX } from "next-mdx-remote/rsc";
 import React from "react";
 import styles from "../blog.module.css";
+import Link from "next/link";
 
 // MDX components
 const components = {
@@ -11,7 +12,11 @@ const components = {
   h2: (props) => <h2 {...props} />,
   p: (props) => <p {...props} />,
   img: (props) => <img style={{ maxWidth: "100%", height: "auto" }} {...props} />,
-  a: (props) => <a {...props} />,
+  a: ({ href, children, ...props }) => (
+    <Link href={href} {...props}>
+      {children}
+    </Link>
+  ),
   ul: (props) => <ul {...props} />,
   li: (props) => <li {...props} />,
 };
