@@ -3,6 +3,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from 'next/image';
 import "./footer.css"; // Import your footer CSS
 import { FaHome, FaMapMarkerAlt, FaPhone, FaMobileAlt, FaEnvelope } from "react-icons/fa"; // Import relevant icons
 
@@ -72,35 +73,53 @@ const Footer = () => {
             <h3>Our Partners</h3>
             <div className="partner-logos"> {/* Add a container for better styling */}
              
-              <img
+              <Image
                 src="/communicationsauthority.png"
                 alt="Communications Authority Partner Logo"
                 className="partner-logo"
+                width={100}
+                height={100}
+                loading="lazy"
               />
-              <img
+              <Image
                 src="/EMKFKenya.png"
                 alt="EMFK Kenya Partner Logo"
                 className="partner-logo"
+                width={100}
+                height={100}
+                loading="lazy"
               />
-              <img
+              <Image
                 src="/KCIC.png"
                 alt="KCIC Partner Logo"
                 className="partner-logo"
+                width={100}
+                height={100}
+                loading="lazy"
               />
-              <img
+              <Image
                 src="/Mojaev.png"
                 alt="Mojaev Partner Logo"
                 className="partner-logo"
+                width={100}
+                height={100}
+                loading="lazy"
               />
-              <img
+              <Image
                 src="/NetaEV.png"
                 alt="Neta EV Partner Logo"
                 className="partner-logo"
+                width={100}
+                height={100}
+                loading="lazy"
               />
-              <img
+              <Image
                 src="/stecolcorp.png"
                 alt="Stecolcorp Partner Logo"
                 className="partner-logo"
+                width={100}
+                height={100}
+                loading="lazy"
               />
             </div>
           </div>
