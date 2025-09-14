@@ -1,0 +1,50 @@
+[
+  {
+    "file": "hybrid.mdx",
+    "slug": "the-rise-of-hybrid-vehicles",
+    "title": "The Rise of Hybrid Vehicles",
+    "author": "John Doe",
+    "date": "2024-07-30",
+    "excerpt": "A deep dive into the technology, benefits, and future of hybrid cars. Learn why they are becoming a popular choice for drivers worldwide.",
+    "cover_image": "/content/hybrid-car.jpg",
+    "keywords": [
+      "hybrid vehicles",
+      "electric cars",
+      "fuel efficiency",
+      "green technology",
+      "automotive innovation"
+    ]
+  },
+  {
+    "file": "nissannote.mdx",
+    "slug": "nissan-note-comprehensive-review",
+    "title": "Nissan Note: A Comprehensive Review",
+    "author": "Jane Smith",
+    "date": "2024-07-30",
+    "excerpt": "An in-depth look at the Nissan Note, exploring its features, performance, and why it stands out in the compact hatchback market.",
+    "cover_image": "/content/note.jpg",
+    "keywords": [
+      "Nissan Note",
+      "compact hatchback",
+      "hybrid car review",
+      "automotive",
+      "car review"
+    ]
+  },
+  {
+    "file": "vezel.mdx",
+    "slug": "honda-vezel-comprehensive-review",
+    "title": "Honda Vezel: A Comprehensive Review",
+    "author": "Jane Smith",
+    "date": "2024-07-30",
+    "excerpt": "An in-depth look at the Honda Vezel, exploring its features, performance, and why it stands out in the compact SUV market.",
+    "cover_image": "/content/vezel.jpg",
+    "keywords": [
+      "Honda Vezel",
+      "compact SUV",
+      "hybrid car review",
+      "automotive",
+      "car review"
+    ]
+  }
+]
