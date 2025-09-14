@@ -32,7 +32,7 @@ export async function generateStaticParams() {
       slug: filename.replace(/\.mdx$/, ""),
     }));
   } catch (err) {
-    console.error("❌ Error in generateStaticParams:", err);
+    console.error("❌ Error in generateStaticParams:", err.message, err.stack);
     throw err;
   }
 }
@@ -42,11 +42,16 @@ async function getBlogBySlug(slug) {
     const contentDir = path.join(process.cwd(), "public/content");
     const filePath = path.join(contentDir, `${slug}.mdx`);
 
-    console.log("📂 Reading file:", filePath);
+    console.log("📂 Looking for file:", filePath);
+
+    if (!fs.existsSync(filePath)) {
+      console.error("❌ File does not exist:", filePath);
+      throw new Error(`Blog file not found for slug: ${slug}`);
+    }
 
     const fileContents = fs.readFileSync(filePath, "utf8");
 
-    console.log("📄 Raw file contents loaded (first 200 chars):", fileContents.slice(0, 200));
+    console.log("📄 Raw file contents (first 200 chars):", fileContents.slice(0, 200));
 
     const { frontmatter, content } = await compileMDX({
       source: fileContents,
@@ -54,14 +59,16 @@ async function getBlogBySlug(slug) {
       options: { parseFrontmatter: true },
     });
 
-    console.log("✅ MDX compiled. Frontmatter:", frontmatter);
+    console.log("✅ MDX compiled successfully.");
+    console.log("📝 Frontmatter:", frontmatter);
 
     return {
       title: frontmatter?.title || "Untitled",
       content,
     };
   } catch (err) {
-    console.error("❌ Error in getBlogBySlug:", err);
+    console.error("❌ Error in getBlogBySlug:", err.message);
+    console.error(err.stack);
     throw err;
   }
 }
@@ -69,7 +76,10 @@ async function getBlogBySlug(slug) {
 export default async function BlogPage({ params }) {
   try {
     console.log("📌 Rendering blog page for slug:", params.slug);
+
     const blog = await getBlogBySlug(params.slug);
+
+    console.log("✅ Blog loaded successfully:", blog.title);
 
     return (
       <div className={styles.postContainer}>
@@ -78,7 +88,13 @@ export default async function BlogPage({ params }) {
       </div>
     );
   } catch (err) {
-    console.error("❌ Error in BlogPage render:", err);
-    return <div>⚠️ Failed to load blog post. Check server logs.</div>;
+    console.error("❌ Error in BlogPage render:", err.message);
+    console.error(err.stack);
+    return (
+      <div>
+        ⚠️ Failed to load blog post for slug <b>{params.slug}</b>.  
+        Check server logs for details.
+      </div>
+    );
   }
 }
