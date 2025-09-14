@@ -37,6 +37,7 @@ export default function AboutPage() {
  width={100}
  height={50}
  className="partner-logo"
+ loading="lazy"
  />
  <Image
  src="/EMKFKenya.png"
@@ -44,6 +45,7 @@ export default function AboutPage() {
  width={100}
  height={50}
  className="partner-logo"
+ loading="lazy"
  />
  <Image
  src="/KCIC.png"
@@ -51,6 +53,7 @@ export default function AboutPage() {
  width={100}
  height={50}
  className="partner-logo"
+ loading="lazy"
  />
  <Image
  src="/Mojaev.png"
@@ -58,6 +61,7 @@ export default function AboutPage() {
  width={100}
  height={50}
  className="partner-logo"
+ loading="lazy"
  />
 
 
