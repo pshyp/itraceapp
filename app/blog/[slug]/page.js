@@ -80,6 +80,7 @@ export default async function BlogPage({ params }) {
             height={400}
             className={styles.postCoverImage}
             priority
+            fetchPriority="high"
           />
         )}
         <h1 className={styles.postTitle}>{blog.frontmatter.title}</h1>
