@@ -5,7 +5,6 @@ import { compileMDX } from "next-mdx-remote/rsc";
 import React from 'react';
 import styles from "../blog.module.css";
 
-// Define components to render MDX elements
 const components = {
   h1: (props) => <h1 {...props} />,
   h2: (props) => <h2 {...props} />,
@@ -42,6 +41,8 @@ async function getBlogBySlug(slug) {
   return {
     title: data.title || "Untitled",
     content: compiledContent,
+    author: data.author || "Anonymous",
+    date: data.date || null,
   };
 }
 
@@ -52,6 +53,7 @@ export default async function BlogPage({ params }) {
   return (
     <div className={styles.postContainer}>
       <h1 className={styles.postTitle}>{blog.title}</h1>
+      {blog.author && <p className={styles.postAuthor}>By {blog.author}</p>}
       <div className={styles.postContent}>{blog.content}</div>
     </div>
   );
