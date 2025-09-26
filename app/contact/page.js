@@ -33,6 +33,10 @@ function ContactPage() {
             <FaEnvelope className="icon" />
             <a href="mailto:info@itraceafrica.com">info@itraceafrica.com</a>
           </div>
+          <div className="contact-row">
+            <FaEnvelope className="icon" />
+            <a href="mailto:itrace.africa@gmail.com">itrace.africa@gmail.com</a>
+          </div>
         </div>
 
         <div className="contact-section">

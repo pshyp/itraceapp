@@ -23,6 +23,8 @@ const Footer = () => {
               <FaMobileAlt className="icon" /> 0722 100 506, 0751 100 506
               <br />
               <FaEnvelope className="icon" /> info@itraceafrica.com
+              <br />
+              <FaEnvelope className="icon" /> itrace.africa@gmail.com
             </p>
           </div>
           <div className="widget">

@@ -92,9 +92,13 @@ const Header = () => {
             <span className="hidden px-2">|</span>
 
 
-            <a href="mailto:info@itraceservice.com" className="email-link px-2">
+            <a href="mailto:info@itraceafrica.com" className="email-link px-2">
               <FaEnvelope />
               <span>info@itraceafrica.com</span>
+            </a>
+             <a href="mailto:itrace.africa@gmail.com" className="email-link px-2">
+              <FaEnvelope />
+              <span>itrace.africa@gmail.com</span>
             </a>
           </div>
 
